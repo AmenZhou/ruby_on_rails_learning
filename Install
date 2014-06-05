@@ -55,3 +55,30 @@ Sphinxsearch Install in Ubunt
 
 4 It will run a demon service backgroundly
 
+===============================================================
+
+Install postgres in Ubuntu and config for rails
+
+install pg
+	sudo apt-get install postgresql postgresql-contrib
+
+switch to pg default user
+	sudo su - postgres
+
+change postgres password
+	sudo passwd postgres
+
+bundle error
+install pg gem display error
+	sudo apt-get install libpq-dev
+
+
+create a user for app
+1 su - postgres
+2 create role myapp with createdb login password 'password1'
+3 the last semicolon is very important
+
+config user in app
+1 open config/database.yml
+2 change username and password to the pg user
+
