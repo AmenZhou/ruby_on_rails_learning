@@ -1,0 +1,37 @@
+Cookies in Rails
+
+1 Set a cookie with a hash which has two members 
+cookies[:remember_token] = { value: remember_token, 
+expires: 20.years.from_now.utc }
+
+2 Set a cookie by permanent method 
+cookies.permanent[:remember_token] = remember_token
+
+3 Delete cookie 
+cookies.delete(:remember_token)
+==================================================================
+How to process the "Sign in" in Rails
+
+1 Create a Session 
+. generate a session controller 
+. have three method in the session controller: create, new and destroy 
+. under the new method, we create a page as log in page 
+. verify the email and password in the create method, two steps: get user by email and check password by user.authenticate
+
+2 Add a Cookie Store on Both Server Side and Browser Side 
+. generate a cookie 
+. save that cookie to the client's browser 
+. save the cookie to the database which on the user's table, recommend to encrypt
+
+3 Create an instant variable @current_user 
+. each time open a new page, all the variable will be cleared. So get the cookies from the client's browser when each time users open a new page
+
+4 Using @current_user to identify the user
+
+========================================================================
+
+Render and Redirect_to
+
+http://guides.rubyonrails.org/layouts_and_rendering.html
+
+======================================================================

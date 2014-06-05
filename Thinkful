@@ -1,0 +1,48 @@
+Mentor Session - 5/27/14
+
+1 I can define a hash in two types of syntax. 
+
+my_hash = {firstname:'Haimeng', lastname:"Zhou"}
+
+my_hash = {:firstname => 'Haimeng', :lastname => 'Zhou'}
+
+'=>' is called 'hashrocket'
+
+2 Variables in string interpolation format
+
+%d -- a decimal number
+
+%2.f -- 2 digital after point number
+
+%% -- a percent
+
+example: "This meal is %2.f dollars, the tax rate is %d%%, this meal totally costs me %2.f dollars" % [meal_value, tax_rate, meal_with_tax]
+
+======================================================================
+
+Office Hour - 6/2/14
+Relation database discussion
+
+Reference: 
+
+Rails Guide about relation data 
+http://guides.rubyonrails.org/association_basics.html 
+
+
+Diagram 
+http://yuml.me/edit/cf205763
+
+==========================================================================
+
+Mentor Time -- 06/02/14
+
+1 A useful gem 
+https://rubygems.org/gems/better_errors 
+http://railscasts.com/episodes/402-better-errors-railspanel
+
+2 User Story 
+As a I want to do so that I can achieve this
+
+3 Sql outer Join & inner join 
+SELECT a, b FROM A FULL OUTER JOIN B ON a=z 
+http://www.w3schools.com/sql/sql_join_inner.asp
