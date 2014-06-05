@@ -46,3 +46,21 @@ As a I want to do so that I can achieve this
 3 Sql outer Join & inner join 
 SELECT a, b FROM A FULL OUTER JOIN B ON a=z 
 http://www.w3schools.com/sql/sql_join_inner.asp
+
+=================================================================================
+
+Office Hours
+
+SQL learning
+sql.learncodethehardway.org
+
+
+Display error messages in rails console
+art.errors.full_messges
+
+
+A thinkful student's incredibal learning records
+https://github.com/limingth/myRoR/commits/master
+
+Some examples of test in ruby
+https://github.com/alexch/learn_ruby
