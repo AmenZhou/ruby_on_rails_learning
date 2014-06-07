@@ -38,3 +38,7 @@ http://guides.rubyonrails.org/layouts_and_rendering.html
 
 Question!
 How to call a class in the module?
+
+In the module, it can require a file then the class can be used.
+
+But in the redis, the module is background running, it can't call any classes in other files.
