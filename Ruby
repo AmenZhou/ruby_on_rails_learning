@@ -31,3 +31,11 @@ Slim
 https://github.com/slim-template/slim
 
 define a variable: -a = 'hello'
+
+====================================================================
+
+String
+
+replace string -- String.gsub(pattern, replace_str)
+
+e.g. "929-111-1111".gsub(/[^0-9]/, "") => "9291111111"

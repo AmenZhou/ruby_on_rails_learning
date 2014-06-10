@@ -64,3 +64,29 @@ https://github.com/limingth/myRoR/commits/master
 
 Some examples of test in ruby
 https://github.com/alexch/learn_ruby
+
+==========================================================
+
+Office Hour
+
+
+http://eewang.github.io/blog/2013/03/12/how-and-when-to-use-single-table-inheritance-in-rails/
+
+http://thibaultdenizet.com/tutorial/single-table-inheritance-with-rails-4-part-1/
+
+railscasts.com/episodes/394-sti-and-polymorphic-associations
+
+http://railscasts.com/episodes/279-understanding-the-asset-pipeline
+
+http://guides.rubyonrails.org/asset_pipeline.html
+
+https://www.codeschool.com/courses/assembling-sass
+
+=================================================================
+
+Mentor Session
+
+Talking about ORM (object relation mapper)
+
+SQL inner join, outer join, left join, right join
+
