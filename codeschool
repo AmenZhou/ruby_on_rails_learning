@@ -160,3 +160,125 @@ class Category < ActiveRecord::Base
   has_many :categorizations
   has_many :tweets, through: :categorizations
 end
+
+=====================================================
+
+Level 3
+
+radio button
+
+<%= f.radio_button :decomp, 'fresh', checked: true %>
+
+select
+
+<%= f.select :decomp, [['fresh', 1], ['rotting', 2], ['stale', 3]]%>
+
+test input helper
+
+<%= f.password_field :password %>
+
+<%= f.number_field :price %>
+
+<%= f.range_field :quantity %>
+
+Nested routes
+pic-- Code School - Rails for Zombies Two-nested routes
+
+
+Challenges
+
+2 Create the form for entering tweet status (text_area) and location (text_field) using the appropriate Rails view helpers. All you need is a form_for block, the input helpers, and a submit button.
+
+
+<h1>New tweet</h1>
+
+<%= form_for(@tweet) do |f| %>
+  <%= f.text_area :status %>
+  <%= f.text_field :location %>
+  <%= f.submit value='Submit' %>
+<% end %>
+
+
+3 Look at the following database table and create the proper input fields for the columns listed here.
+
+<%= form_for(@weapon) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :ammo %>
+  <%= f.check_box :is_broken %>
+<% end %>
+
+
+4 Rather than having a weapon that is broken or not, lets instead have a condition field which is either "New", "Rusty", or "Broken". Add a set of radio buttons where the user can select one of these states. Make "New" be checked by default.
+
+<%= form_for(@weapon) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :ammo %>
+  <%= f.radio_button :condition, 'New', checked: true %>
+  <%= f.radio_button :condition, 'Rusty' %>
+  <%= f.radio_button :condition, 'Broken' %>
+<% end %>
+
+
+5  Instead of using radio buttons, use a select box for the condition. Refactor the code below:
+
+<%= form_for(@weapon) do |f| %>
+  <%= f.select :condition, ['New', 'Rusty', 'Broken'] %>
+<% end %>
+
+
+6 Write the nested route that will allow us to nest tweets and weapons under the zombie resource. The idea here is that a zombie has many tweets and zombie has many weapons.
+
+RailsForZombies::Application.routes.draw do
+  resources :zombies do
+    resources :tweets
+    resources :weapons
+  end
+end
+
+
+7  Now that we have the proper route, we need to make sure the weapons controller properly looks up both the zombie and the weapon when we request /zombies/2/weapons/1. Finish this controller:
+
+class WeaponsController < ApplicationController
+  def show 
+    @zombie = Zombie.find(2)
+    @weapon = @zombie.weapons.find(1)
+  end
+end
+
+
+8  Now create the proper link_to for when we view a zombie and want to show each of its weapons, and when we want to create a new weapon for this zombie.
+
+<h2><%= @zombie.name %>'s weapons</h2>
+<ul>
+  <% @weapons.each do |w| %>
+    <li><%= link_to w.name, [@zombie, w] %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Weapon", new_zombie_weapon_path(@zombie) %>
+
+
+9 Change the form_for below to use the proper nesting for creating a new weapon for a Zombie.
+
+<%= form_for([@zombie, @weapon]) do |f| %>
+  <%= f.text_field :name %>
+    
+  <%= f.submit %>
+<% end %>
+
+
+10 Modify the following code to make it more pretty, using titleize, to_sentence, pluralize, and number_to_currency (in just that order)
+
+<h2><%= @zombie.name.titleize %></h2>
+<p>Weapons: <%= @zombie.weapon_list.to_sentence %></p>
+<p><%= pluralize(@zombie.tweets.size, 'Tweet') %></p>
+<p>Money in Pocket <%= number_to_currency(@zombie.money) %></p>
+
+
+11 Refactor the code below to move the form into the _form.html.erb partial.
+
+<h2>New Tweet</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'back', tweets_path %>
