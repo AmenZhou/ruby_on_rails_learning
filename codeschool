@@ -282,3 +282,120 @@ end
 <%= render 'form' %>
 
 <%= link_to 'back', tweets_path %>
+
+=========================================================================
+
+Level 5
+
+1  Enter the command for generating a mailer called WeaponMailer which has the emails low_ammo and broken.
+
+rails g mailer WeaponMailer low_ammo broken
+
+
+2  Code up the low_ammo mailer with the subject of "#{weapon.name} has low ammo", the email should be sent to the zombie.email. Lastly, set the default from address for all emails in WeaponMailer to admin@rfz.com
+
+
+class WeaponMailer < ActionMailer::Base
+  default from: "admin@rfz.com"
+  def low_ammo(weapon, zombie) 
+    mail to: zombie.email, subject: "#{weapon.name} has low ammo"
+    
+  end
+end
+
+3  Finish coding the check_ammo method on the Weapon model so when we have exactly three ammo left, it will send out the low_ammo mailer we just created.
+
+class Weapon < ActiveRecord::Base
+  belongs_to :zombie 
+
+  before_save :check_ammo
+
+  def check_ammo
+    if ammo == 3
+      WeaponMailer.low_ammo(self, self.zombie).deliver
+    end
+  end
+end
+
+4 Change the low_ammo method to include a picture of the weapon that's low on ammo as an attachment. You can name the file weapon.jpg and load the file using weapon.picture_file.
+
+class WeaponMailer < ActionMailer::Base
+  default from: "admin@rfz.com"
+
+  def low_ammo(weapon, zombie)
+    attachments['weapon.jpg'] = weapon.picture_file
+    mail to: zombie.email, subject: "#{weapon.name} has low ammo"
+  end 
+end
+
+5 Convert the following to their appropriate asset tags.
+
+
+<%= javascript_include_tag "weapon" %>
+<%= image_tag "weapon.png" %>
+<%= stylesheet_link_tag "weapon" %>
+
+6 Convert the following scss.erb file to properly reference the asset_path for the image listed in it. Also, try refactoring the scss to use nesting.
+
+h2#newUser {
+  text-indent: -9999px; 
+  a {
+      height: 64px;
+      width: 50px;
+      display: block;
+      background: url(<%= asset_path('rails.png') %>) no-repeat;
+  }
+}
+
+7 Use CoffeeScript so when the New Weapon link is pressed it makes the #newWeapon div visible and then hides the New Weapon link. Don't forget to call preventDefault().
+
+$(document).ready ->
+  $('#displayWeaponForm').click (event) ->
+    event.preventDefault()
+    $(this).hide()
+    $('#newWeapon').show()
+
+
+======================================================================
+
+Level 5
+
+1 Complete the method below so that if the ammo is low it will render the fire_and_reload view, otherwise it should render the fire_weapon view.
+
+class WeaponsController < ApplicationController
+  def fire_weapon
+    @weapon = Weapon.find(params[:id]) 
+    @weapon.fire!
+
+    if @weapon.low_ammo?
+      render 'fire_and_reload'
+    end
+
+  end
+end
+
+2 Create two custom member routes on the weapons resource, so you have a put method called toggle_condition and a put method called reload.
+
+RailsForZombies::Application.routes.draw do
+  resources :zombies do
+    resources :weapons do
+      put :toggle_condition, on: :member
+      put :reload, on: :member
+    end
+  end
+end
+
+
+3 Complete the create method below. When @weapon.save is successful it should render the @weapon object in JSON, have status :created, and set the location to the @weapon's show url. When @weapon.save fails it should return the @weapon.errors and have the status :unprocessable_entity.
+
+class WeaponsController < ApplicationController 
+  def create
+    @weapon = Weapon.new(params[:weapon]) 
+    if @weapon.save
+      render json: @weapon, status: :created, location: @weapon
+      
+    else
+      render json: @weapon.errors, status: :unprocessable_entity
+    end
+  end 
+end

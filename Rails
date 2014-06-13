@@ -74,13 +74,15 @@ if you want to remove an exist file in git repo
 
 unicorn to background run rails 
 
-nicorn_rails -E production -D -p 3000
+unicorn_rails -E production -D -p 3000
 
 =======================================================================
 
 Run Resque background
 
-rake resque:work QUEUE=* BACKGROUND=yes RAILS_ENV=production
+nuprake resque:work QUEUE=* BACKGROUND=yes RAILS_ENV=production
+
+nohup resque:work QUEUE=*  BACKGROUND=true
 
 =======================================================================
 
@@ -105,3 +107,6 @@ http://railscasts.com/episodes/281-foreman
 Disable auto run service
 
 sudo sh -c "echo 'manual' > /etc/init/SERVICE.override"
+
+========================================================================
+

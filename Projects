@@ -7,3 +7,16 @@ Sms --
 1 'protect_from_forgery with: :exception' this sentence means the app requires all the POST http requests must have auth_token, if want to skip it , can use 'skip_before_filter :verify_authenticity_token, only: :send_callback'
 
 2  if want to receive message sending status callback, must set the 'send_callback' action except, so add this into the action controller 'before_action :authenticate_admin! except: :send_callback'
+
+==================================================
+
+brm
+
+issue -- Universal Updates to top Navigation Bar #5
+
+javascript get ruby variable -- action = "#{action_name}"
+
+data_action -- li data-action='filter'
+
+javascript @ slim must add '- content_for :bottom' line
+
