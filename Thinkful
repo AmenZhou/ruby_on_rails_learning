@@ -106,3 +106,19 @@ pluck
 unq
 
 constantize
+
+=======================================================================
+
+Mentor Time
+
+MVC
+1. Data and information
+2. Presenting, what info are you showing
+3. Access
+
+Models to create structure for your database and they hold business logic
+This means all crucial db related info is stored in your models
+Views Views are used for presentation
+
+
+

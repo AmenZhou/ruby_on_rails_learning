@@ -399,3 +399,39 @@ class WeaponsController < ApplicationController
     end
   end 
 end
+
+4  Complete the controller so that it returns in JSON only the amount of ammo which is left in the weapon. If the ammo has less than 30 bullets it should return the status code :ok, and if not it should return the status code :unprocessable_entity.
+
+class WeaponsController < ApplicationController
+  def reload
+    @weapon = Weapon.find(params[:id]) 
+
+    if @weapon.ammo < 30
+      @weapon.reload(params[:ammo_to_reload])
+      render json: @weapon.to_json(only: :ammo), status: :ok
+    else
+      render json: @weapon.to_json(only: :ammo), status: :unprocessable_entity
+    end
+  end
+end
+
+
+5 Modify the show action so that the JSON it renders includes the zombie record the @weapon belongs to. Also make it exclude the :id, :created_at, and :updated_at fields.
+
+class WeaponsController < ApplicationController
+  def show
+    @weapon = Weapon.find(params[:id])
+    render json: @weapon.to_json(include: :zombie, except: [:id, :created_at, :updated_at])
+  end
+end
+
+6 Edit the as_json method so the Zombie class only returns the zombie's name and weapons (use include). Only return the weapon's name and ammo.
+
+class Zombie < ActiveRecord::Base
+  has_many :weapons
+
+  def as_json(options=nil)
+    super(options || 
+      {only: :name, include: :weapons, only: [:name, :ammo]})
+  end 
+end
