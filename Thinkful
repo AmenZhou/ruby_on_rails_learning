@@ -90,3 +90,19 @@ Talking about ORM (object relation mapper)
 
 SQL inner join, outer join, left join, right join
 
+
+======================================================================
+
+Office Hours
+
+Ajax: http://railscasts.com/episodes/136-jquery-ajax-revised
+
+Single table inheritance: http://thibaultdenizet.com/tutorial/single-table-inheritance-with-rails-4-part-1/
+
+Three useful method
+
+pluck
+
+unq
+
+constantize

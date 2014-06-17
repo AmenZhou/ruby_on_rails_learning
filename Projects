@@ -20,3 +20,26 @@ data_action -- li data-action='filter'
 
 javascript @ slim must add '- content_for :bottom' line
 
+===================================================
+
+Brm -- Issue
+
+Solved
+
+profile - my profile is linked to new action
+
+profile - new and edit action render partial
+
+profile - edit action error
+
+================================================
+
+Brm
+
+[Problem] profile - edit page, save the result then go to create action
+
+[Problem] profile - can't show checkbox inside form
+
+[Solved] profile - checkbox 'f.check_box :grades, {:multiple => true}, grade.name, false'
+
+[?] profile - save multiple checkbox value

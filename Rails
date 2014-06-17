@@ -110,3 +110,24 @@ sudo sh -c "echo 'manual' > /etc/init/SERVICE.override"
 
 ========================================================================
 
+acts_as_taggable_on
+
+ref:http://railscasts.com/episodes/382-tagging
+
+Question: can read, but can't edit.
+
+======================================================
+
+Brm -- Issue
+
+Solved
+
+profile - my profile is linked to new action
+
+profile - new and edit action render partial
+
+profile - edit action error
+
+================================================
+
+
