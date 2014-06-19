@@ -435,3 +435,57 @@ class Zombie < ActiveRecord::Base
       {only: :name, include: :weapons, only: [:name, :ammo]})
   end 
 end
+
+
+7 Modify the show.html.erb view below so that both the Toggle link and the Reload form use AJAX. All you need to do is add the option that makes them ajaxified.
+
+<ul>
+  <li>
+    <em>Name:</em> <%= @weapon.name %>
+  </li> 
+  <li>
+    <em>Condition:</em>
+    <span id="condition"><%= @weapon.condition %></span>
+    <%= link_to "Toggle", toggle_condition_weapon_path(@weapon), remote: true %>
+  </li> 
+  <li>
+    <em>Ammo:</em>
+    <span id="ammo"><%= @weapon.ammo %></span>
+  </li>
+</ul>
+
+<%= form_for @weapon, url: reload_weapon_path(@weapon), remote: true do |f| %>
+  <div class="field">
+    Number of bullets to reload:
+    <%= number_field_tag :ammo_to_reload, 30 %> <br /> <%= f.submit "Reload" %>
+  </div>
+<% end %>
+
+8 Modify the toggle_condition action so that it responds to JavaScript, and complete the toggle_condition.js.erb using jQuery to update the condition span with the @weapon's changed condition and make it highlight.
+
+$('span#condition').append("<%= escape_javascript(@weapon.condition) %>").effect('highlight');
+
+9 Now write the controller and JavaScript code needed to properly reload the weapon using the ajaxified form. In the reload.js.erb use jQuery to update the #ammo text to the current @weapon.ammo value and if the ammo value is over or equal to 30, fadeOut the #reload_form div.
+
+$('span#ammo').text("<%= @weapon.ammo %>");
+<% if @weapon.ammo >= 30 %>
+  $('div#reload_form').fadeOut();
+<% end %>
+
+10 Instead of returning jQuery which gets executed on the client-side, lets write the ajax request in CoffeeScript communicating with JSON. It should do the same thing as the last challenge, updating & highlighting the ammo, and fading out the form (hint: fade out the wrapper element) if ammo is equal or above 30. 
+Tip for your ajax form: data: {ammo_to_reload: ammo}.
+
+$(document).ready ->
+  $('div#reload_form form').submit (event) ->
+    event.preventDefault()
+    url = $(this).attr('action')
+    ammo = $('#ammo_to_reload').val()
+    
+    $.ajax
+      type: 'put'
+      url: url
+      data: {weapon: {ammo: ammo} }
+      dataType: 'json'
+      success: (json) -> 
+        $('#ammo').text(json.ammo).effect('highlight')
+        $('#reload_form').fadeOut() if json.ammo >= 0

@@ -118,5 +118,16 @@ Question: can read, but can't edit.
 
 ======================================================
 
+delegate
+
+ref: http://apidock.com/rails/Module/delegate
+
+================================================
+
+Use default ruby version in project
+
+You can tell RVM to always use a specific ruby version and gemset when you are in a project, by creating a simple .rvmrc file with a one line instruction like:
+
+rvm ruby-1.9.3-p374@mygemset
 
 

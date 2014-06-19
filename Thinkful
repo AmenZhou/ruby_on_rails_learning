@@ -120,5 +120,14 @@ Models to create structure for your database and they hold business logic
 This means all crucial db related info is stored in your models
 Views Views are used for presentation
 
+===========================================================================
+
+Office Hour
+
+A gem can be conviently used to switch users for testing purpose -- switch-user
+
+I ask a question about brm project, click a text input bar in form, the content auto disappeared, this is a javascript problem.
+
+Don't be dragged in a problem more than 20 mins.
 
 

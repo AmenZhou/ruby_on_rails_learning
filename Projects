@@ -36,11 +36,29 @@ profile - edit action error
 
 Brm
 
-[Problem] profile - edit page, save the result then go to create action
+[Solved] profile - edit page, save the result then go to create action
 
-[Problem] profile - can't show checkbox inside form
+[Solved] profile - can't show checkbox inside form
 
 [Solved] profile - checkbox 'f.check_box :grades, {:multiple => true}, grade.name, false'
 
-[?] profile - save multiple checkbox value
+[Solved] profile - save multiple checkbox value -     
 
+controller 
+
+params.require(:profile).permit(:user_id, :sex, :school,
+                                    :zipcode, :grades_taught, :about,
+                                    :experience, :special, :avatar, :grade_ids => [])
+
+view
+
+- Grade.all.each do |grade|
+  | "#{grade.name}"
+  = check_box_tag "profile[grade_ids][]", grade.id, @profile.grade_ids.include?(grade.id)              
+
+========================================================================
+
+Brm
+
+[Question] profile -- the text input bars in all forms, the content will be disappeared when it's onfocus. There is block of code to controll it, most_common_tools.js line:105
+ 
