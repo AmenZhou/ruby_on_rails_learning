@@ -74,6 +74,8 @@ if you want to remove an exist file in git repo
 
 unicorn to background run rails 
 
+Gem
+
 unicorn_rails -E production -D -p 3000
 
 =======================================================================
@@ -87,6 +89,8 @@ nohup resque:work QUEUE=*  BACKGROUND=true
 =======================================================================
 
 foreman
+
+Gem
 
 start all the rails related services in single line
 
@@ -112,6 +116,8 @@ sudo sh -c "echo 'manual' > /etc/init/SERVICE.override"
 
 acts_as_taggable_on
 
+Gem
+
 ref:http://railscasts.com/episodes/382-tagging
 
 Question: can read, but can't edit.
@@ -130,4 +136,16 @@ You can tell RVM to always use a specific ruby version and gemset when you are i
 
 rvm ruby-1.9.3-p374@mygemset
 
+===========================================================
 
+kaminari
+
+A Gem for page split and jumping
+
+=============================================================
+
+Devise
+
+redirect to another page when login failed
+
+http://stackoverflow.com/questions/5832631/devise-redirect-after-login-fail
