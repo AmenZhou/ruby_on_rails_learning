@@ -67,3 +67,26 @@ Brm
 Brm
 
 [Question] log in -- log in sucessfully, change redirect to in continaer_login, but failed
+
+Issues
+
+#37 -- remove link url of support pic in support detail page
+
+#33 -- see TpT_reading.html.obt file
+
+#28 -- change SHARE link , ref: https://drive.google.com/folderview?id=0BxNoN0cnMPSHMjFoU2RXdlFjQ0U&usp=sharing
+
+#25 -- change supports issue https://docs.google.com/document/d/1hASF2BurV0mL51WTWCkCFQGH2JIPpltyLyI_dap9Fxg/edit
+
+#19 -- change or add search condition can't affect each others, ref to search students and filter supports
+
+===========================================================================
+
+Sms 
+
+Install kaminari
+
+split one big page to multiple pages
+
+[Question] crsf can't work in production env
+

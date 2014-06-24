@@ -84,7 +84,7 @@ Run Resque background
 
 nuprake resque:work QUEUE=* BACKGROUND=yes RAILS_ENV=production
 
-nohup resque:work QUEUE=*  BACKGROUND=true
+nohup rake resque:work QUEUE=*  BACKGROUND=true
 
 =======================================================================
 
@@ -149,3 +149,4 @@ Devise
 redirect to another page when login failed
 
 http://stackoverflow.com/questions/5832631/devise-redirect-after-login-fail
+
