@@ -62,3 +62,8 @@ Brm
 
 [Question] profile -- the text input bars in all forms, the content will be disappeared when it's onfocus. There is block of code to controll it, most_common_tools.js line:105
  
+=====================================================================
+
+Brm
+
+[Question] log in -- log in sucessfully, change redirect to in continaer_login, but failed

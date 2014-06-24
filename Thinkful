@@ -131,3 +131,44 @@ I ask a question about brm project, click a text input bar in form, the content 
 Don't be dragged in a problem more than 20 mins.
 
 
+=================================================================
+
+Office Hour 
+
+present? -- article.present?
+
+each_slice -- 
+(1..10).each_slice(3) {|a| p a}
+# outputs below
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+[10]
+
+
+default_scope
+
+.js.erb  <% j %> -- it can has embedded ruby
+
+Ajax -- an example
+https://gist.github.com/mattjstar/259d54f18bac846367b4
+
+railscast -- http://railscasts.com/episodes/136-jquery-ajax-revised
+
+==========================================================
+
+Authentication
+
+omniauth
+
+http://intridea.github.io/omniauth/
+
+http://railscasts.com/episodes/241-simple-omniauth
+
+http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin
+
+1. Security -- https
+2. Authentication -- omniauth + devise
+3. Authorization -- cancan
+
+=====================================================================
