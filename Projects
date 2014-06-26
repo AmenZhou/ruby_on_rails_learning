@@ -70,11 +70,11 @@ Brm
 
 Issues
 
-#37 -- remove link url of support pic in support detail page
+#37 fixed -- remove link url of support pic in support detail page
 
 #33 -- see TpT_reading.html.obt file
 
-#28 -- change SHARE link , ref: https://drive.google.com/folderview?id=0BxNoN0cnMPSHMjFoU2RXdlFjQ0U&usp=sharing
+#28 fixed a part -- change SHARE link , ref: https://drive.google.com/folderview?id=0BxNoN0cnMPSHMjFoU2RXdlFjQ0U&usp=sharing
 
 #25 -- change supports issue https://docs.google.com/document/d/1hASF2BurV0mL51WTWCkCFQGH2JIPpltyLyI_dap9Fxg/edit
 
@@ -88,5 +88,13 @@ Install kaminari
 
 split one big page to multiple pages
 
-[Question] crsf can't work in production env
+[Question] crsf can't work in production env -- this related to config/production.rb file
+	--[solved] change config/enviroments/production.rb config.serve_static_assets = false
+	see http://stackoverflow.com/questions/7829480/no-route-matches-get-assets
+
+=================================================================================
+
+Brm 
+
+#26 -- demand isn't clear
 
