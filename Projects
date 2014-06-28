@@ -96,5 +96,11 @@ split one big page to multiple pages
 
 Brm 
 
-#26 -- demand isn't clear
+#4 #8 need picture
 
+#28 add email sending function
+
+Coffee in Slim pass ruby variable
+- content_for :bottom
+  javascript:
+    var url_path = "#{send_email_supports_path}"
