@@ -180,3 +180,57 @@ Learn Ruby -- repo: https://github.com/wolframarnold/learn_ruby
 
 Boots camps --http://www.jumpstartlab.com/courses
 
+==============================================================
+
+Office Hour
+
+Ruby-bits -- http://rubybits.codeschool.com/levels/1
+
+Presenter -- http://railscasts.com/episodes/287-presenters-from-scratch
+
+=====================================================================
+
+Unit3 Lesson4
+
+private
+def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+end
+
+helper_method :current_user 
+
+==========================================================================
+
+Procs and lambas
+
+haimeng = Proc.new  { |n| n ** 2 }
+
+haimeng.call(2) => 4
+
+haimeng.call(2, 3) => 4
+
+--------------------------------------
+
+Haimeng = lambda{ |n| n + 2 }
+
+Haimeng(2) => 4
+
+Haimeng(2, 3) => error
+
+-------------------------------------
+
+ l = ->(x,y){ x * y }
+
+=================================================================
+
+ Office Hour
+
+ Learn Ruby
+
+def multiply(*array)
+  array.flatten.inject(:*)
+end
+
+multiply(2, 3) => 6
+multiply([2, 3]) => 6
+multiply([2, 3], 3, 4) => 72

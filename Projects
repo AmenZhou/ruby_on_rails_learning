@@ -104,3 +104,44 @@ Coffee in Slim pass ruby variable
 - content_for :bottom
   javascript:
     var url_path = "#{send_email_supports_path}"
+
+==========================================================
+
+Brm
+
+Email Regular Expression
+
+/^(([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4}),?(\s+)?)+$/    
+
+Resque
+
+ref: http://railscasts.com/episodes/271-resque
+
+resque status check: 127.0.0.1:5678/overview
+
+===============================================================
+
+Sms
+
+Jquery Ajax
+
+$.ajax({
+      type: 'post',
+      url: '/respond_checkbox',
+      data: {message_id: message_id}
+    }).done(function(msg){
+      alert(msg);
+    });
+
+============================================================
+
+Brm
+
+Jquery get Selected option
+
+$( "#skill_topic_select" ).change(function() {
+        var str = "";
+        str = $(this).children( "select option:selected" ).text();
+        $( "small#skill_topic_small").text(str);
+      })
+      .trigger( "change" ); 

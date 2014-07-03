@@ -489,3 +489,13 @@ $(document).ready ->
       success: (json) -> 
         $('#ammo').text(json.ammo).effect('highlight')
         $('#reload_form').fadeOut() if json.ammo >= 0
+
+============================================================
+
+ScreenCast
+
+Asset Pipline
+
+bundle open jquery-rails
+rails s -e production
+rake assets:precompile        
