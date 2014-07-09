@@ -234,3 +234,11 @@ end
 multiply(2, 3) => 6
 multiply([2, 3]) => 6
 multiply([2, 3], 3, 4) => 72
+
+===================================================
+
+Office Hour
+
+Git Flow
+
+http://danielkummer.github.io/git-flow-cheatsheet/

@@ -150,3 +150,10 @@ redirect to another page when login failed
 
 http://stackoverflow.com/questions/5832631/devise-redirect-after-login-fail
 
+============================================================
+
+Render 
+
+render a partial and pass a variable, must add 'partial' before partial file name
+
+render partial: 'partial_file', locals {var: @var} 

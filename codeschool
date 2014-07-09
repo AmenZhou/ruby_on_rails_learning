@@ -499,3 +499,235 @@ Asset Pipline
 bundle open jquery-rails
 rails s -e production
 rake assets:precompile        
+
+================================================
+
+Ruby Bits
+
+Level 2
+
+2 We want to make sure that each game is a valid game object - in this case a simple hash of values. Even still, we wouldn't want to return a hash with a nil name. Raise an InvalidGameError error in the new_game method if name is nil.
+
+class InvalidGameError < StandardError; end
+def new_game(name, options={})
+  raise InvalidGameError, "You must provide a name" if name.nil?
+  {
+    name: name,
+    year: options[:year],
+    system: options[:system]
+  }
+end
+begin
+  game = new_game(nil)
+rescue InvalidGameError => e
+  puts "There was a problem creating your new game: #{e.message}"
+end
+
+3 When passing in an array of arguments to a method, sometimes it'll make sense to use Ruby's "splat" operator rather than explicitly requesting an array. Update the describe_favorites method and the call to it to instead use the splat operator.
+
+def describe_favorites(*games)
+  for game in games
+    puts "Favorite Game: #{game}"
+  end  
+end
+describe_favorites('Mario', 'Contra', 'Metroid')
+
+4 Passing around hashes is getting troublesome, let's use a class to hold our data. We've started the Game class for you, now please implement the initialize method to store name, system and year in instance variables.
+
+class Game
+  def initialize(name, options={})
+    @name=name
+    @year=options[:year]
+    @system=options[:system]
+  end
+end
+
+6 attr_accessor
+Whoever created the game object will want to be able to access the name, year and system for the game, but that doesn't mean we need to make getter methods for them. Refactor the code below to make these variables available using the Ruby way with attr_accessor.
+
+class Game
+  attr_accessor :name, :year, :system
+  def initialize(name, options={})
+    @name = name
+    @year = options[:year]
+    @system = options[:system]
+  end
+end
+
+7 When a game is initialized, store another variable called created_at which is set to Time.now in the initialize method. Make sure it can be accessed, but that it cannot be set from outside the object.
+
+class Game
+  attr_accessor :name, :year, :system
+  attr_reader :created_at
+  def initialize(name, options={})
+    @name = name
+    @year = options[:year]
+    @system = options[:system]
+    @created_at = Time.new
+  end
+end
+
+level 3
+
+1 
+
+class Library
+  attr_accessor :games
+  def initialize(games)
+    @games = games
+  end
+end
+
+2
+
+class Library
+  attr_accessor :games
+
+  def initialize(games)
+    self.games = games
+  end
+
+  def has_game?(game)
+    for game in games
+      return true if game == @game
+    end
+    false
+  end
+end
+
+3 We can initialize our Library with an array of games, but the only way to add games from outside the class is to use the games accessor method and alter the array. This is breaking encapsulation, so let's create a new method in Library called add_game which takes in a game and adds it to the games array.
+
+class Library
+  attr_accessor :games
+
+  def add_game(game)
+    self.games << game
+  end
+  
+  def initialize(games)
+    self.games = games
+  end
+
+  def has_game?(search_game)
+    for game in games
+      return true if game == search_game
+    end
+    false
+  end
+end
+
+4 Things are looking good! We're able to use our Library class to store our games now. Whenever we call add_game, let's call a new private method called log which will call puts with some information about the game that was added. Your log method should take in a string to be displayed.
+
+class Library
+  attr_accessor :games
+
+  def initialize(games)
+    self.games = games
+  end
+
+  def has_game?(search_game)
+    for game in games
+      return true if game == search_game
+    end
+    false
+  end
+
+  def add_game(game)
+    self.games << game
+    log("The game name is #{game.name}, it was built in #{game.year}, for #{game.system}")
+  end
+  
+  private 
+  
+  def log(message)
+    puts message
+  end
+end
+
+5
+
+class ArcadeGame < Game
+end
+class ConsoleGame < Game
+end
+
+6 Inheritance II
+For our ArcadeGame class, we'll also want to track the weight of these giant cabinets taking up all of our available space. Luckily we thought ahead: we already take in an options parameter that we can stick weight into! Override the initialize method for ArcadeGame to take in the same parameters as its parent class, call super, and then set weight.
+
+class ArcadeGame < Game
+  attr_accessor :weight
+  def initialize(name, options={})
+    super
+    self.weight = options[:weight]
+  end
+end
+class ConsoleGame < Game
+end
+
+7 Inheritance III
+Whenever we output a game right now it'll show up using the to_s method from Object, the parent object of Game. A basic to_s implementation is completed below on Game. Override this for ConsoleGame to also show the system the game is on.
+
+class ConsoleGame < Game
+  def to_s
+    super + self.system
+  end
+end
+
+8 Refactoring
+Our to_s method will come in very handy. Whenever we need to output a game, rather than calling a method on the game, we can just output the game object and Ruby will call to_s on it automatically. Refactor both classes below. Change the description method of Game to use the to_s method implicitly. Then remove any duplicated code in ConsoleGame. Note: you'll need to use self inside a class to reference the entire object.
+
+Original
+class Game
+  attr_accessor :name, :year, :system
+  attr_reader :created_at
+  def initialize(name, options={})
+    self.name = name
+    self.year = options[:year]
+    self.system = options[:system]
+    @created_at = Time.now
+  end
+
+  def to_s
+    self.name
+  end
+
+  def description
+    "#{self.name} was released in #{self.year}."
+  end
+end
+
+class ConsoleGame < Game
+  def to_s
+    "#{self.name} - #{self.system}"
+  end
+
+  def description
+    "#{self.name} - #{self.system} was released in #{self.year}."
+  end
+end
+
+Changed
+class Game
+  attr_accessor :name, :year, :system
+  attr_reader :created_at
+  def initialize(name, options={})
+    self.name = name
+    self.year = options[:year]
+    self.system = options[:system]
+    @created_at = Time.now
+  end
+
+  def to_s
+    self.name
+  end
+
+  def description
+    "#{self} was released in #{self.year}."
+  end
+end
+
+class ConsoleGame < Game
+  def to_s
+    "#{super} - #{self.system}"
+  end
+end

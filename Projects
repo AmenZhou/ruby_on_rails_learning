@@ -145,3 +145,24 @@ $( "#skill_topic_select" ).change(function() {
         $( "small#skill_topic_small").text(str);
       })
       .trigger( "change" ); 
+
+==========================================================
+
+Brm
+
+Search supports by Age Range 
+
+support min age is 'sup_min'
+support max age is 'sup_max'
+
+search condition min age is 'age_min'
+search condition max age is 'age_max'
+
+sup_min <= age_max and sup_max >= age_min
+
+=================================================================
+
+Brm
+
+render partial: 'partial_file', locals {loc_var: @ins_var}
+
