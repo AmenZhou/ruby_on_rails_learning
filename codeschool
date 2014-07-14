@@ -731,3 +731,87 @@ class ConsoleGame < Game
     "#{super} - #{self.system}"
   end
 end
+
+=========================================
+
+Level 4
+
+1 print array from Contra to the end of games
+
+def last_games(games, index)
+  games.from(index)
+end
+games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+index = games.index('Contra')
+puts last_games(games, index)
+
+3 20 years after game release
+
+def anniversary(game, years)
+  game[:release].advance(years: years)
+end
+
+game = {
+  name: 'Contra',
+  release: DateTime.new(1987, 2, 20, 0, 0, 0)
+}
+puts anniversary(game, 20)
+
+
+4 Using ActiveSupport, return the difference between Mario's favorite games and Luigis's favorite games by implementing the difference_between method.
+
+def difference_between(player1, player2)
+  player1.diff(player2)
+end
+
+mario_favorite = {
+  sports: "Mario Sports Mix",
+  action: "Super Mario World"
+}
+
+luigi_favorite = {
+  sports: "Golf",
+  action: "Super Mario World"
+}
+
+puts difference_between(mario_favorite, luigi_favorite)
+
+5 Implement the exclude_character method below to return characters except the passed in character. Use ActiveSupport to return these key/pair values. Also, change the call to exclude_character so that yoshi's games are excluded.
+
+def exclude_character(games, character)
+  games.except(character)
+end
+
+games = {
+  mario: ["Super Mario World", "Super Smash Bros. Melee"],
+  luigi: ["Luigi's Mansion"],
+  yoshi: ["Yoshi's Island", "Yoshi's Story"]
+}
+puts exclude_character(games, :yoshi)
+
+
+6 Numbers
+Refactor the describe_count method below to use ActiveSupport in order to find out if a number is even or odd.
+
+def describe_count(games)
+  if games.empty?
+    "You have no games"
+  elsif games.length.even?
+    "You have an even number of games"
+  elsif games.length.odd?
+    "You have an odd number of games"
+  end
+end
+
+games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+puts describe_count(games)
+
+
+7 Strings
+Implement the convert_title method to use one of String's core extension methods. Given the input below, this method should return the string 'Super Mario Bros.'
+
+def convert_title(title)
+  title.titleize
+end
+
+puts convert_title("super mario bros.")

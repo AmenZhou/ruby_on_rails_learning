@@ -12,3 +12,15 @@ ref: http://stackoverflow.com/questions/779434/preventing-padding-propety-from-c
 Break words to two lines
 
 word-break: break-all
+
+=====================================================
+
+jQuery selector camma
+
+$("tr", "#parent")  -->  find the 'tr' tag inside the '#parent'
+
+same as $("#parent tr")
+
+
+$(child).parents(parent) --> find the specific 'parent' from all the ancestors
+

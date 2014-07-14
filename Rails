@@ -157,3 +157,24 @@ Render
 render a partial and pass a variable, must add 'partial' before partial file name
 
 render partial: 'partial_file', locals {var: @var} 
+
+=============================================================
+
+has_many
+
+has_many :mapping_table, dependent: :destroy
+has_many :a_table, ->{uniq}, through: :mapgging_table
+
+===============================================================
+
+Add index
+
+add_column :cog_issues_supports, :id, :primary_key
+
+==============================================================
+
+Git
+
+change branch before commit code, merge modifying code to new branch
+git checkout -m branch
+

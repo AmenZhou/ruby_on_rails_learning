@@ -242,3 +242,28 @@ Office Hour
 Git Flow
 
 http://danielkummer.github.io/git-flow-cheatsheet/
+
+==================================================================
+
+Office Hour
+
+
+Go through my twetter code, alter username to links part.
+
+1 Don't need to use this function in the controller, because this function is only used in the views.
+
+2 raw(string) is better than html_safe, if the string==nil the raw method won't raise error
+
+ref: http://www.tigraine.at/2012/08/23/when-to-use-raw-and-when-to-use-html_safe
+
+3 validates data in the model 
+
+ref: http://guides.rubyonrails.org/active_record_validations.html
+
+4 rescue 
+
+ref: http://guides.rubyonrails.org/action_controller_overview.html#rescue
+
+http://rails-bestpractices.com/posts/702-don-t-rescue-exception-rescue-standarderror
+
+http://stackoverflow.com/questions/3128580/rails-exception-handling
