@@ -267,3 +267,17 @@ ref: http://guides.rubyonrails.org/action_controller_overview.html#rescue
 http://rails-bestpractices.com/posts/702-don-t-rescue-exception-rescue-standarderror
 
 http://stackoverflow.com/questions/3128580/rails-exception-handling
+
+==================================================================
+
+Office Hour
+
+'hello'.methods.grep /case/
+
+%w{foo bar john} => ["foo", "bar", "john"]
+
+omniref
+
+['a', 'b', 'c'].sort_by {|word| word.length}
+
+http://koans.heroku.com/en
