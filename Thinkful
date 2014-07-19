@@ -281,3 +281,25 @@ omniref
 ['a', 'b', 'c'].sort_by {|word| word.length}
 
 http://koans.heroku.com/en
+
+================================================================
+
+username is a variable and replace
+content.gsub(/@(?<username>(\w+))/, '<a href="/\k<username>">@\k<username></a>')
+
+
+http://www.regular-expressions.info/refext.html
+
+https://docs.djangoproject.com/en/1.6/intro/tutorial03/
+
+http://ruby-doc.org/core-2.0.0/String.html#method-i-gsub
+
+
+Retwet Part
+
+Display the retweet
+
+<span class="glyphicon glyphicon-retweet smaller text-primary"></span>
+
+
+
