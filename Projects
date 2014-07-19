@@ -166,3 +166,16 @@ Brm
 
 render partial: 'partial_file', locals {loc_var: @ins_var}
 
+===============================================================
+
+Brm
+
+table_for
+
+https://github.com/zlx/tabletastic
+
+
+select_tag "people", options_from_collection_for_select(@people, "id", "name")
+
+==============================================================================
+
