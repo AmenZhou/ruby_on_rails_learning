@@ -178,3 +178,8 @@ Git
 change branch before commit code, merge modifying code to new branch
 git checkout -m branch
 
+=======================================================================
+
+Form Helper
+
+select_tag "people", options_from_collection_for_select(@people, "id", "name")
