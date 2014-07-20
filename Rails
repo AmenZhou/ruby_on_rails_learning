@@ -183,3 +183,13 @@ git checkout -m branch
 Form Helper
 
 select_tag "people", options_from_collection_for_select(@people, "id", "name")
+
+==================================================================
+
+Skinny Controller and Skinny Model
+
+http://robots.thoughtbot.com/skinny-controllers-skinny-models
+
+============================================================================
+
+
