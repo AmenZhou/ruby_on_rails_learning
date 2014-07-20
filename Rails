@@ -195,3 +195,10 @@ http://robots.thoughtbot.com/skinny-controllers-skinny-models
 Simple Form
 
 https://github.com/plataformatec/simple_form
+
+===========================================================================
+
+persisted?()
+
+Returns true if the record is persisted, i.e. it's not a new record and it was not destroyed, otherwise returns false.
+
