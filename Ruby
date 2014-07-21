@@ -39,3 +39,9 @@ String
 replace string -- String.gsub(pattern, replace_str)
 
 e.g. "929-111-1111".gsub(/[^0-9]/, "") => "9291111111"
+
+==================================================================
+
+Compact
+
+[ "a", nil, "b", nil, "c" ].compact! #=> [ "a", "b", "c" ]
