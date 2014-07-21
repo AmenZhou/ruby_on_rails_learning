@@ -202,3 +202,25 @@ persisted?()
 
 Returns true if the record is persisted, i.e. it's not a new record and it was not destroyed, otherwise returns false.
 
+=============================================================================
+
+.rvmrc
+
+rvm use ruby-2.1.2@rvmname --create
+
+=========================================================================
+
+Sql
+
+update_all
+
+http://apidock.com/rails/ActiveRecord/Base/update_all/class
+
+=======================================================================
+
+Google Chart
+
+https://google-developers.appspot.com/chart/interactive/docs/gallery/piechart
+
+======================================================================
+
