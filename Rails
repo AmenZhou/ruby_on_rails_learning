@@ -231,3 +231,5 @@ Splat Agument
   end
   
   Twet.by_user_ids(id, *follows.map(&:following_id))
+  
+ref: http://endofline.wordpress.com/2011/01/21/the-strange-ruby-splat/
