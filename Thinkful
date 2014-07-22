@@ -302,4 +302,13 @@ Display the retweet
 <span class="glyphicon glyphicon-retweet smaller text-primary"></span>
 
 
+=============================================================================
 
+    [:flatten!, :compact!, :uniq!].each{ |meth| ids.send(meth) }
+    where(
+      arel_table[:user_id]
+      .in(ids)
+      .or(arel_table[:id].in(
+        Retwet.where(:user_id => ids).map(&:twet_id)
+      ))
+    ).order('created_at DESC')
