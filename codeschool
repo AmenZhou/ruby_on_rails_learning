@@ -815,3 +815,44 @@ def convert_title(title)
 end
 
 puts convert_title("super mario bros.")
+
+
+=======================================================
+
+Ruby Bites Lesson 5
+
+1 Create a module named GameUtils and place the lend_to_friend method inside the module. Change lend_to_friend to a class method by prefixing it with self..
+You won't need to require this module since it'll be inside the same file (already required), but you will have to namespace your method call.
+
+
+module GameUtils
+  def self.lend_to_friend(game, friend_email)
+  end
+end
+
+game = Game.new("Contra")
+GameUtils.lend_to_friend(game, "gregg@codeschool.com")
+
+
+
+2 Re-open the Game class and include the GameUtils module so its methods are exposed as instance methods. Make sure to do this before it is called.
+
+class Game
+  include GameUtils
+  def initialize(name)
+    @name = name
+  end
+end
+
+game = Game.new("contra")
+game.lend_to_friend("Gregg")
+
+
+3 Good job! Now expose the methods from the GameUtils module as class methods of the Game class.
+
+class Game
+  extend GameUtils
+
+end
+
+Game.find_all_from_user("Gregg")
