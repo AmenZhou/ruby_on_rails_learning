@@ -34,3 +34,6 @@ Map icon
 
 http://www.iconarchive.com/show/vista-map-markers-icons-by-icons-land/Map-Marker-Bubble-Chartreuse-icon.html
 
+### Solve the problem of load google map and chart in rails
+
+[http://stackoverflow.com/questions/14227363/using-turbolinks-in-a-rails-link-to](http://stackoverflow.com/questions/14227363/using-turbolinks-in-a-rails-link-to)
