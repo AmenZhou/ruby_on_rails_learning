@@ -238,3 +238,31 @@ ref: http://endofline.wordpress.com/2011/01/21/the-strange-ruby-splat/
 Image Magic
 
 sudo apt-get install libmagickwand-dev imagemagick
+
+====================================================================
+
+Devise 
+
+add attribute need permit
+
+validate :registration_code_valid?, on: :create, if: Proc.new { |u| u.front_flag.present? }
+
+https://github.com/superbay/knowledge/blob/master/rails_basic/form/select_tag.markdown
+
+=======================================================================================
+
+In model, if do this, it will be a dead loop
+
+before_save :do_some_thing
+
+def do_some_thing
+  update_attributes(attr_a: a; attr_b: b)
+end
+
+To solve that
+
+def do_some_thing
+  self.attr_a = a
+  self.attr_b = b
+end
+
