@@ -279,4 +279,5 @@ ruby send method
         #eval("hash[:#{week_day}] = row.#{week_day}")                                                                                                │·······
         hash.send(:[]=, week_day.to_sym, row.send(week_day))                                                                                         │·······
  end 
+ 
 ```
