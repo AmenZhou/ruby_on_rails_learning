@@ -247,6 +247,9 @@ add attribute need permit
 
 validate :registration_code_valid?, on: :create, if: Proc.new { |u| u.front_flag.present? }
 
+=========================================================================================
+form helper
+
 https://github.com/superbay/knowledge/blob/master/rails_basic/form/select_tag.markdown
 
 =======================================================================================
@@ -266,3 +269,13 @@ def do_some_thing
   self.attr_b = b
 end
 
+=======================================================================
+
+ruby send method
+
+
+ %w(mon tue wed thu fri sat sun).each do |week_day|                                                                                             │·······
+-        eval("hash[:#{week_day}] = row.#{week_day}")                                                                                                 │·······
++        #eval("hash[:#{week_day}] = row.#{week_day}")                                                                                                │·······
++        hash.send(:[]=, week_day.to_sym, row.send(week_day))                                                                                         │·······
+       end 
