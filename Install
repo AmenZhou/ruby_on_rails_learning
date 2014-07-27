@@ -82,3 +82,12 @@ config user in app
 1 open config/database.yml
 2 change username and password to the pg user
 
+
+### Github install and config
+
+```
+sudo apt-get install git
+
+```
+[https://help.github.com/articles/set-up-git](https://help.github.com/articles/set-up-git)
+
