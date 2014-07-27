@@ -271,7 +271,7 @@ end
 
 =======================================================================
 
-ruby send method
+###ruby send method
 
 ```ruby
  %w(mon tue wed thu fri sat sun).each do |week_day|                                                                                             │·······
@@ -283,6 +283,10 @@ ruby send method
 ```
 ======================================================================
 
-Best in place
+###Best in place
 
 [https://github.com/bernat/best_in_place](https://github.com/bernat/best_in_place)
+
+
+### Markdown Basic
+https://help.github.com/articles/markdown-basics
