@@ -95,3 +95,14 @@ sudo apt-get install git
 
 https://help.github.com/articles/changing-a-remote-s-url
 
+### Vim Install and Config
+
+###### pathogen
+https://github.com/tpope/vim-pathogen
+
+
+###### rails vim
+https://github.com/tpope/vim-rails
+
+###### nerdtree
+https://github.com/scrooloose/nerdtree
