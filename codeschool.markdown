@@ -959,4 +959,131 @@ class AtariLibrary
   include LibraryUtils
 end
 
+### Ruby Bites Level 6 -- Block
 
+###### 1 Let's build a Library class that will manage our growing collection of games. We've already written a list method that prints the names of all our games, but it uses an ugly for loop to iterate the list. Refactor it to use each with a block instead.
+
+```ruby
+class Library
+  attr_accessor :games
+  def initialize(games = [])
+    self.games = games
+  end
+
+  def list
+    games.each do |game|
+      puts game.name
+    end
+  end
+end
+```
+
+###### 2 We'd like to be able to operate on our games by system. Implement an each_on_system method that iterates over our games using each and yields to a block for every game on the requested system. To test that it's working, we'll call each_on_system with a simple block that prints a message for every Super Nintendo game in our library. See the example.rb below.
+
+```ruby
+class Library
+  attr_accessor :games
+
+  def initialize(games = [])
+    self.games = games
+  end
+
+  def each_on_system(system)
+    games.each {|game| yield if game.system == system}  
+  end
+end
+```
+
+###### 3 Our each_on_system method is working, but it's not very useful unless the block has access to each game that we find. Modify each_on_system to pass the Game object into the block so we can print its name.
+
+```ruby
+class Library
+  attr_accessor :games
+
+  def initialize(games = [])
+    self.games = games
+  end
+
+  def each_on_system(system)
+    games.each do |game|
+      yield(game) if game.system == system
+    end
+  end
+end
+```
+
+###### 4 Earlier we wrote a list method that prints the name of each game in our library. We can make the output formatting more flexible by allowing a block to be passed to the list method. We'll yield each game to the block and allow the block to format and return a string for us to display. Modify the list method to yield to a block and print whatever the block returns.
+
+```ruby
+class Library
+  attr_accessor :games
+
+  def initialize(games = [])
+    self.games = games
+  end
+
+  def list
+    games.each do |game|      
+      puts yield(game)
+    end
+  end
+end
+```
+
+###### 5 Using Enumerable
+###### Let's add the power of Ruby's Enumerable module to our game library. Implement an each method that yields each game in the library. Finally, include the Enumerable module so that we'll be able to call methods like select and collect on our library.
+
+```ruby
+class Library
+  attr_accessor :games
+  include Enumerable
+  def initialize(games = [])
+    self.games = games
+  end
+
+  def each
+    games.each do |game|
+      yield game
+    end
+  end
+end
+
+```
+
+###### 6 Refactoring with Blocks
+###### Now that our library is complete, let's play some games! A friend has given us his Emulator class to use, and we've implemented methods to play a game and grab a screenshot. But look at all that duplicated code in play and screenshot. Refactor the duplication (the begin, new and rescue parts) into a private method called emulate that handles the emulator setup and exception handling and yields the emulator instance to a block.
+
+```ruby
+class Game
+  attr_accessor :name, :year, :system
+  attr_reader :created_at
+
+  def initialize(name, options={})
+    self.name = name
+    self.year = options[:year]
+    self.system = options[:system]
+    @created_at = Time.now
+  end
+
+  def play
+    emulate {|emulator| emulator.play(self)}
+  end
+
+  def screenshot
+    emulate {|emulator| emulator.start(self); emulator.screenshot}
+  end
+  
+  private
+  
+  def emulate
+    begin
+      emulator = Emulator.new(system)
+      yield(emulator)
+    rescue Exception => e
+      puts "Emulator failed: #{e}"
+    end
+  end
+  
+end
+
+```
