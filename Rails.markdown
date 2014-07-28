@@ -290,3 +290,12 @@ end
 
 ### Markdown Basic
 https://help.github.com/articles/markdown-basics
+
+### Turbolinks
+
+application.html.erb
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application' %>
+
+
+http://railscasts.com/episodes/390-turbolinks
