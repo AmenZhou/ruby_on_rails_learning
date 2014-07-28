@@ -291,11 +291,12 @@ end
 ### Markdown Basic
 https://help.github.com/articles/markdown-basics
 
-### Turbolinks
+### Turbolinks Turn Off
 
-application.html.erb
+###### application.html.erb
+```ruby
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application' %>
-
+```
 
 http://railscasts.com/episodes/390-turbolinks
