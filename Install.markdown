@@ -91,3 +91,7 @@ sudo apt-get install git
 ```
 [https://help.github.com/articles/set-up-git](https://help.github.com/articles/set-up-git)
 
+#### Change http to ssh
+
+https://help.github.com/articles/changing-a-remote-s-url
+
