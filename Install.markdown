@@ -106,3 +106,6 @@ https://github.com/tpope/vim-rails
 
 ###### nerdtree
 https://github.com/scrooloose/nerdtree
+
+###### dotvim
+https://github.com/astrails/dotvim
