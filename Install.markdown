@@ -21,7 +21,7 @@ Nokogiri error--bundle install lower version of ruby happens this kind of proble
 Ubuntu / Debian
 
 Ubuntu doesn’t come with the Ruby development packages that are required for building gems with C extensions. Here are the commands to install everything you might need:
-
+```ruby
 # ruby developer packages 
 sudo apt-get install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 
 sudo apt-get install libreadline-ruby1.8 libruby1.8 libopenssl-ruby
@@ -34,7 +34,7 @@ Although, if you’re using Hardy (8.04) or earlier, you’ll need to install sl
 
 # nokogiri requirements for Hardy (8.04) and earlier 
 sudo apt-get install libxslt1-dev libxml2-dev
-
+```
 =======================================================
 
 Gem install pg error
@@ -111,3 +111,6 @@ https://github.com/scrooloose/nerdtree
 
 ###### dotvim
 https://github.com/astrails/dotvim
+
+###### solve ctags error
+sudo apt-get install exuberant-ctags
