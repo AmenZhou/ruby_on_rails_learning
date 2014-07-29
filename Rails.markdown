@@ -300,3 +300,16 @@ https://help.github.com/articles/markdown-basics
 ```
 
 http://railscasts.com/episodes/390-turbolinks
+
+### gemset
+###### use default project ruby version
+
+```
+vim .rvmrc
+rvm use 2.1.2@tweter
+
+
+rvm use 2.1.2
+
+rvm gemset create tweter
+```
