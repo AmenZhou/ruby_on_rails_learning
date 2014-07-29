@@ -1,5 +1,5 @@
-Install RVM Ruby Rails
-
+### Install RVM Ruby Rails
+```
 curl -sSL https://get.rvm.io | bash -s stable
 
 rvm install ruby-2.0.0-pXXX 
@@ -8,7 +8,9 @@ rvm --default use 2.0.0
 
 gem install rails/rvm install rails
 
-reference:
+sudo apt-get install nodejs
+```
+###### reference:
 http://installrails.com/
 
 =====================================================
