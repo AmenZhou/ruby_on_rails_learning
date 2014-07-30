@@ -1,14 +1,18 @@
 ###Cookies in Rails
 
 1 Set a cookie with a hash which has two members 
+```
 cookies[:remember_token] = { value: remember_token, 
 expires: 20.years.from_now.utc }
-
+```
 2 Set a cookie by permanent method 
+```
 cookies.permanent[:remember_token] = remember_token
-
+```
 3 Delete cookie 
+```
 cookies.delete(:remember_token)
+```
 ==================================================================
 How to process the "Sign in" in Rails
 
