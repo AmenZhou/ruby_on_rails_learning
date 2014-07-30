@@ -285,8 +285,9 @@ http://koans.heroku.com/en
 ================================================================
 
 username is a variable and replace
+```ruby
 content.gsub(/@(?<username>(\w+))/, '<a href="/\k<username>">@\k<username></a>')
-
+```
 
 http://www.regular-expressions.info/refext.html
 
@@ -318,24 +319,23 @@ Display the retweet
 
 Mentor Session
 
- TDD
-[3:36:51 PM] Alvin Kato: Test Driven Development
-[3:36:56 PM] Alvin Kato: This is where you write tests first
-[3:37:06 PM] Alvin Kato: Then the test fails
-[3:37:11 PM] Alvin Kato: Because you have written the code
-[3:37:15 PM] Alvin Kato: Then you write the code
-[3:37:20 PM] Alvin Kato: To make the test pass
-[3:37:30 PM] Alvin Kato: Failing test
-[3:37:38 PM] Alvin Kato: Then write the code that makes it pass
-[3:37:47 PM] Alvin Kato: Then you modify or refactor the code
-[3:37:59 PM] Alvin Kato: Is by practising
-[3:38:05 PM] Alvin Kato: RIght now I won't delve
+Test Driven Development
+This is where you write tests first
+Then the test fails
+Because you have written the code
+Then you write the code
+To make the test pass
+Failing test
+Then write the code that makes it pass
+Then you modify or refactor the code
+Is by practising
+RIght now I won't delve
 
-[3:38:33 PM] Alvin Kato: BDD
-[3:38:43 PM] Alvin Kato: Behaviour driven development
-[3:38:51 PM] Alvin Kato: Is you test applications behaviour
-[3:38:56 PM] Alvin Kato: Test parts
-[3:39:13 PM] Alvin Kato: Get request to be sent when a user views all twets
-[3:39:17 PM] Alvin Kato: you can test for that
-[3:39:29 PM] Alvin Kato: Here what you are looking for how the application interacts with your user
+BDD
+Behaviour driven development
+Is you test applications behaviour
+Test parts
+Get request to be sent when a user views all twets
+you can test for that
+Here what you are looking for how the application interacts with your user
 
