@@ -286,7 +286,11 @@ http://koans.heroku.com/en
 
 username is a variable and replace
 ```ruby
-content.gsub(/@(?<username>(\w+))/, '<a href="/\k<username>">@\k<username></a>')
+content.gsub(/@(?<username>(\w+))/, '<a href="\k<username>">@\k<username></a>')
+
+# or
+
+gsub(/@(\w+)/, '<a href="\1">@\1</a>')
 ```
 
 http://www.regular-expressions.info/refext.html
