@@ -313,3 +313,12 @@ rvm use 2.1.2
 
 rvm gemset create tweter
 ```
+
+### belongs_to class name
+```ruby
+#retwet model 
+#attr: origin_id => user_id
+
+belongs_to :user, class_name: 'User'
+
+```
