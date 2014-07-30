@@ -1,4 +1,4 @@
-Cookies in Rails
+###Cookies in Rails
 
 1 Set a cookie with a hash which has two members 
 cookies[:remember_token] = { value: remember_token, 
