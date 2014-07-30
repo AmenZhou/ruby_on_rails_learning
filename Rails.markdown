@@ -319,6 +319,6 @@ rvm gemset create tweter
 #retwet model 
 #attr: origin_id => user_id
 
-belongs_to :user, class_name: 'User'
+belongs_to :origin, class_name: 'User'
 
 ```
