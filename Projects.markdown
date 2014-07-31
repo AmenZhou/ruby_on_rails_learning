@@ -70,15 +70,15 @@ view
 
 Issues
 
-#37 fixed -- remove link url of support pic in support detail page
+1 #37 fixed -- remove link url of support pic in support detail page
 
-#33 -- see TpT_reading.html.obt file
+2 #33 -- see TpT_reading.html.obt file
 
-#28 fixed a part -- change SHARE link , ref: https://drive.google.com/folderview?id=0BxNoN0cnMPSHMjFoU2RXdlFjQ0U&usp=sharing
+3 #28 fixed a part -- change SHARE link , ref: https://drive.google.com/folderview?id=0BxNoN0cnMPSHMjFoU2RXdlFjQ0U&usp=sharing
 
-#25 -- change supports issue https://docs.google.com/document/d/1hASF2BurV0mL51WTWCkCFQGH2JIPpltyLyI_dap9Fxg/edit
+4 #25 -- change supports issue https://docs.google.com/document/d/1hASF2BurV0mL51WTWCkCFQGH2JIPpltyLyI_dap9Fxg/edit
 
-#19 -- change or add search condition can't affect each others, ref to search students and filter supports
+5 #19 -- change or add search condition can't affect each others, ref to search students and filter supports
 
 ===========================================================================
 
