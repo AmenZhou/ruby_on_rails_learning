@@ -179,3 +179,26 @@ select_tag "people", options_from_collection_for_select(@people, "id", "name")
 
 ==============================================================================
 
+###Facebook Gigya API Setting
+
+#####Gigya Setting
+
+https://console.gigya.com/site/partners/Plugins.aspx
+
+
+
+######Facebook Setting
+
+http://developers.gigya.com/010_Developer_Guide/82_Socialize_Setup/005_Opening_External_Applications/10_Facebook
+
+
+
+###### change gigya api key in application.yml
+
+###### change facebook key and secret key in bash vironment
+
+
+
+###### railscast 
+
+http://railscasts.com/episodes/360-facebook-authentication?autoplay=true
