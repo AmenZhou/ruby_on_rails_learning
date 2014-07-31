@@ -4,3 +4,7 @@ vnew -> edit filename
 vim -- find and replace
 :%s/replace this/to this/ g
 
+```
+scp -i brm.pem localfilepath ubuntu@XXXX:remotefilepath
+```
+
