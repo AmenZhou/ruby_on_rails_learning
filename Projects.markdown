@@ -2,7 +2,7 @@ Working on Sms Project -- 06/06/14
 
 =======================================
 
-Sms -- 
+###Sms -- 
 
 1 'protect_from_forgery with: :exception' this sentence means the app requires all the POST http requests must have auth_token, if want to skip it , can use 'skip_before_filter :verify_authenticity_token, only: :send_callback'
 
@@ -10,7 +10,7 @@ Sms --
 
 ==================================================
 
-brm
+###brm
 
 issue -- Universal Updates to top Navigation Bar #5
 
@@ -22,7 +22,7 @@ javascript @ slim must add '- content_for :bottom' line
 
 ===================================================
 
-Brm -- Issue
+###Brm -- Issue
 
 Solved
 
@@ -34,7 +34,7 @@ profile - edit action error
 
 ================================================
 
-Brm
+###Brm
 
 [Solved] profile - edit page, save the result then go to create action
 
@@ -45,26 +45,26 @@ Brm
 [Solved] profile - save multiple checkbox value -     
 
 controller 
-
+```ruby
 params.require(:profile).permit(:user_id, :sex, :school,
                                     :zipcode, :grades_taught, :about,
                                     :experience, :special, :avatar, :grade_ids => [])
-
+```
 view
-
+``` ruby
 - Grade.all.each do |grade|
   | "#{grade.name}"
   = check_box_tag "profile[grade_ids][]", grade.id, @profile.grade_ids.include?(grade.id)              
-
+```
 ========================================================================
 
-Brm
+###Brm
 
 [Question] profile -- the text input bars in all forms, the content will be disappeared when it's onfocus. There is block of code to controll it, most_common_tools.js line:105
  
 =====================================================================
 
-Brm
+###Brm
 
 [Question] log in -- log in sucessfully, change redirect to in continaer_login, but failed
 
@@ -82,7 +82,7 @@ Issues
 
 ===========================================================================
 
-Sms 
+###Sms 
 
 Install kaminari
 
@@ -94,7 +94,7 @@ split one big page to multiple pages
 
 =================================================================================
 
-Brm 
+###Brm 
 
 #4 #8 need picture
 
@@ -107,7 +107,7 @@ Coffee in Slim pass ruby variable
 
 ==========================================================
 
-Brm
+###Brm
 
 Email Regular Expression
 
@@ -121,10 +121,10 @@ resque status check: 127.0.0.1:5678/overview
 
 ===============================================================
 
-Sms
+###Sms
 
 Jquery Ajax
-
+```javascript
 $.ajax({
       type: 'post',
       url: '/respond_checkbox',
@@ -132,23 +132,23 @@ $.ajax({
     }).done(function(msg){
       alert(msg);
     });
-
+```
 ============================================================
 
-Brm
+###Brm
 
 Jquery get Selected option
-
+```javascript
 $( "#skill_topic_select" ).change(function() {
         var str = "";
         str = $(this).children( "select option:selected" ).text();
         $( "small#skill_topic_small").text(str);
       })
       .trigger( "change" ); 
-
+```
 ==========================================================
 
-Brm
+###Brm
 
 Search supports by Age Range 
 
@@ -157,26 +157,26 @@ support max age is 'sup_max'
 
 search condition min age is 'age_min'
 search condition max age is 'age_max'
-
+```
 sup_min <= age_max and sup_max >= age_min
-
+```
 =================================================================
 
-Brm
-
+###Brm
+```ruby
 render partial: 'partial_file', locals {loc_var: @ins_var}
-
+```
 ===============================================================
 
-Brm
+###Brm
 
 table_for
 
 https://github.com/zlx/tabletastic
 
-
+```ruby
 select_tag "people", options_from_collection_for_select(@people, "id", "name")
-
+```
 ==============================================================================
 
 ###Facebook Gigya API Setting
