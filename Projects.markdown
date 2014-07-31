@@ -96,23 +96,24 @@ split one big page to multiple pages
 
 ###Brm 
 
-#4 #8 need picture
+1 #4 #8 need picture
 
-#28 add email sending function
+2 #28 add email sending function
 
-Coffee in Slim pass ruby variable
+3 Coffee in Slim pass ruby variable
+```javascript
 - content_for :bottom
   javascript:
     var url_path = "#{send_email_supports_path}"
-
+```
 ==========================================================
 
 ###Brm
 
 Email Regular Expression
-
+```
 /^(([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4}),?(\s+)?)+$/    
-
+```
 Resque
 
 ref: http://railscasts.com/episodes/271-resque
