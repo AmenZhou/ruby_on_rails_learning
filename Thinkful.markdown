@@ -321,7 +321,7 @@ Display the retweet
 
 ===================================================================
 
-Mentor Session
+###Mentor Session
 
 Test Driven Development
 This is where you write tests first
@@ -343,3 +343,8 @@ Get request to be sent when a user views all twets
 you can test for that
 Here what you are looking for how the application interacts with your user
 
+### Mentor Session
+
+######Go through this website to known the basic knowlege of building an online store
+
+http://tutorials.jumpstartlab.com/projects/merchant.html
