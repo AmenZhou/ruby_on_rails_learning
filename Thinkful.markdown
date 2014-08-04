@@ -350,7 +350,7 @@ Here what you are looking for how the application interacts with your user
 http://tutorials.jumpstartlab.com/projects/merchant.html
 
 ### Office Hour
-
+```
 Matt Star	下午2:24
 POSTS
 POST: id: 1, content: "great tweet guys", user_id: 3, tweet_id: nil, origin_id: nil
@@ -429,3 +429,4 @@ STORES
 has_many :attachments
 as: attachmentable
 http://railscasts.com/episodes/154-polymorphic-association-revised
+```
