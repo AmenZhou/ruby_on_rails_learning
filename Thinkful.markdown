@@ -348,3 +348,84 @@ Here what you are looking for how the application interacts with your user
 ######Go through this website to known the basic knowlege of building an online store
 
 http://tutorials.jumpstartlab.com/projects/merchant.html
+
+### Office Hour
+
+Matt Star	下午2:24
+POSTS
+POST: id: 1, content: "great tweet guys", user_id: 3, tweet_id: nil, origin_id: nil
+//
+POST: id: 1, content: "great tweet guys", user_id: 3, origin_id: nil
+POST: id: 2, content: "great tweet guys", user_id: 17, origin_id: 3
+//
+POST: id: 1, content: "great tweet guys", user_id: 3, tweet_id: nil
+POST: id: 2, content: nil, user_id: 17, tweet_id: 1
+//
+class Retwet < Post
+//
+def original_user
+//
+Post.find(2).original_user
+User (3)
+//
+class Retwet
+validates :tweet_id, presence: true
+//
+class Twet
+validates :content, presence: true
+//
+class Post
+validates :user_id, presence: true
+//
+class Retwet < Post
+class Twet < Post
+class Post < ActiveRecord::Base
+//
+Matt: "Great office hours guys"
+Haimeng: Matt: "Great office hours guys"
+Haimeng: Matt: "Great office hours guys"
+Real Estate
+HOUSES
+BROKERS
+...
+IMAGES
+...
+HOUSES
+IMAGES
+house_images
+house_image: house_id: 1
+image_id: 4
+...
+HOUSES
+BROKERS
+IMAGES(houses)
+IMAGES(brokers)
+...
+http://guides.rubyonrails.org/association_basics.html#polymorphic-associations
+scout.rawrdenim.com
+attachmentable
+house_images
+image relationships
+-store_id
+-garment_id
+-attachment_id
+attachmentable
+attachmentable_id
+attachmentable_type
+....
+STORE id: 3
+attachmentable_id: 3
+attachmentable_type: Store
+...
+GARMENT id: 14
+attachmentable_id: 14
+attachmentable_type: Garment
+...
+attachment_id: ...
+ATTACHMENTS
+ATTACHMENTABLES
+GARMENTS
+STORES
+has_many :attachments
+as: attachmentable
+http://railscasts.com/episodes/154-polymorphic-association-revised
