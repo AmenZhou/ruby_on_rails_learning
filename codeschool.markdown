@@ -1087,3 +1087,100 @@ class Game
 end
 
 ```
+### Test Level 1
+1 Write a basic conditional test using assert which checks if 1 > 0. Name your test class ConditionalTest.
+
+```ruby
+require 'test/unit'
+
+class ConditionalTest < Test::Unit::TestCase
+  def test_true_or_false
+    assert 1 > 0
+  end
+end
+```
+
+2 Add the custom error message One is not greater than zero to the failing assertion we just created
+
+```ruby
+class ConditionalTest < Test::Unit::TestCase
+  def test_one_greater_than_zero
+    assert 0 > 1, "one is not greater than zero"
+  end
+end
+```
+
+3 In a moment we are going to create the multiple_of? in our Multiple module which returns true if a number is a multiple of another number. Finish the test below, asserting that Multiple.multiple_of?(10, 5) returns true.
+
+```ruby
+class MultipleTest < Test::Unit::TestCase
+  def test_multiple_of
+    assert Multiple.multiple_of?(10, 5)
+  end
+end
+```
+
+4 Now that we have a failing test, let's make it pass by creating the self.multiple_of?(multiple, num) method in the Multiple module. Hint: one way of checking multiples is using the modulo operator, multiple % num == 0 (will be 'true' if multiple can be divided evenly by the num)
+
+```ruby
+module Multiple
+  def self.multiple_of?(x, y)
+    x % y == 0
+  end
+end
+```
+
+5 We are going to create a Zombifier class with a zombify method that upcases and adds 'BRAINS'. Lets begin by writing a test using assert_not_nil to make sure zombify returns something.
+
+```ruby
+class ZombifierTest < Test::Unit::TestCase
+  def test_zombify_returns_something
+    z = Zombifier.new('make me a zombie')
+    assert_not_nil z.zombify
+  end
+end
+```
+
+6 Notice our zombifier.rb file and how the zombify method adds 'BRAINS' to the string, use assert_match to test if zombify is doing this correctly.
+
+```ruby
+class ZombifierTest < Test::Unit::TestCase
+  def test_zombify_brains
+    z = Zombifier.new('I love your arms')
+    assert_match /BRAINS/, z.zombify
+  end
+end
+```
+
+7 Now, using assert_equal, write a test to make sure zombify returns the expected string, upcase with 'BRAINS'. ex. "HELLO WORLD BRAINS" is expected when we call Zombifier.new("Hello world").zombify
+
+```ruby
+class ZombifierTest < Test::Unit::TestCase
+  def test_zombify_upcase
+    z = Zombifier.new("Hello world")
+    assert_equal "HELLO WORLD BRAINS", z.zombify
+  end
+end
+```
+
+8 Notice in zombifier.rb how we now raise a RuntimeError if the string already looks like a zombie (contains 'BRAINS'). Test for this behavior using assert_raise.
+
+```ruby
+class ZombifierTest < Test::Unit::TestCase
+  def test_brains_in_zombify_raises_error
+    z = Zombifier.new('BRAINS')
+    assert_raise(RuntimeError){z.zombify}
+  end
+end
+```
+
+9 Since zombify is supposed to modify an existing string, it should also return a string. Create a test using assert_kind_of to make sure a String is being returned.
+
+```ruby
+class ZombifierTest < Test::Unit::TestCase
+  def test_zombify_returns_a_string
+    z = Zombifier.new('I like knees')
+    assert_kind_of String, z.zombify
+  end
+end
+```
