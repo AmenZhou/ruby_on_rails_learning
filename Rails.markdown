@@ -326,3 +326,8 @@ rvm gemset create tweter
 belongs_to :origin, class_name: 'User'
 
 ```
+
+### ruby running path
+```
+ruby -I . test/test_calculator.rb
+```
