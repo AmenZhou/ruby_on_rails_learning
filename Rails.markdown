@@ -331,3 +331,7 @@ belongs_to :origin, class_name: 'User'
 ```
 ruby -I . test/test_calculator.rb
 ```
+### move rake tast to db migration
+```ruby
+Rake::Task['task name'].invoke
+```
