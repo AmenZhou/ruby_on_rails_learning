@@ -430,3 +430,10 @@ has_many :attachments
 as: attachmentable
 http://railscasts.com/episodes/154-polymorphic-association-revised
 ```
+
+### Office Hour
+###### A ping pong game
+
+https://github.com/michaelfairley/pong
+
+###### .ruby-version replace .rvmrc
