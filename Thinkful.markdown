@@ -437,3 +437,8 @@ http://railscasts.com/episodes/154-polymorphic-association-revised
 https://github.com/michaelfairley/pong
 
 ###### .ruby-version replace .rvmrc
+
+### Mentor Session
+https://delicious.com/
+
+http://guides.spreecommerce.com/developer/getting_started_tutorial.html
