@@ -442,3 +442,5 @@ https://github.com/michaelfairley/pong
 https://delicious.com/
 
 http://guides.spreecommerce.com/developer/getting_started_tutorial.html
+
+http://doc.locomotivecms.com/
