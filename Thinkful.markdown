@@ -444,3 +444,10 @@ https://delicious.com/
 http://guides.spreecommerce.com/developer/getting_started_tutorial.html
 
 http://doc.locomotivecms.com/
+
+http://blog.referralcandy.com/2014/02/26/24-best-ecommerce-website-designs-inspire/
+
+http://helmboots.com/
+
+http://www.shopify.com/blog/11863377-30-beautiful-and-creative-ecommerce-website-designs
+
