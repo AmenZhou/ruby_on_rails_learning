@@ -25,6 +25,7 @@ unique: true
 
 
 Add or remove columns to tables
+```
 rails g migration add<columns>to<table> name:value
 rails g migration Remove<Anything>From<Table name> name:value
 
@@ -36,7 +37,7 @@ change_column :table, :column, :type, :option
 change_column_default :table, :column, default: true
 remove_column :table, :column
 add_column :table, :column, :type, :option
-
+```
 rake 
 rake db:setup -- create db, load schema, run seed
 ========================================================
