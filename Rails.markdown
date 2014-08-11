@@ -359,3 +359,6 @@ namespace :db do
   end
 end
 ```
+### how do I subtract values from two select statements
+
+http://stackoverflow.com/questions/2611174/how-do-i-subtract-values-from-two-select-statements
