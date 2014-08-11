@@ -451,3 +451,10 @@ http://helmboots.com/
 
 http://www.shopify.com/blog/11863377-30-beautiful-and-creative-ecommerce-website-designs
 
+### Office Hour Sidekiq
+###### Sidekiq is gem for background work, it works with redis
+
+http://railscasts.com/episodes/366-sidekiq
+
+Redis is an open source, BSD licensed, advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
+"delayed_jobs" => {"1" => "Store.delete_all" }
