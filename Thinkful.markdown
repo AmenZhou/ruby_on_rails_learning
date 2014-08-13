@@ -458,3 +458,13 @@ http://railscasts.com/episodes/366-sidekiq
 
 Redis is an open source, BSD licensed, advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
 "delayed_jobs" => {"1" => "Store.delete_all" }
+
+### Mentor Session
+ruby learning http://designthinkingbook.co.uk/
+
+Practical Object 
+
+Oriented Rubyz
+
+http://www.sitepoint.com/simple-testing-ruby-using-minitest/
+
