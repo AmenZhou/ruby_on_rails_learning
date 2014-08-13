@@ -1185,3 +1185,81 @@ class ZombifierTest < Test::Unit::TestCase
   end
 end
 ```
+### Testing level 2
+1 Using an assert and the valid? method, test that a 'tweet' is not valid without a status.
+
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "invalid without a status" do
+    tweet = Tweet.new
+    assert !tweet.valid?
+  end
+end
+```
+
+2 Execute the rake command which will run both db:test:prepare and all the tests.
+``` 
+rake db:test:prepare
+```
+
+3 Lets try another validation test. This time, test to make sure a tweet is valid with all its attributes before save. A tweet has a zombie and a status (you'll need to create a zombie for this).
+
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "valid with all attributes" do
+    zombie = Zombie.new
+    tweet = Tweet.new
+    
+    tweet.status = 'Hello world'
+    tweet.zombie = zombie
+    assert tweet.valid?
+  end
+end
+```
+
+4 Create a tweets fixture in the tweets.yml file. The Tweet model has a zombie_id that's an Integer and a status that's a String.
+
+```ruby
+hello_world:
+    zombie_id: 1
+    status: "hello_world"
+```
+
+5 Now that we have fixtures tweets.yml and zombies.ymlbelow, let's clean up some tests. Add fixtures to the following tests.
+
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "valid with all attributes" do
+    z = zombies(:ash)
+    t = tweets(:hello_world)
+
+    assert t.valid?, "tweet isn't valid"
+  end
+end
+```
+###### notice the 'zombies(:ash)' this method name is same as yml file name zombies.yml
+
+6 Create a test that ensures the brains? method returns true if a status contains 'brains'.
+
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "can detect brains" do
+    tweet = tweets(:hello_world)
+    tweet.status = 'brains'
+    
+    assert tweet.brains?
+  end
+end
+```
+
+7 Create a test to ensure that the hello_world tweet contains zombie Ash.
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "contains a zombie" do
+    t = tweets(:hello_world)
+    z = zombies(:ash)
+    z.tweets.all? {|t| t.zombie == z }
+    assert t.zombie == z
+  end
+end
+```
