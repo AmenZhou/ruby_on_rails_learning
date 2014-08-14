@@ -75,3 +75,24 @@ def filter(array, block)
 end
 filter([1, 2, 3, 4], lambda {|number| number.even? }) returns [2, 4] 
 ```
+### Array Shuffle
+Problem Statement
+Given a 3 or 4 digit number with distinct digits, return a sorted array of all the unique numbers that can be formed with those digits.
+
+Example: 
+Given: 123 
+Return: [123, 132, 213, 231, 312, 321]
+
+```ruby
+def number_shuffle(number)
+  # your code here
+  rs_size = number.to_s.size == 3 ? 6 : 24
+  number = number.to_s.split("")
+  rs = []
+  while(rs.size < rs_size) do
+    rs << number.shuffle.join("").to_i
+    rs = rs.sort.uniq
+  end
+  rs
+end
+```
