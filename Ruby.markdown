@@ -126,3 +126,19 @@ class MyArray
   end
 end
 ```
+
+### Sort by string length
+
+https://rubymonk.com/learning/books/1-ruby-primer/problems/14-sort-string-words
+
+```ruby
+def sort_string(string)
+  # your code here
+  string.split(" ").sort{|a, b| a.length <=> b.length}.join(" ")
+end
+```
+### Boolean Expressions
+
+```ruby
+is_an_experienced_programmer = (candidate.years_of_experience >= 2 or (candidate.years_of_experience < 2 and candidate.github_points >= 500)) and candidate.age >= 15  and !candidate.applied_recently? and candidate.languages_worked_with.include?('Ruby')# Fill your expression here
+```
