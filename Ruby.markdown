@@ -96,3 +96,33 @@ def number_shuffle(number)
   rs
 end
 ```
+### Block
+
+Problem Statement
+Given a custom class MyArray, 
+write a 'sum' method that takes a block parameter.
+
+Example: 
+my_array = MyArray.new([1, 2, 3]) 
+my_array.sum gives 6 
+my_array.sum(10) gives 16 
+my_array.sum(0) {|n| n ** 2 } gives 14
+
+```ruby
+class MyArray
+  attr_reader :array
+
+  def initialize(array)
+    @array = array
+  end
+
+  def sum(initial_value = 0)
+    # your code here
+    if block_given?
+      @array.inject(0){|sum, i| sum += yield(i)} + initial_value
+    else
+      @array.inject(0){|i, sum| sum += i} + initial_value
+    end
+  end
+end
+```
