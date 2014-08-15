@@ -460,10 +460,44 @@ Redis is an open source, BSD licensed, advanced key-value cache and store. It is
 "delayed_jobs" => {"1" => "Store.delete_all" }
 
 ### Mentor Session
-ruby learning http://designthinkingbook.co.uk/  http://koans.heroku.com/en
+1 ruby learning http://designthinkingbook.co.uk/  http://koans.heroku.com/en
 
-ruby books recommend
-	Practical Object 
-	Oriented Rubyz
+2 ruby books recommend
+
+Practical Object 
+
+Oriented Rubyz
+
+Programming Ruby 1.9 and 2.0 4th Edition
+
+http://pragprog.com/
+
 
 http://www.sitepoint.com/simple-testing-ruby-using-minitest/
+
+
+### Mentor Session
+
+Some Meetup
+
+http://ruby.meetup.com/cities/us/ny/new_york/
+
+http://www.meetup.com/nyc-on-rails/
+
+
+
+Jobs
+
+https://groups.google.com/forum/?utm_source=digest&utm_medium=email/#!forum/rubyonrails-talk/topics
+
+https://weworkremotely.com/categories/2/jobs
+
+
+Tree House
+
+
+
+
+Javascript
+
+http://eloquentjavascript.net/
