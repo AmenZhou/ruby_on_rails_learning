@@ -142,3 +142,15 @@ end
 ```ruby
 is_an_experienced_programmer = (candidate.years_of_experience >= 2 or (candidate.years_of_experience < 2 and candidate.github_points >= 500)) and candidate.age >= 15  and !candidate.applied_recently? and candidate.languages_worked_with.include?('Ruby')# Fill your expression here
 ```
+### Ascend 
+http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/37-classes-inheritance/lessons/83-understanding-inheritance
+```ruby
+def is_ancestor?(klass, subclass)
+  # your code here
+  father = subclass.superclass
+  while(father != klass and father != BasicObject) do
+    father = father.superclass
+  end
+    father != BasicObject
+end
+```
