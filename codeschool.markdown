@@ -140,6 +140,7 @@ end
 
 9  A Tweet can belong to one or more Categories (e.g. eating flesh, walking dead, searching for brains). Write a migration that creates two tables, categories, and categorizations. Give categories one column named name of type string; and give categorizations two integer columns: tweet_id and category_id.
 
+```ruby
 class AddTweetCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
@@ -152,10 +153,11 @@ class AddTweetCategories < ActiveRecord::Migration
     end
   end 
 end
-
+```
 
 10 Now that we have our new tables, it's time to define the relationships between each of the models. Define the has_many through relationships in the Tweet & Category model and the belongs_to relationships in the Categorization model.
 
+```ruby
 class Tweet < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, through: :categorizations
@@ -170,26 +172,33 @@ class Category < ActiveRecord::Base
   has_many :categorizations
   has_many :tweets, through: :categorizations
 end
-
+```
 =====================================================
 
 Level 3
 
 radio button
 
+```ruby
 <%= f.radio_button :decomp, 'fresh', checked: true %>
+```
 
 select
 
+```ruby
 <%= f.select :decomp, [['fresh', 1], ['rotting', 2], ['stale', 3]]%>
+```
+
 
 test input helper
 
+```ruby
 <%= f.password_field :password %>
 
 <%= f.number_field :price %>
 
 <%= f.range_field :quantity %>
+```
 
 Nested routes
 pic-- Code School - Rails for Zombies Two-nested routes
@@ -199,7 +208,7 @@ Challenges
 
 2 Create the form for entering tweet status (text_area) and location (text_field) using the appropriate Rails view helpers. All you need is a form_for block, the input helpers, and a submit button.
 
-
+```ruby
 <h1>New tweet</h1>
 
 <%= form_for(@tweet) do |f| %>
@@ -207,19 +216,22 @@ Challenges
   <%= f.text_field :location %>
   <%= f.submit value='Submit' %>
 <% end %>
-
+```
 
 3 Look at the following database table and create the proper input fields for the columns listed here.
 
+```ruby
 <%= form_for(@weapon) do |f| %>
   <%= f.text_field :name %>
   <%= f.number_field :ammo %>
   <%= f.check_box :is_broken %>
 <% end %>
+```
 
 
 4 Rather than having a weapon that is broken or not, lets instead have a condition field which is either "New", "Rusty", or "Broken". Add a set of radio buttons where the user can select one of these states. Make "New" be checked by default.
 
+```ruby
 <%= form_for(@weapon) do |f| %>
   <%= f.text_field :name %>
   <%= f.number_field :ammo %>
@@ -227,37 +239,42 @@ Challenges
   <%= f.radio_button :condition, 'Rusty' %>
   <%= f.radio_button :condition, 'Broken' %>
 <% end %>
-
+```
 
 5  Instead of using radio buttons, use a select box for the condition. Refactor the code below:
 
+```ruby
 <%= form_for(@weapon) do |f| %>
   <%= f.select :condition, ['New', 'Rusty', 'Broken'] %>
 <% end %>
-
+```
 
 6 Write the nested route that will allow us to nest tweets and weapons under the zombie resource. The idea here is that a zombie has many tweets and zombie has many weapons.
 
+```ruby
 RailsForZombies::Application.routes.draw do
   resources :zombies do
     resources :tweets
     resources :weapons
   end
 end
+```
 
 
 7  Now that we have the proper route, we need to make sure the weapons controller properly looks up both the zombie and the weapon when we request /zombies/2/weapons/1. Finish this controller:
 
+```ruby
 class WeaponsController < ApplicationController
   def show 
     @zombie = Zombie.find(2)
     @weapon = @zombie.weapons.find(1)
   end
 end
-
+```
 
 8  Now create the proper link_to for when we view a zombie and want to show each of its weapons, and when we want to create a new weapon for this zombie.
 
+```ruby
 <h2><%= @zombie.name %>'s weapons</h2>
 <ul>
   <% @weapons.each do |w| %>
@@ -266,45 +283,49 @@ end
 </ul>
 
 <%= link_to "New Weapon", new_zombie_weapon_path(@zombie) %>
-
+```
 
 9 Change the form_for below to use the proper nesting for creating a new weapon for a Zombie.
 
+```ruby
 <%= form_for([@zombie, @weapon]) do |f| %>
   <%= f.text_field :name %>
     
   <%= f.submit %>
 <% end %>
-
+```
 
 10 Modify the following code to make it more pretty, using titleize, to_sentence, pluralize, and number_to_currency (in just that order)
 
+```ruby
 <h2><%= @zombie.name.titleize %></h2>
 <p>Weapons: <%= @zombie.weapon_list.to_sentence %></p>
 <p><%= pluralize(@zombie.tweets.size, 'Tweet') %></p>
 <p>Money in Pocket <%= number_to_currency(@zombie.money) %></p>
-
+```
 
 11 Refactor the code below to move the form into the _form.html.erb partial.
 
+```ruby
 <h2>New Tweet</h2>
 
 <%= render 'form' %>
 
 <%= link_to 'back', tweets_path %>
-
+```
 =========================================================================
 
 Level 5
 
 1  Enter the command for generating a mailer called WeaponMailer which has the emails low_ammo and broken.
 
+```
 rails g mailer WeaponMailer low_ammo broken
-
+```
 
 2  Code up the low_ammo mailer with the subject of "#{weapon.name} has low ammo", the email should be sent to the zombie.email. Lastly, set the default from address for all emails in WeaponMailer to admin@rfz.com
 
-
+```ruby
 class WeaponMailer < ActionMailer::Base
   default from: "admin@rfz.com"
   def low_ammo(weapon, zombie) 
@@ -312,9 +333,11 @@ class WeaponMailer < ActionMailer::Base
     
   end
 end
+```
 
 3  Finish coding the check_ammo method on the Weapon model so when we have exactly three ammo left, it will send out the low_ammo mailer we just created.
 
+```ruby
 class Weapon < ActiveRecord::Base
   belongs_to :zombie 
 
@@ -326,9 +349,12 @@ class Weapon < ActiveRecord::Base
     end
   end
 end
+```
+
 
 4 Change the low_ammo method to include a picture of the weapon that's low on ammo as an attachment. You can name the file weapon.jpg and load the file using weapon.picture_file.
 
+```ruby
 class WeaponMailer < ActionMailer::Base
   default from: "admin@rfz.com"
 
@@ -337,16 +363,19 @@ class WeaponMailer < ActionMailer::Base
     mail to: zombie.email, subject: "#{weapon.name} has low ammo"
   end 
 end
+```
 
 5 Convert the following to their appropriate asset tags.
 
-
+```ruby
 <%= javascript_include_tag "weapon" %>
 <%= image_tag "weapon.png" %>
 <%= stylesheet_link_tag "weapon" %>
+```
 
 6 Convert the following scss.erb file to properly reference the asset_path for the image listed in it. Also, try refactoring the scss to use nesting.
 
+```ruby
 h2#newUser {
   text-indent: -9999px; 
   a {
@@ -356,15 +385,17 @@ h2#newUser {
       background: url(<%= asset_path('rails.png') %>) no-repeat;
   }
 }
+```
 
 7 Use CoffeeScript so when the New Weapon link is pressed it makes the #newWeapon div visible and then hides the New Weapon link. Don't forget to call preventDefault().
 
+```ruby
 $(document).ready ->
   $('#displayWeaponForm').click (event) ->
     event.preventDefault()
     $(this).hide()
     $('#newWeapon').show()
-
+```
 
 ======================================================================
 
@@ -372,6 +403,7 @@ Level 5
 
 1 Complete the method below so that if the ammo is low it will render the fire_and_reload view, otherwise it should render the fire_weapon view.
 
+```ruby
 class WeaponsController < ApplicationController
   def fire_weapon
     @weapon = Weapon.find(params[:id]) 
@@ -383,9 +415,11 @@ class WeaponsController < ApplicationController
 
   end
 end
+```
 
 2 Create two custom member routes on the weapons resource, so you have a put method called toggle_condition and a put method called reload.
 
+```ruby
 RailsForZombies::Application.routes.draw do
   resources :zombies do
     resources :weapons do
@@ -394,10 +428,12 @@ RailsForZombies::Application.routes.draw do
     end
   end
 end
+```
 
 
 3 Complete the create method below. When @weapon.save is successful it should render the @weapon object in JSON, have status :created, and set the location to the @weapon's show url. When @weapon.save fails it should return the @weapon.errors and have the status :unprocessable_entity.
 
+```ruby
 class WeaponsController < ApplicationController 
   def create
     @weapon = Weapon.new(params[:weapon]) 
@@ -409,9 +445,12 @@ class WeaponsController < ApplicationController
     end
   end 
 end
+```
+
 
 4  Complete the controller so that it returns in JSON only the amount of ammo which is left in the weapon. If the ammo has less than 30 bullets it should return the status code :ok, and if not it should return the status code :unprocessable_entity.
 
+```ruby
 class WeaponsController < ApplicationController
   def reload
     @weapon = Weapon.find(params[:id]) 
@@ -424,19 +463,22 @@ class WeaponsController < ApplicationController
     end
   end
 end
-
+```
 
 5 Modify the show action so that the JSON it renders includes the zombie record the @weapon belongs to. Also make it exclude the :id, :created_at, and :updated_at fields.
 
+```ruby
 class WeaponsController < ApplicationController
   def show
     @weapon = Weapon.find(params[:id])
     render json: @weapon.to_json(include: :zombie, except: [:id, :created_at, :updated_at])
   end
 end
+```
 
 6 Edit the as_json method so the Zombie class only returns the zombie's name and weapons (use include). Only return the weapon's name and ammo.
 
+```ruby
 class Zombie < ActiveRecord::Base
   has_many :weapons
 
@@ -445,10 +487,11 @@ class Zombie < ActiveRecord::Base
       {only: :name, include: :weapons, only: [:name, :ammo]})
   end 
 end
-
+```
 
 7 Modify the show.html.erb view below so that both the Toggle link and the Reload form use AJAX. All you need to do is add the option that makes them ajaxified.
 
+```ruby
 <ul>
   <li>
     <em>Name:</em> <%= @weapon.name %>
@@ -470,21 +513,28 @@ end
     <%= number_field_tag :ammo_to_reload, 30 %> <br /> <%= f.submit "Reload" %>
   </div>
 <% end %>
+```
 
 8 Modify the toggle_condition action so that it responds to JavaScript, and complete the toggle_condition.js.erb using jQuery to update the condition span with the @weapon's changed condition and make it highlight.
 
+```jquery
 $('span#condition').append("<%= escape_javascript(@weapon.condition) %>").effect('highlight');
+```
 
 9 Now write the controller and JavaScript code needed to properly reload the weapon using the ajaxified form. In the reload.js.erb use jQuery to update the #ammo text to the current @weapon.ammo value and if the ammo value is over or equal to 30, fadeOut the #reload_form div.
 
+```ruby
 $('span#ammo').text("<%= @weapon.ammo %>");
 <% if @weapon.ammo >= 30 %>
   $('div#reload_form').fadeOut();
 <% end %>
+```
+
 
 10 Instead of returning jQuery which gets executed on the client-side, lets write the ajax request in CoffeeScript communicating with JSON. It should do the same thing as the last challenge, updating & highlighting the ammo, and fading out the form (hint: fade out the wrapper element) if ammo is equal or above 30. 
 Tip for your ajax form: data: {ammo_to_reload: ammo}.
 
+```coffeescript
 $(document).ready ->
   $('div#reload_form form').submit (event) ->
     event.preventDefault()
@@ -499,7 +549,7 @@ $(document).ready ->
       success: (json) -> 
         $('#ammo').text(json.ammo).effect('highlight')
         $('#reload_form').fadeOut() if json.ammo >= 0
-
+```
 ============================================================
 
 ScreenCast
@@ -518,6 +568,7 @@ Level 2
 
 2 We want to make sure that each game is a valid game object - in this case a simple hash of values. Even still, we wouldn't want to return a hash with a nil name. Raise an InvalidGameError error in the new_game method if name is nil.
 
+```ruby
 class InvalidGameError < StandardError; end
 def new_game(name, options={})
   raise InvalidGameError, "You must provide a name" if name.nil?
@@ -532,18 +583,22 @@ begin
 rescue InvalidGameError => e
   puts "There was a problem creating your new game: #{e.message}"
 end
+```
 
 3 When passing in an array of arguments to a method, sometimes it'll make sense to use Ruby's "splat" operator rather than explicitly requesting an array. Update the describe_favorites method and the call to it to instead use the splat operator.
 
+```ruby
 def describe_favorites(*games)
   for game in games
     puts "Favorite Game: #{game}"
   end  
 end
 describe_favorites('Mario', 'Contra', 'Metroid')
+```
 
 4 Passing around hashes is getting troublesome, let's use a class to hold our data. We've started the Game class for you, now please implement the initialize method to store name, system and year in instance variables.
 
+```ruby
 class Game
   def initialize(name, options={})
     @name=name
@@ -551,10 +606,12 @@ class Game
     @system=options[:system]
   end
 end
+```
 
 6 attr_accessor
 Whoever created the game object will want to be able to access the name, year and system for the game, but that doesn't mean we need to make getter methods for them. Refactor the code below to make these variables available using the Ruby way with attr_accessor.
 
+```ruby
 class Game
   attr_accessor :name, :year, :system
   def initialize(name, options={})
@@ -563,9 +620,11 @@ class Game
     @system = options[:system]
   end
 end
+```
 
 7 When a game is initialized, store another variable called created_at which is set to Time.now in the initialize method. Make sure it can be accessed, but that it cannot be set from outside the object.
 
+```ruby
 class Game
   attr_accessor :name, :year, :system
   attr_reader :created_at
@@ -576,20 +635,24 @@ class Game
     @created_at = Time.new
   end
 end
+```
 
 level 3
 
 1 
 
+```ruby
 class Library
   attr_accessor :games
   def initialize(games)
     @games = games
   end
 end
+```
 
 2
 
+```ruby
 class Library
   attr_accessor :games
 
@@ -604,9 +667,11 @@ class Library
     false
   end
 end
+```
 
 3 We can initialize our Library with an array of games, but the only way to add games from outside the class is to use the games accessor method and alter the array. This is breaking encapsulation, so let's create a new method in Library called add_game which takes in a game and adds it to the games array.
 
+```ruby
 class Library
   attr_accessor :games
 
@@ -625,9 +690,11 @@ class Library
     false
   end
 end
+```
 
 4 Things are looking good! We're able to use our Library class to store our games now. Whenever we call add_game, let's call a new private method called log which will call puts with some information about the game that was added. Your log method should take in a string to be displayed.
 
+```ruby
 class Library
   attr_accessor :games
 
@@ -653,17 +720,21 @@ class Library
     puts message
   end
 end
+```
 
 5
 
+```ruby
 class ArcadeGame < Game
 end
 class ConsoleGame < Game
 end
+```
 
 6 Inheritance II
 For our ArcadeGame class, we'll also want to track the weight of these giant cabinets taking up all of our available space. Luckily we thought ahead: we already take in an options parameter that we can stick weight into! Override the initialize method for ArcadeGame to take in the same parameters as its parent class, call super, and then set weight.
 
+```ruby
 class ArcadeGame < Game
   attr_accessor :weight
   def initialize(name, options={})
@@ -673,20 +744,24 @@ class ArcadeGame < Game
 end
 class ConsoleGame < Game
 end
+```
 
 7 Inheritance III
 Whenever we output a game right now it'll show up using the to_s method from Object, the parent object of Game. A basic to_s implementation is completed below on Game. Override this for ConsoleGame to also show the system the game is on.
 
+```ruby
 class ConsoleGame < Game
   def to_s
     super + self.system
   end
 end
+```
 
 8 Refactoring
 Our to_s method will come in very handy. Whenever we need to output a game, rather than calling a method on the game, we can just output the game object and Ruby will call to_s on it automatically. Refactor both classes below. Change the description method of Game to use the to_s method implicitly. Then remove any duplicated code in ConsoleGame. Note: you'll need to use self inside a class to reference the entire object.
 
 Original
+```ruby
 class Game
   attr_accessor :name, :year, :system
   attr_reader :created_at
@@ -715,8 +790,11 @@ class ConsoleGame < Game
     "#{self.name} - #{self.system} was released in #{self.year}."
   end
 end
+```
 
 Changed
+
+```ruby
 class Game
   attr_accessor :name, :year, :system
   attr_reader :created_at
@@ -741,6 +819,7 @@ class ConsoleGame < Game
     "#{super} - #{self.system}"
   end
 end
+```
 
 =========================================
 
@@ -922,6 +1001,8 @@ end
 
 7 Call the included method from inside the LibraryUtils module and pass in a block that calls the load_game_list class method.
 
+```ruby
+
 module LibraryUtils
 
   extend ActiveSupport::Concern
@@ -943,10 +1024,12 @@ module LibraryUtils
     end
   end
 end
+```
 
 
 8  Make sure the AtariLibrary class includes only the LibraryUtils module and let ActiveSupport::Concern take care of loading its dependencies. Then, refactor the self.included method on LibraryUtils to use the included method.
 
+```ruby
 module LibraryLoader
 
   extend ActiveSupport::Concern
@@ -968,6 +1051,7 @@ end
 class AtariLibrary
   include LibraryUtils
 end
+```
 
 ### Ruby Bites Level 6 -- Block
 
