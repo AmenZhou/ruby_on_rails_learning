@@ -45,33 +45,36 @@ rake db:setup -- create db, load schema, run seed
 Level 2
 
 1  Write a scope on the Tweet model called recent which returns the 4 most recent tweets. Hint: You'll need an order AND a limit scope.
-
+```ruby
 class Tweet < ActiveRecord::Base
   scope :recent, order("created_at desc").limit(4)
 end
-
+```
 
 2  Write another scope called graveyard which only shows tweets where the show_location column is true and the location is "graveyard"
 
+```ruby
 class Tweet < ActiveRecord::Base
   scope :recent, order('created_at desc').limit(4) 
   scope :graveyard, where(show_location: true, location: 'graveyard')
 end
-
+```
 
 3  In this controller action create an instance variable called @graveyard_tweets which uses both of the two scopes recent and graveyard together.
 
+```ruby
 class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
     @graveyard_tweets = Tweet.recent.graveyard
   end
 end
-
+```
 
 4  Create a before_save callback that checks to see if a tweet has a location, if it does have a location then set show_location to true.
 Tip: You can check to see if location exists with if self.location?
 
+```ruby
 class Tweet < ActiveRecord::Base
   before_save :set_show_location
   
@@ -79,10 +82,12 @@ class Tweet < ActiveRecord::Base
     self.show_location = true if self.location? #self.location this self is optional
   end
 end
+```
 
 
 5  Add callbacks so the appropriate log function is called after an update and destroy.
 
+```ruby
 class Tweet < ActiveRecord::Base
   after_update :log_update
   after_destroy :log_destroy
@@ -95,10 +100,11 @@ class Tweet < ActiveRecord::Base
     logger.info "Tweet #{id} deleted"
   end
 end
-
+```
 
 6 Instead of storing location inside the Tweet model, let's instead break it out into a separate table (as you see below). In this case we want to define that a Tweet can have one Location, and a Location belongs to a Tweet. Fill out the models below accordingly.
 
+```ruby
 class Tweet < ActiveRecord::Base
   has_one :location
 end
@@ -106,11 +112,12 @@ end
 class Location < ActiveRecord::Base
   belongs_to :tweet
 end
-
+```
 
 ****************Pay attendtion of foreign_key*************
 7 OH NO! Our Database Admin turned into a Zombie and decided to rename the belongs_to field in our locations table tweeter_id instead of the intelligent default tweet_id. We're going to slay him and correct this, but in the meantime set the foreign_key on both relationships to tweeter_id. Also set the dependency so when a tweet is destroyed, the location is destroyed as well.
 
+```ruby
 class Tweet < ActiveRecord::Base
   has_one :location, dependent: :destroy, foreign_key: :tweeter_id
 end
@@ -118,16 +125,18 @@ end
 class Location < ActiveRecord::Base
   belongs_to :tweet, foreign_key: :tweeter_id
 end
+```
 
 
 8  We're going to be iterating through many tweets and printing out their location. Refactor the controller code below to use the includes method.
 
+```ruby
 class TweetsController < ApplicationController 
   def index
     @tweets = Tweet.recent.includes(:location).all
   end
 end
-
+```
 
 9  A Tweet can belong to one or more Categories (e.g. eating flesh, walking dead, searching for brains). Write a migration that creates two tables, categories, and categorizations. Give categories one column named name of type string; and give categorizations two integer columns: tweet_id and category_id.
 
