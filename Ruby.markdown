@@ -154,3 +154,55 @@ def is_ancestor?(klass, subclass)
     father != BasicObject
 end
 ```
+### Class Variable
+
+https://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/45-more-classes/lessons/113-class-variables
+
+```ruby
+class ApplicationConfiguration
+  def self.set(property_name, value)
+    @@property_name = value
+  end
+  
+  def self.get(property_name)
+    @@property_name
+  end  
+end
+
+ApplicationConfiguration.set("name", "Demo Application")
+ApplicationConfiguration.set("version", "0.1")
+
+p ApplicationConfiguration.get("version")
+```
+
+### Class Instance Variable
+
+```ruby
+class ApplicationConfiguration
+  @configuration = {}
+
+  def self.set(property, value)
+    @configuration[property] = value
+  end
+
+  def self.get(property)
+    @configuration[property]
+  end
+end
+
+class ERPApplicationConfiguration < ApplicationConfiguration
+  @configuration = {}
+end
+
+class WebApplicationConfiguration < ApplicationConfiguration
+  @configuration = {}
+end
+
+ERPApplicationConfiguration.set("name", "ERP Application")
+WebApplicationConfiguration.set("name", "Web Application")
+
+p ERPApplicationConfiguration.get("name")
+p WebApplicationConfiguration.get("name")
+
+p ApplicationConfiguration.get("name")
+```
