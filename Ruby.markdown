@@ -257,3 +257,48 @@ class Item
   end
 end
 ```
+### YAML
+```ruby
+class Ogre
+  attr_accessor :strength, :speed, :smell
+  def initialize(strength, speed, smell)
+    @strength = strength
+    @speed = speed
+    @smell = smell
+  end
+end
+
+class Dragon
+  attr_accessor :strength, :speed, :color
+  def initialize(strength, speed, color)
+    @strength = strength
+    @speed = speed
+    @color = color
+  end
+end
+
+class Fairy
+  attr_accessor :strength, :speed, :intelligence
+  def initialize(intelligence)
+    @strength = 1
+    @speed = 42
+    @intelligence = intelligence
+  end
+end
+
+def save_game(characters)
+	# TODO: serialize a character hash of :ogres, :dragons, and :fairies  
+  gf = GameFile.new(".yaml")
+  yaml = YAML::dump(characters)
+  p yaml
+  gf.write(yaml)
+end
+
+def load_game
+  # TODO: return a deserialized hash of characters
+  gf = GameFile.new(".yaml")
+  yaml = gf.read
+  # YAML don't need to be call under an object, it can be call outside. 
+  YAML::load(yaml)
+end
+```
