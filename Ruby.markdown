@@ -206,3 +206,54 @@ p WebApplicationConfiguration.get("name")
 
 p ApplicationConfiguration.get("name")
 ```
+### Object Compare
+ruby can't compare two instances of some classes by using eql? or uniq, blow is a way to do this
+```ruby
+class Item
+  attr_reader :item_name, :qty
+  
+  def initialize(item_name, qty)
+    @item_name = item_name
+    @qty = qty
+  end
+  
+  def to_s
+    "Item (#{@item_name}, #{@qty})"
+  end
+  
+  def hash
+    self.item_name.hash ^ self.qty.hash
+  end
+
+  def eql?(other_item)
+    puts "#eql? invoked"
+    @item_name == other_item.item_name && @qty == other_item.qty
+  end
+  
+end
+```
+
+
+```ruby
+class Item
+  def initialize(item_name, quantity, supplier_name, price)
+    @item_name = item_name
+    @quantity = quantity
+    @supplier_name = supplier_name
+    @price = price
+  end 
+  
+  # implement ==, eql? and hash
+  def hash
+    @item_name.hash ^ @quantity.hash ^ @supplier_name.hash ^ @price.hash
+  end
+  
+  def ==(other_item)
+    self.hash == other_item.hash
+  end
+  
+  def eql?(other_item)
+    self.==(other_item)
+  end
+end
+```
