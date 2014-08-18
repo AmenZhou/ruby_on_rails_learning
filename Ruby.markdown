@@ -302,3 +302,20 @@ def load_game
   YAML::load(yaml)
 end
 ```
+
+### Class Inherite
+http://rubymonk.com/learning/books/4-ruby-primer-ascent/problems/85-whodunnit#solution4016
+
+```ruby
+def location_in_hierarchy(object, method)
+  klass = object.class
+  ancestors = [klass]
+  while not (superclass = klass.superclass).nil?
+    ancestors << superclass
+    klass = superclass
+  end
+  ancestors.reverse.find do |ancestor| 
+    ancestor.instance_methods.include?(method)
+  end
+end
+```
