@@ -1591,3 +1591,116 @@ $(document).ready(function(){
 });
 ```
 
+### Test Level 5
+1 RAILS INTEGRATION TEST
+
+```ruby
+class TweetDisplaysStatusTest < ActionDispatch::IntegrationTest
+  def setup
+    @tweet = tweets(:hello_world)
+  end
+
+  test "Tweet page responds successfully" do
+    get tweet_url(@tweet)
+    assert_response :success 
+  end
+
+  test "Tweet displays status in heading" do 
+    get tweet_url(@tweet)
+    assert_select "h1", @tweet.status
+  end
+end
+```
+
+2 RAILS INTEGRATION TEST - POST
+
+
+```ruby
+class CreatingATweetTest < ActionDispatch::IntegrationTest
+  def setup
+    @zombie = zombies(:ash)
+    @tweet_attributes = {tweet: {zombie_id: @zombie.id, status: 'Test tweet'}}
+  end
+
+  test "Responds with a redirect to the tweet page" do
+    post tweets_url, @tweet_attributes
+    @tweet = Tweet.last
+    #notice tweet_path, test failed in this part
+    assert_redirected_to tweet_path(@tweet)
+  end
+end
+
+```
+
+3 CAPYBARA INTEGRATION TEST
+
+```ruby
+class TweetDisplaysStatusTest < ActionDispatch::IntegrationTest
+  def setup
+    @tweet = tweets(:hello_world)
+  end
+
+  test "Tweet displays status in heading" do
+    visit tweet_url(@tweet)
+    within("h1") do
+      assert has_content?(@tweet.status)
+    end
+    #get tweet_url(@tweet)
+    #assert_select 'h1', @tweet.status
+  end
+end
+```
+
+4 CAPYBARA INTEGRATION TEST II
+
+```ruby
+class CreatingATweetTest < ActionDispatch::IntegrationTest
+  test 'should create a new tweet' do
+    visit new_tweet_url
+    fill_in "tweet_status", with: 'Looking for brain'
+    select "Ash", from: "tweet_zombie_id"
+    click_button "Create Tweet"
+    assert_equal tweet_path(Tweet.last), current_path
+  end
+end
+```
+
+5 CAPYBARA INTEGRATION TEST III
+
+```ruby
+class CreatingATweetTest < ActionDispatch::IntegrationTest
+  test 'should go to new tweet page' do
+    visit root_path
+    click_link "New Tweet"
+    assert_equal new_tweet_path, current_path
+  end
+end
+```
+
+6 HELPER METHODS
+
+test/test_helper.rb
+```ruby
+class ActiveSupport::TestCase
+  def create_tweet_for(zombie, status)
+    visit new_tweet_url
+    fill_in 'Status', with: status
+    select zombie, from: 'Zombie'
+    click_button 'Create Tweet'
+  end
+end
+```
+
+test/integration/creating_a_new_tweet_test.rb
+```ruby
+class CreatingATweetTest < ActionDispatch::IntegrationTest
+  test 'should create a new tweet' do
+   # visit new_tweet_url
+  #  fill_in 'Status', with: 'I love the way your brain feels'
+   # select 'Ash', from: 'Zombie'
+  #  click_button 'Create Tweet'
+    create_tweet_for("Ash", "I love the way your brain feels")
+    assert_equal tweet_path(Tweet.last), current_path
+  end
+end
+```
