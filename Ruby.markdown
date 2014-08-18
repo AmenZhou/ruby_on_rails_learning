@@ -1,6 +1,6 @@
 Ruby--a method with an optional hash parameter
 
-
+```ruby
 def add(*nums) 
 sum = nums.inject(0){|sum, num| sum + num} 
 sum 
@@ -23,7 +23,7 @@ end
 end
 
 calculate(2 ,3, add: true)
-
+```
 =================================================================
 
 Slim
