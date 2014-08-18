@@ -1525,3 +1525,69 @@ class TweetTest < ActiveSupport::TestCase
   end
 end
 ```
+### JQuery
+Leve 3
+
+3.1  Refactoring
+
+```ruby
+$(document).ready(function(){
+  $("button").on("click", function(){
+    var tour = $(this).closest(".tour");
+    var discount = tour.data("discount");
+    var message = $("<span>Call 1-555-jquery-air for a $" + discount + " discount.</span>");
+    tour.append(message);
+    $(this).remove();
+  });
+});
+```
+
+3.2 Better On Handlers
+
+```ruby
+$(document).ready(function(){
+  $(".tour").on("click", "button", function(){
+    var tour = $(this).closest(".tour");
+    var discount = tour.data("discount");
+    var message = $("<span>Call 1-555-jquery-air for a $" + discount + " discount.</span>");
+    tour.append(message);
+    $(this).remove();
+  });
+});
+```
+
+3.21 New Filter
+
+```ruby
+$(document).ready(function(){
+  //Create the click handler here
+  $("#filters").on('click', ".on-sale", function(){});
+});
+```
+
+3.22 New Filter
+
+```ruby
+$(document).ready(function(){
+  $("#filters").on("click", ".on-sale", function(){
+    $(".tour").filter(".on-sale").addClass("highlight");
+  });
+});
+```
+
+3.23 New Filter III
+
+```ruby
+$(document).ready(function(){
+  $("#filters").on("click", ".on-sale", function(){
+    $(".highlight").removeClass("highlight");
+    $(".tour").filter(".on-sale").addClass("highlight");
+  });
+
+  $("#filters").on("click", ".featured", function(){
+    $(".highlight").removeClass("highlight");
+    $(".tour").filter(".featured").addClass("highlight");
+  });
+});
+```
+
