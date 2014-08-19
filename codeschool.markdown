@@ -1704,3 +1704,52 @@ class CreatingATweetTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+### Try JQuery Level 4
+
+4.5 Slide Effect
+
+```jquery
+$(document).ready(function() { 
+  //alert($(".photos").length)
+  $("#tour").on("click", "button", function() { 
+    $(".photos").slideDown();
+  });
+});
+
+```
+4.6 Slide Effect II
+
+```jquery
+$(document).ready(function() { 
+  $("#tour").on("click", "button", function() { 
+    $(".photos").slideToggle();
+    //$(".photos").slideDown();
+  });
+});
+```
+4.9 Mouseover II
+
+```jquery
+$(document).ready(function() {
+  $("#tour").on("click", "button", function() {
+    $(".photos").slideToggle();
+  });
+  $(".photos").on("mouseenter", "li", function() {
+    $(this).find("span").slideToggle();
+  });
+});
+```
+### 4.11 Named Functions
+
+```jquery
+$(document).ready(function() {
+  $("#tour").on("click", "button", function() {
+    $(".photos").slideToggle();
+  });
+  $(".photos").on("mouseenter", "li", showPhotos).on("mouseleave", "li", showPhotos);
+});
+
+function showPhotos(){
+  $(this).find("span").slideToggle();
+}
+```
