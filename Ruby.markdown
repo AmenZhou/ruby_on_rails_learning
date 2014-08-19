@@ -319,3 +319,234 @@ def location_in_hierarchy(object, method)
   end
 end
 ```
+
+### Orders and Cost
+http://rubymonk.com/learning/books/1-ruby-primer/problems/155-restaurant
+```ruby
+class Restaurant
+  def initialize(menu)
+    @menu = menu
+  end
+
+  def cost(*orders)
+    # your code here
+    cost = 0
+    orders.each do |order|
+      order.each do |k, v|
+        cost += @menu[k] * v
+      end
+    end
+    cost
+  end
+end
+```
+Official Answer
+```ruby
+class Restaurant
+  def initialize(menu)
+    @menu = menu
+  end
+
+  def cost(*orders)
+    orders.inject(0) do |total_cost, order|
+      total_cost + order.keys.inject(0) {|cost, key| cost + @menu[key]*order[key] }
+    end
+  end
+end
+```
+
+### Palindromes
+
+http://rubymonk.com/learning/books/1-ruby-primer/problems/143-palindrome#solution4780
+
+```ruby
+def palindrome?(sentence)
+  # Write your code here
+  str = sentence.downcase.gsub(" ", "")
+  str == str.split("").reverse.join("")
+end
+```
+Official Anwser
+```ruby
+def palindrome?(sentence)
+  downcase_stripped_sentence = sentence.downcase.gsub(" ", "")
+  downcase_stripped_sentence  ==  downcase_stripped_sentence.reverse
+end
+```
+
+### Find non-duplicate values in an Array
+http://rubymonk.com/learning/books/1-ruby-primer/problems/147-non-duplicate-values
+
+```ruby
+def non_duplicated_values(values)
+  # Write your code here
+  values.delete_if{|v| values.count(v) > 1}
+end
+```
+Official Anwser
+```ruby
+def non_duplicated_values(values)
+  values.find_all { |x| values.count(x) == 1 }
+end
+```
+
+### Enough Contrast?
+
+http://rubymonk.com/learning/books/1-ruby-primer/problems/152-color-contrast
+
+```ruby
+class Color
+  attr_reader :r, :g, :b
+  def initialize(r, g, b)
+    @r = r
+    @g = g
+    @b = b
+  end
+
+  def brightness_index
+    (@r*299 + @g*587 + @b*114) / 1000
+  end
+  
+  def brightness_difference(another_color)
+    #your code here
+    (self.brightness_index - another_color.brightness_index).abs
+  end
+
+  def hue_difference(another_color)
+    #your code here
+    (@r - another_color.r).abs + (@g - another_color.g).abs + (@b - another_color.b).abs
+  end
+
+  def enough_contrast?(another_color)
+    # your code here
+    brightness_difference(another_color) > 125 and hue_difference(another_color) > 500
+  end
+end
+```
+Official Anwser
+
+```ruby
+class Color
+  attr_reader :r, :g, :b
+  def initialize(r, g, b)
+    @r = r
+    @g = g
+    @b = b
+  end
+
+  def brightness_index
+    (r*299 + g*587 + b*114) / 1000
+  end
+
+  def brightness_difference(another_color)
+    (brightness_index - another_color.brightness_index).abs
+  end
+
+  def hue_difference(another_color)
+    (r-another_color.r).abs +
+    (g-another_color.g).abs +
+    (b-another_color.b).abs
+  end
+
+  def enough_contrast?(another_color)
+    brightness_difference(another_color) > 125 && hue_difference(another_color) > 500
+  end
+end
+```
+### Check if all elements in an array are Fixnum
+
+http://rubymonk.com/learning/books/1-ruby-primer/problems/148-array_of_fixnum
+
+```ruby
+def array_of_fixnums?(array)
+  # Write your code here
+  array.each {|n| return false unless n.is_a?(Fixnum) }
+end
+```
+Official Answer
+```ruby
+def array_of_fixnums?(array)
+  array.all? { |x| x.is_a? Fixnum }
+end
+```
+
+### Kaprekar's Number
+
+http://rubymonk.com/learning/books/1-ruby-primer/problems/150-kaprekar-s-number#solution4794
+```ruby
+def kaprekar?(k)
+  num = k * k
+  i = 10
+  while(num / i != 0)
+    p num % i + num / i
+    return true if (num % i + num / i) == k
+    i *= 10
+  end
+  false
+end
+```
+Official
+```ruby
+def kaprekar?(k)
+  no_of_digits = k.to_s.size
+  square = (k ** 2).to_s
+  
+  second_half = square[-no_of_digits..-1]
+  first_half = square.size.even? ? square[0..no_of_digits-1] : square[0..no_of_digits-2]
+  
+  k == first_half.to_i + second_half.to_i
+end
+```
+
+### Splat
+
+Calculate median num of a array
+[1 ,2, 3] => 2
+[1, 2, 3, 4] => 2.5
+
+```ruby
+def median(*list)
+  # write your method here
+  return if list.empty?
+  arry = *list.sort
+  size = arry.size
+  arry.size.even? ? (arry[size / 2] + arry[size / 2 - 1]).to_f / 2 : arry[size / 2]
+end
+```
+###
+
+```ruby
+zen = *(1..42) #=> [1, 2, 3, ... 42]
+str = *"Zen" #=> ['Zen']
+```
+```ruby
+[[1, 2, 3, 4], [42, 43]].each { |a, *b| puts "#{a} #{b}" } 
+```
+```ruby
+puts Hash[4, 8]  #=> {4 => 8}
+puts Hash[ [[4, 8], [15, 16]] ] #{4 => 8, 15 => 16}
+```
+
+### Array
+
+http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/33-advanced-arrays/lessons/87-using-the-api#solution4078
+```ruby
+def zen(array)
+	# write your method here
+  index = array.flatten.compact.index(42) 
+  index == 5 ? index + 1 : nil
+end
+```
+
+zip
+
+```ruby
+p [4, 8, 15, 16, 23, 42].zip([42, 23, 16, 15, 8]) # => [[4, 42], [8, 23], [15, 16], [16, 15], [23, 8], [42, nil]]
+```
+slice
+```ruby
+p [4, 8, 15, 16, 23, 42].slice(2)   #=>15
+p [4, 8, 15, 16, 23, 42].slice(2..5) #=>[15, 16, 23, 42]
+```
+
+
