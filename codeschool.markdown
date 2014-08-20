@@ -1828,3 +1828,105 @@ $(document).ready(function() {
   });
 });
 ```
+### Level 5
+
+5.3 CSS I
+
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).css("background-color", "#252b30");
+  });
+});
+```
+
+5.4 CSS II
+
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).css({"background-color": "#252b30", "font-weight": "bold"});
+  });
+});
+```
+5.5 Show Photo
+
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).css({"background-color": "#252b30", "font-weight": "bold"});
+    $(this).find(".photos").show();
+  });
+});
+```
+5.6 Refactoring to CSS
+
+```javascript
+//don't add . inside the addClass and removeClass, addClass(".highlight") => wrong
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).addClass("highlight");
+    $(this).find(".photos").show();
+  });
+  $(".tour").on("mouseleave", function(){
+    $(this).removeClass("highlight");
+  });
+});
+```
+
+5.8 Animate I
+
+```javascript
+$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).addClass('highlight');
+    //the per night is default transparent , set the opacity to show it 
+    $(this).find(".per-night").animate({opacity: 1});
+  });
+  $('.tour').on('mouseleave', function() {
+    $(this).removeClass('highlight');
+  });
+});
+```
+
+5.9 Animate II
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).addClass("highlight");
+    $(this).find(".per-night").animate({"opacity": "1", "top": "-14px"});
+  });
+  $(".tour").on("mouseleave", function() {
+    $(this).removeClass("highlight");
+  });
+});
+```
+
+5.10 Animation Speed
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).addClass("highlight");
+    //add fast arg
+    $(this).find(".per-night").animate({"top": "-14px","opacity": "1"}, "fast");
+  });
+  $(".tour").on("mouseleave", function() {
+    $(this).removeClass("highlight");
+  });
+});
+```
+
+5.11 Animate III
+```javascript
+$(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).addClass("highlight");
+    $(this).find(".per-night").animate({"top": "-14px","opacity": "1"}, "fast");
+  });
+  $(".tour").on("mouseleave", function() {
+    $(this).removeClass("highlight");
+    //fadeOut when mouse leave
+    $(this).find(".per-night").animate({top: 0, opacity: 0}, "fast");
+  });
+});
+```
