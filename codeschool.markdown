@@ -1789,3 +1789,42 @@ $(document).ready(function() {
   });
 });
 ```
+
+4.19 Link Events II
+
+```javascript
+$(document).ready(function() {
+  $(".see-photos").on("click", function() {
+    $(this).closest(".tour").find(".photos").slideToggle();
+  });
+});
+```
+
+4.20 Event Parameter
+
+```javascript
+$(document).ready(function() {
+  $(".see-photos").on("click", function(event) {
+    event.stopPropagation();
+    $(this).closest(".tour").find(".photos").slideToggle();
+  });
+  $(".tour").on("click", function() {
+    alert("This should not be called");
+  });
+});
+```
+
+4.21 Event Parameter II
+
+```javascript
+$(document).ready(function() {
+  $(".see-photos").on("click", function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    $(this).closest(".tour").find(".photos").slideToggle();
+  });
+  $(".tour").on("click", function() {
+    alert("This should not be called");
+  });
+});
+```
