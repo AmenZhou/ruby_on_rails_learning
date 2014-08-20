@@ -1708,7 +1708,7 @@ end
 
 4.5 Slide Effect
 
-```jquery
+```javascript
 $(document).ready(function() { 
   //alert($(".photos").length)
   $("#tour").on("click", "button", function() { 
@@ -1719,7 +1719,7 @@ $(document).ready(function() {
 ```
 4.6 Slide Effect II
 
-```jquery
+```javascript
 $(document).ready(function() { 
   $("#tour").on("click", "button", function() { 
     $(".photos").slideToggle();
@@ -1729,7 +1729,7 @@ $(document).ready(function() {
 ```
 4.9 Mouseover II
 
-```jquery
+```javascript
 $(document).ready(function() {
   $("#tour").on("click", "button", function() {
     $(".photos").slideToggle();
@@ -1739,9 +1739,9 @@ $(document).ready(function() {
   });
 });
 ```
-### 4.11 Named Functions
+4.11 Named Functions
 
-```jquery
+```javascript
 $(document).ready(function() {
   $("#tour").on("click", "button", function() {
     $(".photos").slideToggle();
@@ -1752,4 +1752,40 @@ $(document).ready(function() {
 function showPhotos(){
   $(this).find("span").slideToggle();
 }
+```
+4.14 Keyup Event Handler 
+
+```javascript
+$(document).ready(function() {
+  $("#nights").on("keyup", function() {
+    var days = $(this).val();
+    $("#nights-count").text(days);
+  });
+});
+```
+4.15 Keyup Event Handler II
+
+```javascript
+$(document).ready(function() {
+  $("#nights").on("keyup", function() {
+    $("#nights-count").text($(this).val());
+    var total = +$(this).val() * +$(this).closest(".tour").data("daily-price");
+    $("#total").text(total);
+  });
+});
+```
+4.16 Another Event Handler
+
+```javascript
+$(document).ready(function() {
+  $("#nights").on("keyup", function() {
+    var nights = +$(this).val();
+    var dailyPrice = +$(this).closest(".tour").data("daily-price");
+    $("#total").text(nights * dailyPrice);
+    $("#nights-count").text($(this).val());
+  });
+  $("#nights").on("focus", function(){
+    $(this).val("7");
+  });
+});
 ```
