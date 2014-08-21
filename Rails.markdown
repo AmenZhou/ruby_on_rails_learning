@@ -362,3 +362,10 @@ end
 ### how do I subtract values from two select statements
 
 http://stackoverflow.com/questions/2611174/how-do-i-subtract-values-from-two-select-statements
+
+### SQL 
+attr is not empty string
+```
+where.not(text_value: '')
+where( "text_value <> ''" )
+```
