@@ -1930,3 +1930,49 @@ $(document).ready(function() {
   });
 });
 ```
+### Test Level 6
+
+1 FACTORIES
+
+```ruby
+FactoryGirl.define do
+  factory :zombie do
+    name 'Sally'
+    graveyard 'Valley Dim'
+  end
+end
+```
+
+2 COMPLEX FACTORIES
+
+```ruby
+FactoryGirl.define do
+  factory :zombie do
+    name 'Ash'
+    graveyard 'Petrosville'
+ 
+    # Add sally and moe here
+    factory :sally do
+      name 'Sally'
+      graveyard 'Valley Dim'
+    end
+  
+    factory :moe do
+      name 'Moe'
+      graveyard 'Petrosville'
+    end
+  end
+end
+```
+
+3 UNIQUE ATTRIBUTES
+
+```ruby
+FactoryGirl.define do
+  factory :zombie do
+    sequence(:name) {|i| "Ash#{i}"}
+    sequence(:graveyard) {|i| "Petrosville Cemetary#{i}"}
+  end
+end
+```
+
