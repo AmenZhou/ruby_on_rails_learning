@@ -369,3 +369,12 @@ attr is not empty string
 where.not(text_value: '')
 where( "text_value <> ''" )
 ```
+### combine two db search results
+```ruby
+s1 = Support.where(timer: 1) 
+s2 = Support.where(prep: true)
+s1 |= s2 # combine all records and uniq
+s1 &= s2 # combine all same records
+```
+
+
