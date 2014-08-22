@@ -1975,4 +1975,13 @@ FactoryGirl.define do
   end
 end
 ```
+4 ASSOCIATIONS
 
+```ruby
+FactoryGirl.define do
+  factory :tweet do
+    status "Dead"
+    association :zombie
+  end
+end
+```
