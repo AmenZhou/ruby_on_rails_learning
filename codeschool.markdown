@@ -1975,6 +1975,7 @@ FactoryGirl.define do
   end
 end
 ```
+
 4 ASSOCIATIONS
 
 ```ruby
@@ -1982,6 +1983,31 @@ FactoryGirl.define do
   factory :tweet do
     status "Dead"
     association :zombie
+  end
+end
+```
+
+5 USING FACTORIES
+
+```ruby
+class TweetTest < ActiveSupport::TestCase
+  test "A tweet requires a status" do
+    tweet = FactoryGirl.build(:tweet, status: nil)
+    assert !tweet.valid?, "tweet isn't valid"
+  end
+end
+```
+6 USING FACTORIES II
+
+```ruby
+class TweetTest < ActionDispatch::IntegrationTest
+  test "tweet page has zombie link" do 
+    @tweet = Factory(:tweet)
+    visit tweets_url
+    click_link @tweet.status
+    within("h3") do
+      assert has_content?(@tweet.zombie.name)
+    end
   end
 end
 ```
