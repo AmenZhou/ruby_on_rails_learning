@@ -620,3 +620,130 @@ class Queue
   end
 end
 ```
+Below is same as above
+
+```ruby
+class Queue
+  attr_accessor :body, :max_size
+  def initialize(size)
+    self.body = Array.new
+    self.max_size = size
+  end
+  
+  def dequeue
+    body.pop
+  end
+  
+  def enqueue(element)
+    return if full? or element.nil?
+    body.unshift(element)
+    self
+  end
+  
+  def size
+    self.max_size
+  end
+  
+  private
+  
+  def full?
+    body.size >= size
+  end
+  
+  def empty?
+    body.empty?
+  end
+end
+```
+
+### Disjoin Array
+
+```ruby
+class WaiterRobot
+
+  def initialize(chef, tables)
+    @chef = chef
+    @tables = tables
+    @name = "Tyler Durden"
+  end
+  
+  def name
+    @name
+  end
+  
+  def place_order(table_number, sandwich, drink)
+    # tell the chef with Chef#new_order(waiter_robot, order_hash)
+    @chef.new_order(self, {table: table_number, sandwich: sandwich, drink: drink})
+  end
+  
+  def serve(order)
+    # digest the chef's sloppy order instructions:
+    # 1) find the table number you need to serve
+    # 2) call Table#serve_sandwich and Table#serve_drink
+    puts "Test ++++++++++++++++++"
+    p order
+    p table
+    table = @tables[order[1]]
+    table.serve_sandwich(order[3])
+    table.serve_drink(order[5])
+  end
+  
+end
+```
+Official Anwser
+```ruby
+class WaiterRobot
+
+  def initialize(chef, tables)
+    @chef = chef
+    @tables = tables
+    @name = "Tyler Durden"
+  end
+  
+  def name
+    @name
+  end
+  
+  def place_order(table_number, sandwich, drink)
+    order = {:table => table_number, :sandwich => sandwich, :drink => drink}
+    @chef.new_order(self, order)
+  end
+  
+  def serve(order)
+    # digest the chef's sloppy order instructions:
+    # 1) find the table number you need to serve
+    o = Hash[*order]
+    table_number = o[:table]
+    table = @tables[table_number]
+    
+    # 2) call Table#serve_sandwich and Table#serve_drink
+    table.serve_sandwich(o[:sandwich])
+    table.serve_drink(o[:drink])
+  end
+end
+```  
+### Fake Matrix
+
+```ruby
+CHARACTERS = ["Joey Jeremiah", "Snake Simpson", "Wheels", "Spike Nelson", "Arthur Kobalewscuy", "Caitlin Ryan", "Shane McKay", "Rick Munro", "Stephanie Kaye"]
+
+def degrassi_couples
+  # match 'em up!
+  CHARACTERS.product(CHARACTERS).delete_if{|x| x[0] == x[1]}
+end
+```
+
+### Column Base Matrix trans to Row Base Matrix
+
+```ruby
+class Announcements
+  def initialize(printer)
+    @printer = printer
+  end
+  
+  def notify_user(column_table)
+    row_table = column_table.transpose# batter up!
+    @printer.print_with_ink(row_table)
+  end
+end
+```
