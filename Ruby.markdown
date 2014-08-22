@@ -549,4 +549,74 @@ p [4, 8, 15, 16, 23, 42].slice(2)   #=>15
 p [4, 8, 15, 16, 23, 42].slice(2..5) #=>[15, 16, 23, 42]
 ```
 
+### Stack
 
+```ruby
+class Stack
+  def initialize(size)
+    @stack = Array.new
+    @size = size
+  end
+  
+  def pop
+    @stack.pop
+  end
+  
+  def push(element)
+    return if full? or element.nil?
+    @stack.push(element)
+    self
+  end
+  
+  def size
+    @size
+  end
+  
+  def look
+    @stack.last
+  end
+  
+  private
+  
+  def full?
+    @stack.size >= @size
+  end
+  
+  def empty?
+    @stack.empty?
+  end
+end
+```
+
+```ruby
+class Queue
+  def initialize(size)
+    @queue = Array.new
+    @size = size
+  end
+  
+  def dequeue
+    @queue.pop
+  end
+  
+  def enqueue(element)
+    return if full? or element.nil?
+    @queue.unshift(element)
+    self
+  end
+  
+  def size
+    @size
+  end
+  
+  private
+  
+  def full?
+    @queue.size >= size
+  end
+  
+  def empty?
+    @queue.empty?
+  end
+end
+```
