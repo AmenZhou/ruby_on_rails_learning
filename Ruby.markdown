@@ -776,3 +776,41 @@ end
 puts Bar.say
 puts Bar.guitar
 ```
+# Rescue
+
+```ruby
+EXAMPLE_SECRETS = ["het", "keca", "si", nil, "iel"]
+
+def decode(jumble)
+  secret = jumble.split("").rotate(3).join("")
+  announce(secret)
+  secret
+end
+
+#method raise a error
+def decode_all(secrets)
+  secrets.map do |secret|
+    decode(secret)
+  end
+rescue Exception => e
+  puts "String can't be decoded, #{e.inspect}"
+end
+```
+#ensure -- do something whether it failed or not
+```ruby
+class UserDataAccess
+  attr_accessor :db
+  
+  def initialize
+    @db = Database.new
+  end
+
+  def find_user(name)
+    @db.find("SELECT * FROM USERS WHERE NAME = '%'", name)
+  rescue Exception => e
+    puts "A database error occurred."
+  ensure
+    @db.close  
+  end
+end
+```
