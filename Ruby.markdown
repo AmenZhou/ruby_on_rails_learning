@@ -747,3 +747,32 @@ class Announcements
   end
 end
 ```
+
+### include and extend
+
+```ruby
+module Foo
+
+  def self.included(base)
+    base.extend ClassMethods
+  end
+
+  def say
+    "hello world"
+  end
+  
+  module ClassMethods
+    def guitar
+      "gently weeps"
+    end
+  end
+end
+
+class Bar
+  include Foo #only call instance method
+  extend Foo #call class method
+end
+
+puts Bar.say
+puts Bar.guitar
+```
