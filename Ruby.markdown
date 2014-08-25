@@ -881,3 +881,35 @@ def search(floor)
   end
 end
 ```
+### 6.1 Literals
+
+```ruby
+def quoted_string(to_be_quoted)
+  # quotes in quotes.
+  "Suuuure. You were just \"making sure the cake was comfortable\"."
+end
+```
+
+```ruby
+def multi_line_string(*lines)
+  # newline, carriage-return, whatever-you-call it.
+  "Here are your lines!\n\n#{lines.join("\n")}"
+end
+puts multi_line_string(["abc", "def"])
+```
+
+```ruby
+def big_q_string(numerator, denominator)
+	%Q[This %Q syntax is the ugliest one.
+#{numerator} out of #{denominator} "dentists" agree.]
+end
+puts big_q_string(4, 5) #=>This %Q syntax is the ugliest one. 
+                        # 4 out of 5 "dentists" agree.
+```
+Generate a-z charactor 
+```ruby
+def range_of_characters
+  # an easy one!
+  ('a'..'z')
+end
+```
