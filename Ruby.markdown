@@ -830,11 +830,22 @@ def decode_all(secrets)
   secrets.map{ |secret| decode(secret)} rescue "it's okay, little buddy."
 end
 ```
+
 Write a string_slice method that accepts 5 string parameters and raises ArgumentError if more than 5 are passed in. string_slice returns a sequential array of these strings sliced up until the third character; it also raises IndexError if the string is less than 3 characters long.
 
 ```ruby
 def string_slice(*strings)
   raise ArgumentError, "Argument Error" if strings.size > 5
   strings.map {|x| raise IndexError, "Index error" if x.length < 3; x.slice(0..2)}
+end
+```
+
+Raise a custom exception handler KasayaError in the robe method if the argument type is not a String "Kasaya". It should return "Dharmaguptaka's Kasaya Robe" otherwise
+```ruby
+def robe(type)
+  raise KasayaError if type.downcase != "kasaya"
+  "Dharmaguptaka's Kasaya Robe"
+end
+class KasayaError < StandardError
 end
 ```
