@@ -376,5 +376,20 @@ s2 = Support.where(prep: true)
 s1 |= s2 # combine all records and uniq
 s1 &= s2 # combine all same records
 ```
+### Lib Folder In Rails
+
+load code in the lib folder 
+
+```ruby
+#config/application.rb:
+config.autoload_paths += %W(#{Rails.root}/lib)
+
+#require a file under lib
+require "easter"
+
+#require a file under subdirectory of lib
+require "shipping/airmail"
+```
+
 
 
