@@ -849,3 +849,35 @@ end
 class KasayaError < StandardError
 end
 ```
+
+### 5.2 Throw and Catch
+
+```ruby
+floor = [["blank", "blank", "blank"],
+         ["gummy", "blank", "blank"],
+         ["blank", "blank", "blank"]]
+
+attempts = 0
+candy = catch(:found) do
+	floor.each do |row|
+  	row.each do |tile|
+      attempts += 1
+    	throw(:found, tile) if tile == "jawbreaker" || tile == "gummy"
+  	end
+	end
+end
+puts candy
+puts attempts
+```
+
+Use return instead of catch and throw pair
+
+```ruby
+def search(floor)
+  floor.each do |row|
+  	row.each do |tile|
+      return tile if tile == "jawbreaker" || tile == "gummy"
+  	end
+  end
+end
+```
