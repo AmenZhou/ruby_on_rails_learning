@@ -950,3 +950,25 @@ def call_sheep
   Fence::Sheep.new.speak
 end
 ```
+
+### 7.0 Enumerators and Enumerables
+
+Try and implement a simplemap_with_index on the Array class through which you can call a block with two arguments: the element and its index. It should return an Enumerator object if no block is given, an Array otherwise.
+
+My Answer
+```ruby
+class Array
+def map_with_index(&block)
+  block_given? ? each_with_index.map(&block) : each_with_index
+end
+end
+```
+
+Official 
+```ruby
+class Array
+  def map_with_index(&block)
+    self.each_with_index.map(&block)
+  end
+end
+```
