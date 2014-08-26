@@ -922,3 +922,31 @@ $* (the command-line arguments used to execute this Ruby program),
 $@ (the location of the last error), 
 $~ (the last regular expression match), 
 $0 (the name of the current ruby script)
+
+### 6.3 Constant
+
+another way to define a class 
+```ruby
+def awkward_sheep
+  sheep = Class.new do
+    def speak
+      "Bah."
+    end
+  end
+  # create a class here with a method 'speak'
+end
+```
+
+```ruby
+module Fence
+  Sheep = Class.new do
+    def speak
+      "Bah."
+    end
+  end
+end
+
+def call_sheep
+  Fence::Sheep.new.speak
+end
+```
