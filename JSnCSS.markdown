@@ -49,3 +49,31 @@ http://www.iconarchive.com/show/vista-map-markers-icons-by-icons-land/Map-Marker
 ```css
 -webkit-box-sizing: border-box;
 ```
+### Show Text Hover Over An Ele
+
+View Page
+
+```ruby
+small data-title="#{cog_issue.name}" 
+ =cog_issue.name.truncate(14) 
+```
+
+CSS
+```css
+small[data-title]:hover:after{
+  content: attr(data-title);
+  font-size: 16px;
+  background:white;
+  padding: 4px 8px;
+  color: #333; 
+  position: absolute; 
+  white-space: nowrap; 
+  z-index: 20px; 
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  border-radius: 5px; 
+  -moz-box-shadow: 0px 0px 4px #222;  
+  -webkit-box-shadow: 0px 0px 4px #222;     
+  box-shadow: 0px 0px 4px #222;
+}
+```
