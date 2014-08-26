@@ -913,3 +913,12 @@ def range_of_characters
   ('a'..'z')
 end
 ```
+
+### Ruby Monk 6.2 Variables
+
+$ => Prefix of Global Variable
+
+$* (the command-line arguments used to execute this Ruby program), 
+$@ (the location of the last error), 
+$~ (the last regular expression match), 
+$0 (the name of the current ruby script)
