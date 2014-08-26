@@ -390,6 +390,68 @@ require "easter"
 #require a file under subdirectory of lib
 require "shipping/airmail"
 ```
+### Table Association With Non-index Foreign Key
 
+Two talbes - players and battings, player has many battings, battings belongs to a player
 
+```ruby
+belongs_to :player, primary_key: :player_id, foreign_key: :player_id
+has_many :battings, primary_key: :player_id, foreign_key: :player_id
+```
 
+### Agile Web Development
+
+show table columns name
+
+```ruby
+Order.column_names
+#=> ["id", "name", "address", "email", "pay_type", "created_at", "updated_at"]
+```
+
+show column detail
+```ruby
+Order.columns_hash["pay_type"]
+#<ActiveRecord::ConnectionAdapters::SQLite3Column:0x00000003618228
+#@name="pay_type", @sql_type="varchar(255)", @null=true, @limit=255,
+#@precision=nil, @scale=nil, @type=:string, @default=nil,
+#@primary=false, @coder=nil>
+```
+
+SQL
+```ruby
+#params[:order] = {name: "xxx", pay_type: "xxx"}
+Order.where("name = :name and pay_type = :pay_type", params[:order])
+
+# equl to 
+Order.where(params[:order])
+
+#wrong
+User.where("name like '?%'", params[:name])
+
+#correct
+User.where("name like ?", params[:name]+"%")
+
+#order
+orders = Order.where(name: 'Dave').order("pay_type, shipped_at DESC")
+
+#offset
+def Order.find_on_page(page_num, page_size)
+  order(:id).limit(page_size).offset(page_num*page_size)
+end
+
+#select
+list = Talk.select("title, speaker, recorded_on")
+
+#joins
+LineItem.select('li.quantity').where("pr.title = 'Programming Ruby 1.9'").joins("as li inner join products as pr on li.product_id = pr.id")
+
+#get staticstic
+average = Order.average(:amount) # average amount of orders
+max = Order.maximum(:amount)
+min = Order.minimum(:amount)
+total = Order.sum(:amount)
+number = Order.count
+
+#something mix
+Order.group(:state).order("max(amount) desc").limit(3)
+```
