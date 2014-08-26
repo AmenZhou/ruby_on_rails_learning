@@ -37,3 +37,15 @@ http://www.iconarchive.com/show/vista-map-markers-icons-by-icons-land/Map-Marker
 ### Solve the problem of load google map and chart in rails
 
 [http://stackoverflow.com/questions/14227363/using-turbolinks-in-a-rails-link-to](http://stackoverflow.com/questions/14227363/using-turbolinks-in-a-rails-link-to)
+
+### CSS Hide Arrow of Select Box
+
+```css
+ -webkit-appearance:none;
+```
+ 
+### CSS Avoid Padding Extend Width
+
+```css
+-webkit-box-sizing: border-box;
+```
