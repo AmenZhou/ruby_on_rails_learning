@@ -455,3 +455,54 @@ number = Order.count
 #something mix
 Order.group(:state).order("max(amount) desc").limit(3)
 ```
+
+```ruby
+orders = Order.find_by_sql("select name, pay_type from orders")
+
+first = orders[0]
+
+p first.attributes
+
+p first.attribute_names
+
+p first.attribute_present?("address")
+
+#This code produces the following:
+
+#{"name"=>"Dave Thomas", "pay_type"=>"check"}
+
+#["name", "pay_type"]
+
+#false
+```
+
+```ruby
+order = Order.update(12, name: "Barney", email: "barney@bedrock.com")
+
+result = Product.update_all("price = 1.1*price", "title like '%Java%'")
+```
+
+```ruby
+def save_after_edit
+  order = Order.find(params[:id])
+    if order.update(order_params)
+    redirect_to action: :index
+  else
+    render action: :edit
+  end
+end
+```
+
+```ruby
+Order.destroy_all(["shipped_at < ?", 30.days.ago])
+```
+
+### AcitiveController
+
+```ruby
+resources :comments, except: [:update, :destroy]
+
+resources :products do
+  resources :reviews
+end
+
