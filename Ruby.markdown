@@ -972,3 +972,64 @@ class Array
   end
 end
 ```
+
+### 7,1
+
+```ruby
+def occurrences(str)
+  str.downcase.scan(/\w+/).inject(Hash.new(0)){|hash, char| hash.update(char => hash[char] + 1)}
+ # str.downcase.scan(/\w+/).inject(Hash.new(0)){|hash, char| puts hash[char]} wrong method
+end
+```
+
+```ruby
+[4, 8, 15, 16, 23, "42"].any? { |e| e.class == String }
+
+{:locke => 4, :hugo => 8}.any? { |candidate| candidate[1] > 4 } 
+
+{:locke => 4, :hugo => 8}.any? { |candidate, number| number < 4 } 
+```
+
+```ruby
+class Island
+  def initialize(candidates)
+    @candidates = candidates
+    puts @candidates
+  end
+  
+  def survive?
+    @candidates.none?{|c| c == 'Esau'}
+  end
+  
+  def safe?
+    @candidates.all?{|c| c == 'Jack'}
+  end
+end
+```
+
+```ruby
+union_example = ["a", "b", "a"] | ["c", "c"] #=>["a", "b", "c"]
+
+array_difference = [1,2,3, 1,2,3] - [1] #=> [2, 3, 2, 3]
+```
+
+```ruby
+class Order
+  GIFT_ITEMS = [Item.new(:big_white_tshirt), Item.new(:awesome_stickers)]
+  OUT_OF_STOCK_ITEMS = [Item.new(:ssd_harddisk)]
+
+  def initialize(order)
+    @order = order || []  
+    puts @order
+  end
+  
+  def final_order
+    # fix this method to get the tests to pass.
+    @order = @order - OUT_OF_STOCK_ITEMS + GIFT_ITEMS
+  end
+end
+
+customer_order = Order.new([Item.new(:fancy_bag),Item.new(:ssd_harddisk)])
+
+p customer_order.final_order
+```
