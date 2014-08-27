@@ -114,3 +114,21 @@ https://github.com/astrails/dotvim
 
 ###### solve ctags error
 sudo apt-get install exuberant-ctags
+
+### config pg 
+
+create user
+```
+createuser -s myapp
+```
+config/database.yml
+```ruby
+  adapter: postgresql
+  database: wikiful_development
+  encoding: unicode
+  username: myapp 
+  password: password1
+  host: localhost
+  pool: 5
+  timeout: 5000
+```
