@@ -2222,3 +2222,89 @@ $(document).ready(function() {
   tour.init();
 });
 ```
+2.6 Creating an Function
+
+```javascript
+//notice the capital T of the function name
+function Tour() {
+  console.log("A new Tour was created");
+}
+$(document).ready(function() { 
+//new + object name
+  var tour = new Tour();
+});
+```
+
+2.7 Functionality in Functions
+```javascript
+function Tour(price) {
+  console.log("A new Tour was created");
+  this.price = price;
+  this.cost = function(nights){
+    console.log(nights * this.price);
+  }
+}
+$(document).ready(function() { 
+  var tour = new Tour(100);
+  tour.cost(4);
+});
+```
+
+2.8
+```javascript
+function Tour(el) {
+  console.log(el)
+}
+$(document).ready(function() { 
+  var paris = new Tour($('#paris'));
+});
+```
+
+2.9 Function Setup
+
+```javascript
+function Tour(el) {
+  this.el = el;
+  //fetchPhotos must be defined before calling
+  this.fetchPhotos = function(){
+    alert("hello");
+  }
+  this.el.on('click', 'button', this.fetchPhotos);
+}
+$(document).ready(function() { 
+  var paris = new Tour($('#paris'));
+});
+```
+
+2.10 fetchPhotos Refactor
+```javascript
+function Tour(el) {
+  var tour = this;
+  this.el = el;
+  this.fetchPhotos = function() {
+    $.ajax('/photos.html', {
+      context: tour,
+      //notice this time it should use el which from Tour parameter, not this.el
+      //the context only affect success and error functions
+      data: {location: el.data('location')},
+      success: function(response) {
+        this.el.find('.photos').html(response).fadeIn();
+      },
+      error: function() {
+        this.el.find('.photos').html('<li>There was a problem fetching the latest photos. Please try again.</li>');
+      },
+      timeout: 3000,
+      beforeSend: function() {
+        this.el.addClass('is-fetching');
+      },
+      complete: function() {
+        this.el.removeClass('is-fetching');
+      }
+    });
+  };
+  this.el.on('click', 'button', this.fetchPhotos);
+}
+$(document).ready(function() { 
+  var paris = new Tour($('#paris'));
+});
+```
