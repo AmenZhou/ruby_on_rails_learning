@@ -1033,3 +1033,21 @@ customer_order = Order.new([Item.new(:fancy_bag),Item.new(:ssd_harddisk)])
 
 p customer_order.final_order
 ```
+7.2
+
+```ruby
+class FibonacciNumbers
+  NUMBERS = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+    
+  def each
+    for el in NUMBERS
+      yield(el)
+    end
+  end
+end
+
+f=FibonacciNumbers.new
+f.each do |fibonacci_number|
+  puts "A Fibonacci number multiplied by 10: #{fibonacci_number*10}"
+end
+```
