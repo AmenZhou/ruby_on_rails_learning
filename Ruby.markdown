@@ -1051,3 +1051,134 @@ f.each do |fibonacci_number|
   puts "A Fibonacci number multiplied by 10: #{fibonacci_number*10}"
 end
 ```
+
+Enumerable
+```ruby
+class FibonacciNumbers
+  NUMBERS = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+  #this is important!! include Enumerable
+  include Enumerable
+  # all your code goes here
+  # once implement each method, all other enumerable methods depends on it
+  def each
+    for n in NUMBERS
+      yield(n)
+    end
+  end
+  
+  #optional implenment-- do not need to implement inject and map methods 
+  def inject(accumulator=0, &block)
+    self.each do |item|
+      accumulator = block.call(accumulator, item)
+    end
+    accumulator
+  end
+  
+  def map(&block)
+    return_value = []
+    self.each do |item|
+      return_value << block.call(item)
+    end
+    return_value
+  end
+end
+
+
+f = FibonacciNumbers.new
+puts f.inject(0){|sum, n| sum + n}
+
+if f.respond_to?(:map)
+  squares = f.map {|number| number * number }
+	puts "The squares of the fibonacci numbers are #{squares}"
+else
+  puts "I'll reveal the squares to you once you pass the tests."
+end
+```
+
+### 7.3
+
+understanding of gsub
+
+```ruby
+a = "tom"
+b = "jerry"
+superheroes = [a,b]
+puts superheroes #=>tom, jerry
+
+# reassign a to a different superhero
+a = "batman"
+puts superheroes #=>tom jerry
+
+# jerry is in fact superman. who knew!
+b.gsub!("jerry", "superman")
+puts superheroes #=> tom, superman
+```
+
+### The Debugging Primaries
+
+Use debug technic to solve problem
+
+Old one
+```ruby
+class VisualAcuity
+  def initialize(subject, normal)
+    @subject = subject
+    @normal = normal    
+  end
+  def can_drive?
+    (@subject / @normal) >= 0.5
+  end  
+end
+
+class DrivingLicenseAuthority
+  def initialize(name, age, visual_acuity)
+    @name = name
+    @visual_acuity = visual_acuity
+  end
+  
+  def valid_for_license?
+		@age >= 18
+  end
+  
+  def verdict
+    if valid_for_license?
+	    "#{@name} can be granted driving license"
+    else
+      "#{@name} cannot be granted driving license"
+    end
+  end
+end
+```
+
+Fixed one
+```ruby
+class VisualAcuity
+  def initialize(subject, normal)
+    @subject = subject
+    @normal = normal    
+  end
+  def can_drive?
+    (@subject.to_f / @normal.to_f) >= 0.5
+  end  
+end
+
+class DrivingLicenseAuthority
+  def initialize(name, age, visual_acuity)
+    @age = age
+    @name = name
+    @visual_acuity = visual_acuity
+  end
+  
+  def valid_for_license?
+    @age >= 18 and @visual_acuity.can_drive?
+  end
+  
+  def verdict
+    if valid_for_license?
+	    "#{@name} can be granted driving license"
+    else
+      "#{@name} cannot be granted driving license"
+    end
+  end
+end
+```
