@@ -505,4 +505,30 @@ resources :comments, except: [:update, :destroy]
 resources :products do
   resources :reviews
 end
+```
+### Migration
 
+```ruby
+rake db:migrate VERSION=20121130000009
+
+rake db:migrate:redo STEP=3
+```
+
+change table name , include other changes related
+```ruby
+class CreateOrderHistories < ActiveRecord::Migration
+class Order < ActiveRecord::Base; end
+
+class OrderHistory < ActiveRecord::Base; end
+  def change
+    create_table :order_histories do |t|
+      t.integer :order_id, null: false
+      t.text :notes
+      t.timestamps
+    end
+    
+    order = Order.find :first
+    OrderHistory.create(order: order_id, notes: "test")
+  end
+end
+```
