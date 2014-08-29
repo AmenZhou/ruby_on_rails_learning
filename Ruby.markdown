@@ -1200,3 +1200,72 @@ Benchmark.bm do |benchmark|
   end
 end
 ```
+
+9.2 What is an object?
+
+```ruby
+class Dish
+end
+
+class Soup < Dish
+end
+class IceCream < Dish
+end
+class ChineseGreenBeans < Dish
+end
+
+class DeliveryTray
+  DISH_BOWL_MAPPING = { 
+    Soup => "soup bowl",
+    IceCream => "ice cream bowl",
+    ChineseGreenBeans => "serving plate"
+  }
+    
+  def initialize
+    @delivery_tray = {Soup => 0,
+      IceCream => 0,
+      ChineseGreenBeans => 0}
+  end
+  
+  def add(dish)
+    @delivery_tray[dish.class] = @delivery_tray[dish.class] + 1
+  end
+  
+  def dishes_needed
+    text = @delivery_tray.map do |key, value|
+      next if value == 0
+      value.to_s + " " + DISH_BOWL_MAPPING[key]
+		#"None."
+    end
+    text.compact.join(", ")
+  end
+end  
+
+d = DeliveryTray.new
+d.add Soup.new; d.add Soup.new
+d.add IceCream.new
+
+puts d.dishes_needed # should be "2 soup bowl, 1 ice cream bowl"
+```
+
+### Singleton Methods
+
+```ruby
+class Object  
+  def singleton_method?(method)
+    singleton_methods = 
+      self.singleton_class.instance_methods - self.class.instance_methods
+        
+    singleton_methods.include? method
+  end
+end
+
+
+foo = "A string"
+def foo.shout
+  puts foo.upcase
+end
+
+# shout is a singleton method.
+p foo.singleton_method?(:shout)
+```
