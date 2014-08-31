@@ -532,3 +532,10 @@ class OrderHistory < ActiveRecord::Base; end
   end
 end
 ```
+
+### Add Secret Key
+in the console
+
+```
+echo "Twetter::Application.config.secret_key_base = '`bundle exec rake secret`'" > config/initializers/secret_token.rb
+```
