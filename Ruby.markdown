@@ -1269,3 +1269,87 @@ end
 # shout is a singleton method.
 p foo.singleton_method?(:shout)
 ```
+
+### Send
+
+```ruby
+def relay(array, data_type)
+  # Write your code here
+  array.map{|x| x.send("to_#{data_type}")}
+end
+```
+
+### Missing Method
+
+method_missing method won't return any response even if call a undefined method
+```ruby
+class Spy
+  # Write your code here
+  def method_missing(sym, *args, &block)
+  end
+end
+
+Spy.new.hello #=> nothing
+```
+record the methods were called before
+
+```ruby
+class MethodCall
+  def initialize(sym, args)
+    @sym = sym
+    @args = args
+  end
+  
+  def sym
+    @sym
+  end
+  
+  def args
+    @args
+  end
+  
+  def ==(other_call)
+    @sym == other_call.sym && @args == other_call.args
+  end
+end
+
+class Spy
+  def initialize
+    @method_calls = []
+  end
+  
+  def method_missing(sym, *args, &block)
+    @method_calls << MethodCall.new(sym, args)
+  end
+
+  def method_called?(sym, *args)
+    @method_calls.include?(MethodCall.new(sym, args))
+  end
+end
+```
+
+```ruby
+class Spy
+  def initialize(enemy_agent)
+    @enemy_agent = enemy_agent
+  end
+
+  # Write your method_missing here
+  def method_missing(sym, *args)
+    @enemy_agent.send(sym, *args)
+  end
+end
+```
+
+### 1.2 Define Method
+
+```ruby
+class Monk
+  # put your code here
+  %w(life the_universe everything).each do |s|
+    define_method("meditate_on_#{s}") do
+      "I know the meaning of #{s.split("_").join(" ")}"
+    end
+  end
+end
+```
