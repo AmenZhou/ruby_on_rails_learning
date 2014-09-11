@@ -544,3 +544,8 @@ echo "Twetter::Application.config.secret_key_base = '`bundle exec rake secret`'"
 Fix the problem of storing Chinese char failed
 
 http://stackoverflow.com/questions/9479607/rails-show-question-marks-for-my-input-utf8-data
+
+### Try to know Stripe
+
+https://stripe.com/docs/checkout/guides/rails
+
