@@ -539,3 +539,8 @@ in the console
 ```
 echo "Twetter::Application.config.secret_key_base = '`bundle exec rake secret`'" > config/initializers/secret_token.rb
 ```
+### MySQL
+
+Fix the problem of storing Chinese char failed
+
+http://stackoverflow.com/questions/9479607/rails-show-question-marks-for-my-input-utf8-data
