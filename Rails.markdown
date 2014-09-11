@@ -549,3 +549,12 @@ http://stackoverflow.com/questions/9479607/rails-show-question-marks-for-my-inpu
 
 https://stripe.com/docs/checkout/guides/rails
 
+### Validation of Model
+
+```ruby
+validates_numericality_of :count, greater_than: 4
+
+validates :start_at, time_period: { scope: :end_at }
+
+validates :oprice_in_cents, :amount, numericality: true
+```
