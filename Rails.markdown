@@ -558,3 +558,7 @@ validates :start_at, time_period: { scope: :end_at }
 
 validates :oprice_in_cents, :amount, numericality: true
 ```
+
+### Test Database clean after and before each test
+
+http://stackoverflow.com/questions/12220901/sqlite3sqlexception-when-using-database-cleaner-with-rails-spork-rspec
