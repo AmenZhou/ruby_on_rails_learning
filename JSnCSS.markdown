@@ -77,3 +77,7 @@ small[data-title]:hover:after{
   box-shadow: 0px 0px 4px #222;
 }
 ```
+### Render a rails partial in js.erb file
+```ruby
+$("#table_sum").text("").append("<%= j raw render(partial:'summary_row')%>");
+```
