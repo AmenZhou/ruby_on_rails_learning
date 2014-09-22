@@ -562,3 +562,8 @@ validates :oprice_in_cents, :amount, numericality: true
 ### Test Database clean after and before each test
 
 http://stackoverflow.com/questions/12220901/sqlite3sqlexception-when-using-database-cleaner-with-rails-spork-rspec
+
+### carrierwave and minimagick work together 
+
+example code:
+https://github.com/brtr/group/commit/f442f751328a83a828bfae027e84586361d44720
