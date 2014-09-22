@@ -567,3 +567,8 @@ http://stackoverflow.com/questions/12220901/sqlite3sqlexception-when-using-datab
 
 example code:
 https://github.com/brtr/group/commit/f442f751328a83a828bfae027e84586361d44720
+
+### Thin run in background
+```
+thin -p 9292 -P tmp/pids/thin.pid -l logs/thin.log -d start
+```
