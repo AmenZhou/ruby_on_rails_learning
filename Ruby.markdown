@@ -1353,3 +1353,47 @@ class Monk
   end
 end
 ```
+### 2.1 Inspector Gadget
+
+```ruby
+def monk(arg1, *args2)
+  "Monks" + arg1 + args2.first
+end
+
+mo = self.method(:monk)
+
+puts "Arity"
+p mo.arity
+
+puts "Parameters"
+p mo.parameters
+# => Arity
+#-2
+#Parameters
+#[[:req, :arg1], [:rest, :args2]]
+```
+
+```ruby
+class Monastery
+	def monks(arg1, arg2)
+  	"Monks" + arg1 + arg2
+	end
+end
+
+mo = Monastery.new.method(:monks)
+
+puts "Receiver --"
+p mo.receiver
+
+puts
+
+puts "Owner --"
+p mo.owner
+
+# =>
+#Receiver --
+#<Monastery:0x000000030d3308>
+
+#Owner --
+#Monastery
+```
