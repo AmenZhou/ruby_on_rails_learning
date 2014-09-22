@@ -1397,3 +1397,12 @@ p mo.owner
 #Owner --
 #Monastery
 ```
+
+2.2 Tap in Deeper
+
+```ruby
+def inspect_instance_variable(class_name, variable)
+  klass = Module.const_get(class_name).new #get class name constant and then generate an object of that class
+  klass.instance_variable_get('@' + variable)# get instance of that class
+end
+```
