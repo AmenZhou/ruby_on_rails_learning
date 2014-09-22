@@ -81,3 +81,7 @@ small[data-title]:hover:after{
 ```ruby
 $("#table_sum").text("").append("<%= j render(partial:'summary_row')%>");
 ```
+### datetime picker
+
+A useful datetime controller
+http://xdsoft.net/jqplugins/datetimepicker/
