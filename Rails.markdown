@@ -572,3 +572,7 @@ https://github.com/brtr/group/commit/f442f751328a83a828bfae027e84586361d44720
 ```
 thin -p 9292 -P tmp/pids/thin.pid -l logs/thin.log -d start
 ```
+
+### DateTime Parse
+
+http://stackoverflow.com/questions/18461798/rails-4-convert-datetime-into-separate-date-and-time-fields
