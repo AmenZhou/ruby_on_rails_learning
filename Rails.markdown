@@ -580,5 +580,5 @@ http://stackoverflow.com/questions/18461798/rails-4-convert-datetime-into-separa
 ### Form Helper Select
 
 ```ruby
-<%= f.select q_param_name(:category), options_for_select(category_options, saved_selected_item(:category)), {}, prompt: 'All', class: "form-control" %>
+<%= f.select q_param_name(:category), options_for_select(category_options, saved_selected_item(:category)), {prompt: 'All'}, {class: "form-control"} %>
 ```
