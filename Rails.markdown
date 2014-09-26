@@ -582,3 +582,7 @@ http://stackoverflow.com/questions/18461798/rails-4-convert-datetime-into-separa
 ```ruby
 <%= f.select q_param_name(:category), options_for_select(category_options, saved_selected_item(:category)), {prompt: 'All'}, {class: "form-control"} %>
 ```
+
+### Hash can accept both sym and string key type
+
+http://api.rubyonrails.org/classes/ActiveSupport/HashWithIndifferentAccess.html
