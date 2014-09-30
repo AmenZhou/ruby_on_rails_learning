@@ -586,3 +586,15 @@ http://stackoverflow.com/questions/18461798/rails-4-convert-datetime-into-separa
 ### Hash can accept both sym and string key type
 
 http://api.rubyonrails.org/classes/ActiveSupport/HashWithIndifferentAccess.html
+
+
+### Get Model name in Controller
+
+```ruby
+controller_name.classify.constantize
+```
+### Get Controller Name in View
+
+```ruby
+controller.controller_name
+```
