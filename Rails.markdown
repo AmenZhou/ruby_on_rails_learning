@@ -598,3 +598,7 @@ controller_name.classify.constantize
 ```ruby
 controller.controller_name
 ```
+
+### rake task with arguments
+
+http://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task
