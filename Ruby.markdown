@@ -1406,3 +1406,10 @@ def inspect_instance_variable(class_name, variable)
   klass.instance_variable_get('@' + variable)# get instance of that class
 end
 ```
+### Tech Talk
+
+https://gist.github.com/shellyser/082dec009bbfe256406d#file-DSL-rb
+
+https://github.com/superbay/knowledge/blob/master/tech_talk/concern.markdown
+
+http://stackoverflow.com/questions/19098663/auto-loading-lib-files-in-rails-4
