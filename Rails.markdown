@@ -602,3 +602,53 @@ controller.controller_name
 ### rake task with arguments
 
 http://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task
+
+### deploy with apache and passenger on nitrous.io
+
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-rails-4-app-with-apache-and-passenger-on-centos-6
+
+1 install apache, use autopart tools
+
+2 gem install passenger
+
+```
+gem install passenger
+```
+
+3 run console command 
+
+```
+passenger-install-apache2-module  
+```
+4 see the apache config file example -- passenger config part
+
+```
+</IfModule>                                                                                                                                                        
+LoadModule passenger_module /home/action/.gem/ruby/2.1.1/gems/passenger-4.0.53/buildout/apache2/mod_passenger.so                                                   
+<IfModule mod_passenger.c>                                                                                                                                         
+  PassengerRoot /home/action/.gem/ruby/2.1.1/gems/passenger-4.0.53                                                                                                 
+  PassengerDefaultRuby /home/action/.parts/packages/ruby2.1/2.1.1/bin/ruby                                                                                         
+</IfModule>                                                                                                                                                        
+                                                                                                                                                                   
+<VirtualHost *:3000>                                                                                                                                               
+  ServerName epoch-152230.use1-2.nitrousbox.com                                                                                                                    
+  # !!! Be sure to point DocumentRoot to 'public'!                                                                                                                 
+  DocumentRoot /home/action/workspace/www/epoch-newspaper-boxes/public                                                                                             
+  <Directory /home/action/workspace/www/epoch-newspaper-boxes/public>                                                                                              
+    # This relaxes Apache security settings.                                                                                                                       
+    AllowOverride all                                                                                                                                              
+    # MultiViews must be turned off.                                                                                                                               
+    Options -MultiViews                                                                                                                                            
+    # Uncomment this if you're on Apache >= 2.4:                                                                                                                   
+    #Require all granted                                                                                                                                           
+   </Directory>                                                                                                                                                    
+</VirtualHost>  
+```
+
+5 precompile rails resources
+
+```
+rake assets:precompile RAILS_ENV=production
+```
+
+6 restart apache service
