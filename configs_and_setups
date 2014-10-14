@@ -1,0 +1,7 @@
+### Change mysql password
+```
+mysql -u root mysql
+```
+```
+UPDATE user SET Password=PASSWORD('YOURNEWPASSWORD') WHERE User='root'; FLUSH PRIVILEGES; exit;
+```
