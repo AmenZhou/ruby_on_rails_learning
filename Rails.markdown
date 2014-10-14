@@ -659,3 +659,6 @@ rake assets:precompile RAILS_ENV=production
 #config/environments/production.rb
 config.assets.compile = true
 ```
+### Whenever and Schedule Job
+
+http://eewang.github.io/blog/2013/03/12/how-to-schedule-tasks-using-whenever/
