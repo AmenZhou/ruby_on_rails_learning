@@ -652,3 +652,10 @@ rake assets:precompile RAILS_ENV=production
 ```
 
 6 restart apache service
+
+### Can't show pictures on Production Environment
+
+```
+#config/environments/production.rb
+config.assets.compile = true
+```
