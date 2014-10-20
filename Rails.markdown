@@ -653,12 +653,39 @@ rake assets:precompile RAILS_ENV=production
 
 6 restart apache service
 
+
+
+
+
 ### Can't show pictures on Production Environment
 
 ```
 #config/environments/production.rb
 config.assets.compile = true
 ```
+
+
+
+
 ### Whenever and Schedule Job
 
 http://eewang.github.io/blog/2013/03/12/how-to-schedule-tasks-using-whenever/
+
+
+
+### Rake Task with Arguments
+
+http://davidlesches.com/blog/passing-arguments-to-a-rails-rake-task
+
+```ruby
+namespace :seeder do
+  desc "create random employees"
+  task :seed, [:amount] => :environment do |task, args|
+    puts "Your amount is #{args.amount}"
+  end
+end
+```
+
+```
+rake seeder:seed[100]
+```
