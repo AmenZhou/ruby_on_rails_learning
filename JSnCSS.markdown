@@ -85,3 +85,11 @@ $("#table_sum").text("").append("<%= j render(partial:'summary_row')%>");
 
 A useful datetime controller
 http://xdsoft.net/jqplugins/datetimepicker/
+
+
+### Rails Datetime Picker
+
+https://github.com/TrevorS/bootstrap3-datetimepicker-rails
+
+Example: http://eonasdan.github.io/bootstrap-datetimepicker/
+
