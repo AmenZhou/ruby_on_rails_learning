@@ -1413,3 +1413,12 @@ https://gist.github.com/shellyser/082dec009bbfe256406d#file-DSL-rb
 https://github.com/superbay/knowledge/blob/master/tech_talk/concern.markdown
 
 http://stackoverflow.com/questions/19098663/auto-loading-lib-files-in-rails-4
+
+### Tech Talk
+
+https://github.com/ChristinaLeuci/Ruby
+
+https://github.com/superbay/knowledge/blob/master/rails/rails4way/chapter15.markdown
+
+http://victorarias.com.br/2013/08/13/leaky-ruby.html
+
