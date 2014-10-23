@@ -2308,3 +2308,72 @@ $(document).ready(function() {
   var paris = new Tour($('#paris'));
 });
 ```
+
+### Rails Outlaw
+
+Allow all http methods on routes
+
+```ruby
+ZombieOutlaws::Application.routes.draw do
+  match '/undeads', to: 'undeads#index', via: :all 
+end
+```
+
+
+Update the following controller test to use the new HTTP verb for partial updates.
+
+```ruby
+class WeaponsControllerTest < ActionController::TestCase
+  test "updates weapon" do
+    patch :update, zombie_id: @zombie, weapons: { name: 'Scythe' }
+    assert_redirected_to zombie_url(@zombie)
+  end
+end
+```
+
+Routes Concern
+```ruby
+ZombieOutlaws::Application.routes.draw do
+  
+  concern :defensible do
+    resources :shotguns
+    resources :rifles
+    resources :knives
+  end
+  
+  resources :sheriffs, concerns: :defensible
+
+  resources :gunslingers, concerns: :defensible
+
+  resources :preachers, concerns: :defensible
+end
+```
+
+Routes Concern
+```ruby
+ZombieOutlaws::Application.routes.draw do
+  concern :defensible do |options|
+    resources :shotguns, options
+    resources :rifles, options
+    resources :knives, options
+  end
+
+  resources :sheriffs, concerns: :defensible
+  resources :gunslingers, concerns: :defensible
+  resources :preachers do
+    concerns :defensible, except: :destroy
+  end
+end
+```
+
+Thread Safety
+```
+ZombieOutlaws::Application.configure do
+  # config.threadsafe!
+  #prevents class reloading between requests and ensures Rack::Lock is not included in middleware stack
+  config.cache_classes = true 
+  #loads all code before new threads are created
+  config.eager_load = true
+end
+```
+
