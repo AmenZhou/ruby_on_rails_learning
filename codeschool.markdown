@@ -2377,3 +2377,180 @@ ZombieOutlaws::Application.configure do
 end
 ```
 
+### Rails Outlaw
+
+```ruby
+@zombie = Zombie.find_or_create_by(name: params[:name])
+```
+Scope
+```ruby
+scope :recent, ->{where('killed_on > ?', 2.days.ago)}
+scope :outlaws, ->{where(status: 'outlaw')}
+```
+Return a null
+```ruby
+class Deputy < ActiveRecord::Base
+  def self.zombie_counterforce
+    if Zombie.at_large_count.zero?
+      Deputy.none
+    else
+      Deputy.where(status: 'available')
+    end
+  end
+end
+```
+
+Relation
+```ruby
+Zombie.where.not(status: 'outlaw')
+
+Zombie.order(name: :desc, killed_on: :desc)
+
+Weapon.includes(:zombies)
+.where("zombies.name = 'Ash'").references(:zombies)
+
+Weapon.includes(:zombies).where(zombies: {name: 'Ash'})
+```
+
+Need a ajax call authentication
+```ruby
+module ZombieOutlaws
+  class Application < Rails::Application
+    config.time_zone = 'Central Time (US & Canada)'
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+  end
+end
+```
+
+Add a new flash type
+In the controller
+```ruby
+add_flash_types :groan
+
+redirect_to @zombie, groan: @zombie.groan
+```
+
+Show flash on the view
+```ruby
+<div id='groan'><%= groan %></div>
+```
+
+Collection radio button
+```ruby
+<%= form_for(@limb) do |f| %>
+  <div class="field">
+    <%= f.label :zombie %><br />
+    <%= collection_radio_buttons(:limb, 
+                                 :zombie_id, 
+                                 @zombies, 
+                                 :id, 
+                                 :name) %>
+  </div>
+<% end %>
+```
+Collection check box button
+```ruby
+<%= form_for(@zombie) do |f| %>
+  <div class="field">
+    <%= f.label :limbs %><br />
+    <%= collection_check_boxes(:limb, 
+                               :id, 
+                               @limbs, 
+                               :id, 
+                               :kind) %> 
+  </div>
+<% end %>
+```
+
+Date Type Input
+```ruby
+<%= form_for(@limb) do |f| %>
+  <div class="field">
+    <%= f.label :date_found %><br />
+    <%= f.date_field :date_found %>
+  </div>
+<% end %>
+```
+
+JSON
+```ruby
+limbs_hashes = @limbs.map do |limb|
+  { owner_name: limb.zombie.name, kind: limb.kind }
+end
+# TODO: Output JSON version of limbs_hashes.
+limbs_hashes.to_json
+```
+
+Skip Test
+```ruby
+class ZombieTest < ActiveSupport::TestCase
+  test "should match number of Items" do
+    skip
+    zombie = Zombie.new
+    zombie.items.new(name: 'revolver')
+    zombie.items.new(name: 'noose')
+    assert_equal 2, zombie.item_count
+  end
+end
+```
+
+Rake Test
+```ruby
+rake test:models
+```
+
+Rake Test Verbose
+```ruby
+rake test:models TEST_OPTS="--verbose"
+```
+
+Fresh When
+```ruby
+class MostWantedController < ApplicationController
+  def show
+    @zombie = Zombie.most_wanted
+    fresh_when(@zombie)
+  end
+end
+```
+```ruby
+class MostWantedController < ApplicationController
+
+  etag { current_user.country }
+
+  def show
+    @zombie = Zombie.most_wanted
+    fresh_when(@zombie)
+  end
+
+  def edit
+    @zombie = Zombie.most_wanted
+    fresh_when(@zombie)
+  end
+end
+```
+
+Cache
+```ruby
+<% cache zombie do %>
+  <li><%= zombie %></li>
+<% end %>
+```
+```ruby
+class Zombie < ActiveRecord::Base
+  belongs_to :weapon, touch: true
+end
+```
+```ruby
+<% cache @weapon do %>
+  <section>
+    <h3><%= @weapon.name %></h3>
+    <ul>
+      <%= render partial: 'zombies/zombie', 
+            collection: @weapon.zombies.recent %>
+    </ul>
+    <%= link_to 'Details', @weapon %>
+  </section>
+<% end %>
+```
+
