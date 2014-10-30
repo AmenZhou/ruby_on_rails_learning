@@ -2616,3 +2616,77 @@ Change a way to add click event
 ```javacript
 $(document).on('click', '#alert_resolved', clickAlert);
 ```
+
+Show 'loading' when fetching page, under turbolink
+```ruby
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zombie Outlaws</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<div id="loading">Loading...</div>
+
+</body>
+</html>
+```
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zombie Outlaws</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<div id="loading">Loading...</div>
+
+</body>
+</html>
+```
+```javascript
+$(document).on('page:change', hideLoading);
+$(document).on('page:fetch', showLoading);
+```
+
+Disable turbolink
+e.g.1
+```ruby
+<%= link_to 'Home', welcome_path, "data-no-turbolink" => true %>
+```
+e.g.2
+```ruby
+<div id="navigation" <%= link_to 'Home', welcome_path, "data-no-turbolink" => true %>>
+  <div><%= link_to 'Zombies', zombies_path %></div>
+  <div><%= link_to 'Weapons', weapons_path %></div>
+</div>
+```
+
+Rails Pattern
+
+```ruby
+class UserRegistration
+  attr_reader :user
+  
+  def initialize(params={})
+    @user = User.new(params)
+    @user.is_approved = true if valid_background_check?
+  end
+  
+  private
+  # private methods go here
+  def valid_background_check?
+    !!(@user.valid_ssn? || @user.valid_address?)
+  end
+end
+```
