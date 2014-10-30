@@ -2554,3 +2554,65 @@ end
 <% end %>
 ```
 
+Live
+```ruby
+class SightingsController < ApplicationController
+
+  include ActionController::Live
+
+  def alerts
+    response.stream.write "Half-eaten brains found near saloon.\n\n"
+    response.stream.write "Chickens disappear from farm.\n\n"
+    response.stream.write "Zombie seen by Walker Ranch!\n\n"
+    response.stream.close
+  end
+
+end
+```
+
+EventSource
+```ruby
+#controller
+class SightingsController < ApplicationController
+
+  include ActionController::Live
+
+  def alerts
+    response.headers['Content-Type'] = 'text/event-stream'
+    response.stream.write "data: Half-eaten brains found near saloon.\n\n"
+    response.stream.write "data: Chickens disappear from farm.\n\n"
+    response.stream.write "data: Zombie seen by Walker Ranch!\n\n"
+    response.stream.close
+  end
+
+end
+```
+```javascript
+function initialize() {
+  var source = new EventSource('/sightings/alerts');
+  source.addEventListener('message', function update(event) {
+    var div = $('<div>').text(event.data);
+    $('#alerts').append(div);
+  });
+};
+$(document).ready(initialize);
+```
+```ruby
+<div id="alerts">
+</div>
+```
+
+TurboLink Events
+```javascript
+function initialize() {
+  alert('Welcome, Deputy! Check back often for new zombie sightings!');
+}
+
+$(document).ready(initialize);
+$(document).on('page:load', initialize);
+```
+
+Change a way to add click event
+```javacript
+$(document).on('click', '#alert_resolved', clickAlert);
+```
