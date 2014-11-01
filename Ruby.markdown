@@ -1427,22 +1427,27 @@ http://victorarias.com.br/2013/08/13/leaky-ruby.html
 
 
 ### Interview Tests
-Test 1
-Your task is to
+######Test 1
+
+>Your task is to
 write a function that determines for each pair if it’s an anagram or not
 for each pair of words your function will print to standard output (stdout) the value 1 if the pair is an anagram or 0 otherwise (one result per line)
-Note that your function will receive the following arguments:
+
+>Note that your function will receive the following arguments:
 firstWords
 which is an array of strings giving the first word for each of the pairs
 secondWords
 which is an array of strings giving the corresponding second word
-Data constraints
+
+>Data constraints
 the number of word pairs will not exceed 100
 the maximum length of any word in the pairs will not exceed 100 characters
 all words will contain only lowercase English letters (a-z)
-Efficiency constraints
+
+>Efficiency constraints
 your function is expected to print the result in less than 2 seconds
-Example
+
+>Example
 Input	Output
 firstWords: “cinema”, “host”, “aba”, “train”
 secondWords: “iceman”, “shot”, “bab”, “rain”
@@ -1450,7 +1455,7 @@ secondWords: “iceman”, “shot”, “bab”, “rain”
 1
 0
 0
-Explanation
+>Explanation
 for the given arguments above we have the following pairs:
 (cinema, iceman) (host, shot) (aba, bab) (train, rain)
 only the first two pairs are anagrams.
