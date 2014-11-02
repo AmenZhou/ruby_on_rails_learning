@@ -2690,3 +2690,214 @@ class UserRegistration
   end
 end
 ```
+
+NON-AR MODELS
+User Controller create user by other customized class
+```ruby
+class UsersController < ApplicationController
+  def create
+    registration = UserRegistration.new(user_params)
+    @user = registration.user
+    
+    if registration.create
+      redirect_to @user
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :ssn, :address)
+  end
+end
+```
+```ruby
+class UserRegistration
+  attr_reader :user
+
+  def initialize(params)
+    @user = User.new(params)
+  end
+
+  def create
+    if valid_background_check?
+      user.is_approved = true
+    end
+
+    user.save
+  end
+
+  private
+
+  def valid_background_check?
+    !!(@user.valid_ssn? || @user.valid_address?)
+  end
+end
+```
+
+Skinny Model
+```ruby
+class UserWelcome
+  attr_accessor :user
+  
+  def initialize(user)
+    @user = user
+  end
+  
+  def welcome
+    send_welcome_email
+    enable_welcome_tour
+    enable_welcome_promotion
+  end
+  
+  private
+
+  def send_welcome_email
+    WelcomeMailer.welcome(@user).deliver
+  end
+
+  def enable_welcome_tour
+    @user.welcome_tour = true
+    @user.save
+  end
+
+  def enable_welcome_promotion
+    promo = Promotion.new(name: "Thanks for joining!")
+    promo.set_redeemer(@user)
+  end
+end
+```
+Remove the welcome function into Userwelcome class
+```ruby
+class User < ActiveRecord::Base
+  def welcome
+    send_welcome_email
+    enable_welcome_tour
+    enable_welcome_promotion
+  end
+
+  private
+
+  def send_welcome_email
+    WelcomeMailer.welcome(self).deliver
+  end
+
+  def enable_welcome_tour
+    self.welcome_tour = true
+    self.save
+  end
+
+  def enable_welcome_promotion
+    promo = Promotion.new(name: "Thanks for joining!")
+    promo.set_redeemer(self)
+  end
+end
+```
+
+Merge Scope
+```ruby
+class Item < ActiveRecord::Base
+  has_many :reviews
+  scope :recent, ->{
+    where('published_on > ?', 2.days.ago)
+    .joins(:reviews).merge(Review.approved)
+  }
+end
+```
+```ruby
+class Review < ActiveRecord::Base
+  belongs_to :item
+  scope :approved, -> { where(approved: true) }
+end
+```
+
+Merge Scope -- remove duplicated part
+```ruby
+Review.relevant.merge(Review.pending_approval)
+```
+```ruby
+class Review < ActiveRecord::Base
+  belongs_to :item
+
+  scope :relevant, -> { where(is_relevant: true, is_approved: true) }
+  scope :pending_approval, -> { where(is_approved: false) }
+end
+```
+
+Model Concerns
+```ruby
+module Reviewable
+  extend ActiveSupport::Concern
+  
+  included do
+    has_many :reviews, as: :reviewable, dependent: :destroy
+  end
+  
+  def reviews_rating
+    (reviews.positive.count / reviews.approved.count.to_f).round(2)
+  end
+end
+```
+
+Classmethods in model concerns
+```ruby
+module Reviewable
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :reviews, as: :reviewable, dependent: :destroy
+  end
+
+  def reviews_rating
+    (reviews.positive.count / reviews.approved.count.to_f).round(2)
+  end
+  
+  module ClassMethods
+    def with_no_reviews
+      where('id NOT IN (SELECT DISTINCT(reviewable_id) FROM reviews WHERE reviewable_type = ?)', self.name)
+    end
+  end
+end
+```
+
+Decorator
+```ruby
+class ItemDecorator
+  attr_reader :item
+  
+  def initialize(item)
+    @item = item
+  end
+  
+  def is_featured?
+    @item.ratings > 5
+  end
+  
+  def method_missing(method_name, *args, &block)
+    @item.send(method_name, *args, &block)
+  end
+  
+  def respond_to_missing?(method_name, include_private = false)
+    @item.respond_to?(method_name, include_private) || super
+  end
+end
+```
+
+Decorators collection
+```ruby
+class ItemDecorator
+  def self.build_collection(items)
+    items.map { |item| new(item) }
+  end
+end
+```
+```ruby
+class ItemsController < ApplicationController
+  def index
+    @items = Item.all
+    @item_decorators = ItemDecorator.build_collection(@items)
+  end
+end
+```
