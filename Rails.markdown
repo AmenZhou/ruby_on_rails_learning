@@ -689,3 +689,6 @@ end
 ```
 rake seeder:seed[100]
 ```
+
+### Multiple Languages Support
+http://yangzb.iteye.com/blog/598150
