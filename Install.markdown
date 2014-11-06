@@ -62,28 +62,61 @@ Sphinxsearch Install in Ubunt
 Install postgres in Ubuntu and config for rails
 
 install pg
-	sudo apt-get install postgresql postgresql-contrib
-
+```
+sudo apt-get install postgresql postgresql-contrib
+```
 switch to pg default user
-	sudo su - postgres
-
+```
+sudo su - postgres
+```
 change postgres password
-	sudo passwd postgres
+```
+sudo passwd postgres
+```
 
 bundle error
 install pg gem display error
-	sudo apt-get install libpq-dev
-
+```
+sudo apt-get install libpq-dev
+```
 
 create a user for app
-1 su - postgres
-2 create role myapp with createdb login password 'password1'
-3 the last semicolon is very important
+```
+su - postgres
+```
+```
+create role myapp with createdb login password 'password1'
+```
+```
+createuser -s myapp
+```
+the last semicolon is very important
 
 config user in app
 1 open config/database.yml
+e.g. config/database.yml
+```ruby
+  adapter: postgresql
+  database: wikiful_development
+  encoding: unicode
+  username: myapp 
+  password: password1
+  host: localhost
+  pool: 5
+  timeout: 5000
+```
 2 change username and password to the pg user
 
+### config pg in Nitrous.io
+
+1  install postgres part from parts management
+
+2  username is action
+
+3  must add below line to config/database
+```
+host: localhost
+```
 
 ### Github install and config
 
@@ -114,21 +147,3 @@ https://github.com/astrails/dotvim
 
 ###### solve ctags error
 sudo apt-get install exuberant-ctags
-
-### config pg 
-
-create user
-```
-createuser -s myapp
-```
-config/database.yml
-```ruby
-  adapter: postgresql
-  database: wikiful_development
-  encoding: unicode
-  username: myapp 
-  password: password1
-  host: localhost
-  pool: 5
-  timeout: 5000
-```
