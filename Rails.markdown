@@ -692,3 +692,7 @@ rake seeder:seed[100]
 
 ### Multiple Languages Support
 http://yangzb.iteye.com/blog/598150
+
+### Fonts
+
+http://anotheruiguy.roughdraft.io/7379570-custom-web-fonts-and-the-rails-asset-pipeline
