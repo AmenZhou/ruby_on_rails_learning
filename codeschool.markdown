@@ -2901,3 +2901,48 @@ class ItemsController < ApplicationController
   end
 end
 ```
+
+Serialization
+Remove Root Node
+```ruby
+class ReviewArraySerializer < ActiveModel::ArraySerializer
+  self.root = false
+end
+```
+
+SENSITIVE PARAMETERS
+```ruby
+class Rails4Patterns::Application
+  # hiding other config for brevity...
+  config.filter_parameters += [:password, :security_answer]
+end
+```
+
+Set Ruby Verion 
+```ruby
+source 'https://rubygems.org'
+
+gem 'rails', '4.0.0'
+ruby '2.0.0'
+gem 'sqlite3'
+gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+
+group :doc do
+  gem 'sdoc', require: false
+end
+
+gem 'puma'
+
+```
+
+Procfile
+```ruby
+web: bundle exec rails s -p $PORT
+worker: bundle exec rake worker
+urgentworker: bundle exec rake urgent_worker
+scheduler: bundle exec rake scheduler
+```
