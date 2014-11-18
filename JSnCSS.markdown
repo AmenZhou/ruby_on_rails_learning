@@ -93,3 +93,7 @@ https://github.com/TrevorS/bootstrap3-datetimepicker-rails
 
 Example: http://eonasdan.github.io/bootstrap-datetimepicker/
 
+### Js Validate
+
+http://jqueryvalidation.org/documentation/
+
