@@ -8,3 +8,6 @@ vim -- find and replace
 scp -i brm.pem localfilepath ubuntu@XXXX:remotefilepath
 ```
 
+###VIM Indentation
+
+http://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
