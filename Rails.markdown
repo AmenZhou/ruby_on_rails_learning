@@ -696,3 +696,7 @@ http://yangzb.iteye.com/blog/598150
 ### Fonts
 
 http://anotheruiguy.roughdraft.io/7379570-custom-web-fonts-and-the-rails-asset-pipeline
+
+### Production Env Setting
+
+http://railsguides.net/how-to-define-environment-variables-in-rails/
