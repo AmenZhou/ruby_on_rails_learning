@@ -700,3 +700,12 @@ http://anotheruiguy.roughdraft.io/7379570-custom-web-fonts-and-the-rails-asset-p
 ### Production Env Setting
 
 http://railsguides.net/how-to-define-environment-variables-in-rails/
+
+### Read Attribute to prevent slack deep error / Call helper method in model
+
+```ruby
+def oprice
+  ActionController::Base.helpers.number_to_currency(read_attribute :oprice)
+end
+```
+
