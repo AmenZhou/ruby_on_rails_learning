@@ -32,14 +32,22 @@ update_attribute
 
 
 Test Name:	Ruby on Rails 3.0
+
 Test Date:	1/30/2015
+
 Elapsed Time:	00:17:41
+
 Questions Correct:	32 out of 39
+
 Percent Correct:	82%
+
 Percentile Ranking:	40
+
 Global Average:	71%
 
 
+
+============================================================
 ##### double class
 
 #####  FactoryGirl without ActiveRecord
