@@ -65,3 +65,49 @@ Lambdas check the number of arguments, while procs do not
 Lambdas and procs treat the ‘return’ keyword differently
 
 http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/
+
+=================================================================
+
+##### Symbol and String
+
+. Symbol is not mutable but String is
+
+```ruby
+puts "hello" << " world"
+puts :hello << :" world"
+
+# => hello world
+# => *.rb:4: undefined method `<<' for :hello:Symbol (NoMethodError)
+```
+. Symbol can be resused and not destroyed after used, but String can not
+
+```ruby
+#Each String oject has unique id
+puts "hello world".object_id
+puts "hello world".object_id
+puts "hello world".object_id
+puts "hello world".object_id
+puts "hello world".object_id
+
+# => 3102960
+# => 3098410
+# => 3093860
+# => 3089330
+# => 3084800
+
+
+puts :"hello world".object_id
+puts :"hello world".object_id
+puts :"hello world".object_id
+puts :"hello world".object_id
+puts :"hello world".object_id
+
+# => 239518
+# => 239518
+# => 239518
+# => 239518
+# => 239518
+```
+
+. Performance -- Symbol computation is faster than String
+
