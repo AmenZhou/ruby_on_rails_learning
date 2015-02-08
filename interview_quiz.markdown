@@ -278,3 +278,42 @@ end
 ```
 
 Consequently, since this is still just using the parent_id defined in the first case, no changes to the table in the database are required.
+
+##### custom url
+
+Create a route to be able to display pages with different information about different types of beer. The route should recognize URL paths like /beer/<beer_type> and should use the same controller action for each type of beer with the actually beer type passed into the controller action as a parameter. The valid beer types are:
+
+IPA
+brown_ale
+pilsner
+lager
+lambic
+hefeweizen
+Any other type of beer specified should generate a 404 status code.
+
+
+**Answer**
+
+One option would be to generate a simple get route that specifies the controller action to call and passes the kind of beer as a parameter:
+
+```ruby
+get 'beers/:kind' => 'beers#kind'
+```
+
+Then, within the context of the controller action, if the kind parameter is not included in the list of valid kinds, the action can raise a ActionController::RoutingError, which will redirect to 404 in production.
+
+Alternatively, a simpler solution is to check against the list of valid kinds in the definition of the route. This can be accomplished using the constraints option as follows:
+
+```ruby
+kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
+get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
+```
+
+This code calls the BeersController#kind action method with params['kind'] set to a string representing the beer type given in the URL path. The key is using the constraints option for the route to specify a regular expression to use to verify the route is correct. In this case, the lambda checks to see that the kind parameter is included in the list of valid beer types.
+
+Or perhaps an even better solution would be to use resource routing. This has the added benefit of providing URL generation helpers, but at the cost of requiring that the parameter name for the beer be passed as :id. This would look something like:
+
+```ruby
+kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
+resource :beer, only: [:show], constraints: {id: Regexp.new(kinds.join('|'))}
+```
