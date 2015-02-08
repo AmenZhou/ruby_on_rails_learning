@@ -346,3 +346,69 @@ posts = Post.includes(comments: [:author]).all
 This tells ActiveRecord to retrieve the corresponding Comment and Author records from the database immediately after the initial request for all Posts, thereby reducing the number of database requests to just three.
 
 Please note that the above answer is only one of a few ways that it is possible to avoid incurring an “n+1” penalty, and each alternative will have its own caveats and corner cases. The above answer was selected to be presented here since it requires the smallest change to the existing code and makes no assumptions regarding the reverse association of Comment to Post.
+
+============================================================================================
+
+##### What is a class, what is an object and why we need modules
+
+This may be simple, but it allows to start a conversation between two strangers involved into the same craft.
+
+Answer: classes are a blue-print, they may hold data, likely they hold methods; classes are directly connected with an idea of objects, because object is an instance of a class. As objects are first-class citizens in Ruby, there is a main, root class Object, and all classes are inherited from this root entity. Modules, generally, are a tool for mix-ins and they provide something we call a namespace. Modules cannot be initialised the way we can do this with classes, but they provide a multiple inheritance.
+
+=========================================================================================
+
+##### Who’s _why and what’s up with his Shoes?
+
+Answer: ‘why the lucky stiff’ (or ‘_why’) is the artist from a past decade, who used Ruby as his brush, and our minds as a canvas. He is both writer, cartoonist, artist, and computer programmer, famous by his contribution to many Open Source Ruby projects, “Why’s Poignant Guide to Ruby” piece of art and who disappeared in 2009. Shoes is a nice OSI project, initially made by _why, and it allows to create nice looking GUI applications using Ruby, for programmers of any age (from 3 to 100 years old). Shoes now are fine and quite active thanks to Shoes Team. You can find it on Github.
+
+===========================================================================================
+
+##### Why automated testing is a good and bad thing in the same time
+
+Answer: automated testing (especially as the main tool of TDD/BDD) is an absolutely important part of modern applications development. This is your friend during refactoring, development and debugging. This is the way how you understand your codebase deeper, a way to predict bottle-necks, and sometimes it allows you to keep your code maintainable without unnecessary investments for years. In the same time, automated testing could be a source of terrible bugs and fails, as by itself, tests are the same code, as the ‘real’ code. This way, automating testing is an another tool to help your mind keep architecture and abstractions in the form of the code, speed-up things and automate sanity-tests. Which doesn’t mean you always have to pay your attention on manual testing.
+
+==============================================================================================
+
+##### What is Lambda? What is Proc? What is Block? What is Dash Rocket (stabby lambda)?
+
+Answer: They are from the same plate, however there are differences. Firstly, Proc is a nameless function, an anonymous method you use very frequently. Procs are objects, Blocks are not. Blocks are ‘business cards’ of Ruby, and they are, in fact, a syntax literals of Proc; they may take and return values. The main difference between Lambdas and Procs is Lambda explicitly check for arguments, while Proc is not. Stabby lambda ( -> ) is nothing more than another Lambda literal, from Ruby >= 1.9, you may easily think of this like of syntax sugar.
+
+================================================================================================
+
+##### Agile Development
+
+The Agile Manifesto is based on 12 principles:[9]
+
+1. Customer satisfaction by rapid delivery of useful software
+2. Welcome changing requirements, even late in development
+3. Working software is delivered frequently (weeks rather than months)
+4.Close, daily cooperation between business people and developers
+5.Projects are built around motivated individuals, who should be trusted
+6.Face-to-face conversation is the best form of communication (co-location)
+7.Working software is the principal measure of progress
+8.Sustainable development, able to maintain a constant pace
+9.Continuous attention to technical excellence and good design
+10.Simplicity—the art of maximizing the amount of work not done—is essential
+11.Self-organizing teams
+12.Regular adaptation to changing circumstance
+
+===================================================================================================
+
+##### A Rails-specific question: how Date.today differs from Date.current?
+
+Answer: It’s all about time zones: with Date.today you’ll have a system date, with Date.current it's system date, plus Rails’ time zone applied. Funny, but Time.zone.today should return you a date with a time zone too.
+
+==================================================================================================
+
+##### Skinny Controllers. Logic-less (as much as possible) templates. But where we’ll keep this zillions lines of code this way?
+
+Answer: first answer could be, we’ll move controller’s code to models. Oookay. But we’ll have Fat Models (tm) this way, right? Then we’ll move everything to Rails’ concerns! And we’ll separate reusable code as libraries and gems. And this is true. The fact is it could be (sic!) even worse than to keep everything in models. One of the ways is, for example, to radically change architecture, introducing Rails' engines (and here you can talk about differences between gem and Rails Engine) or even partially move the code to the separated Rack application, and link your host with Rack app via internal API (here is the good place to talk about general application architecture). Or you can implement Data/Context/Interaction approach (here is the good place to talk about advanced architectural themes). After this, you’ll feel if it is reasonable to talk about Model-Views and Decorators.
+
+===============================================================================================
+
+##### What is database transactions and how it is represented in Rails
+
+Answer: transactions are sets of changes, that must all be made together. It may, or may not change the contents of the database. When we talk about transactions, we usually mean we need to do something with database as single unit execution. A classy transaction is when you withdraw money from one bank account to another, and you need to substract from one bank account and add to another in the same time. In Rails you have ActiveRecord::Base.transaction, which allows you to easily pass multiple actions in a block, and they’ll be executed a transactional way.
+
+===============================================================================================
+
