@@ -131,3 +131,26 @@ For example, if you have unit test classes in the "test" directory, and data for
 eql? – Checks if the value and type of two operands are the same (as opposed to the == operator which compares values but ignores types). For example, 1 == 1.0 evaluates to true, whereas 1.eql?(1.0) evaluates to false.
 
 equal? – Compares the identity of two objects; i.e., returns true iff both operands have the same object id (i.e., if they both refer to the same object). Note that this will return false when comparing two identical copies of the same object.
+
+========================================================================================
+
+##### difference between Concat and +=
+
+```ruby
+#concat change object itself
+foo = "foo"
+foo2 = foo
+foo.concat "bar"
+
+puts foo
+=> "foobar"
+puts foo2
+=> "foobar"
+
+#+= create a new object, not change itself
+foo += "baz"
+puts foo
+=> "foobarbaz"
+puts foo2
+=> "foobar"
+```
