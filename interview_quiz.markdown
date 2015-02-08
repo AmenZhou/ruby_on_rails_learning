@@ -222,4 +222,59 @@ val1 = true and false  # hint: output of this statement in IRB is NOT value of v
 val2 = true && false
 ```
 
+==========================================================================================
+
+##### What is CSRF? How does Rails protect against it?
+
+CSRF stands for Cross-Site Request Forgery. This is a form of an attack where the attacker submits a form on your behalf to a different website, potentially causing damage or revealing sensitive information. Since browsers will automatically include cookies for a domain on a request, if you were recently logged in to the target site, the attacker’s request will appear to come from you as a logged-in user (as your session cookie will be sent with the POST request).
+
+In order to protect against CSRF attacks, you can add protect_from_forgery to your ApplicationController. This will then cause Rails to require a CSRF token to be present before accepting any POST, PUT, or DELETE requests. The CSRF token is included as a hidden field in every form created using Rails’ form builders. It is also included as a header in GET requests so that other, non-form-based mechanisms for sending a POST can use it as well. Attackers are prevented from stealing the CSRF token by browsers’ “same origin” policy.
+
+=======================================================================================
+
+##### Self-referential relationships
+
+How would you define a Person model so that any Person can be assigned as the parent of another Person (as demonstrated in the Rails console below)? What columns would you need to define in the migration creating the table for Person?
 ```
+irb(main):001:0> john = Person.create(name: "John")
+irb(main):002:0> jim = Person.create(name: "Jim", parent: john)
+irb(main):003:0> bob = Person.create(name: "Bob", parent: john)
+irb(main):004:0> john.children.map(&:name)
+=> ["Jim", "Bob"]
+```
+And for a more advanced challenge: Update the Person model so that you can also get a list of all of a person’s grandchildren, as illustrated below. Would you need to make any changes to the corresponding table in the database?
+```
+irb(main):001:0> sally = Person.create(name: "Sally")
+irb(main):002:0> sue = Person.create(name: "Sue", parent: sally)
+irb(main):003:0> kate = Person.create(name: "Kate", parent: sally)
+irb(main):004:0> lisa = Person.create(name: "Lisa", parent: sue)
+irb(main):005:0> robin = Person.create(name: "Robin", parent: kate)
+irb(main):006:0> donna = Person.create(name: "Donna", parent: kate)
+irb(main):007:0> sally.grandchildren.map(&:name)
+=> ["Lisa", "Robin", "Donna"]
+```
+
+Normally, the target class of an ActiveRecord association is inferred from the association’s name (a perfect example of “convention over configuration”). It is possible to override this default behavior, though, and specify a different target class. Doing so, it is even possible to have relationships between two objects of the same class.
+
+This is how it is possible to set up a parent-child relationship. The model definition would look like:
+
+```ruby
+class Person < ActiveRecord::Base
+  belongs_to :parent, class: Person
+  has_many :children, class: Person, foreign_key: :parent_id
+end
+```
+
+It’s necessary to specify the foreign_key option for the has_many relationship because ActiveRecord will attempt to use :person_id by default. In the migration to create the table for this model, you would need to define, at minimum, a column for the name attribute as well as an integer column for parent_id.
+
+Self-referential relationships can be extended in all the same ways as normal two-model relationships. This even includes has_many ... :through => ... style relationships. However, because we are circumventing Rails’ conventions, we will need to specify the source of the :through in the case of adding a grandchild relationship:
+
+```ruby
+class Person < ActiveRecord::Base
+  belongs_to :parent, class: Person
+  has_many :children, class: Person, foreign_key: :parent_id
+  has_many :grandchildren, class: Person, through: :children, source: :children
+end
+```
+
+Consequently, since this is still just using the parent_id defined in the first case, no changes to the table in the database are required.
