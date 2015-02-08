@@ -120,3 +120,14 @@ require_relative complements the builtin method require by allowing you to load 
 
 For example, if you have unit test classes in the "test" directory, and data for them under the test "test/data" directory, then you might use a line like this in a test case:
 
+===============================================================================
+
+##### Explain each of the following operators and how and when they should be used: ==, ===, eql?, equal?.
+
+== – Checks if the value of two operands are equal (often overridden to provide a class-specific definition of equality).
+
+=== – Specifically used to test equality within the when clause of a case statement (also often overridden to provide meaningful class-specific semantics in case statements).
+
+eql? – Checks if the value and type of two operands are the same (as opposed to the == operator which compares values but ignores types). For example, 1 == 1.0 evaluates to true, whereas 1.eql?(1.0) evaluates to false.
+
+equal? – Compares the identity of two objects; i.e., returns true iff both operands have the same object id (i.e., if they both refer to the same object). Note that this will return false when comparing two identical copies of the same object.
