@@ -154,3 +154,72 @@ puts foo
 puts foo2
 => "foobar"
 ```
+===========================================================================================
+
+##### In Ruby code, you quite often see the trick of using an expression like array.map(&:method_name) as a shorthand form of array.map { |element| element.method_name }. How exactly does it work?
+
+When a parameter is passed with & in front of it (indicating that is it to be used as a block), Ruby will call to_proc on it in an attempt to make it usable as a block. Symbol#to_proc quite handily returns a Proc that will invoke the method of the corresponding name on whatever is passed to it, thus enabling our little shorthand trick to work.
+
+===============================================================================================
+
+##### In Ruby, the only values that evaluate to false are false and nil. Everything else – even zero (0) and an empty array ([]) – evaluates to true.
+
+=================================================================================================
+
+##### What is the difference between calling super and calling super()?
+
+A call to super invokes the parent method with the same arguments that were passed to the child method. An error will therefore occur if the arguments passed to the child method don’t match what the parent is expecting.
+
+A call to super() invokes the parent method without any arguments, as presumably expected. As always, being explicit in your code is a good thing.
+
+============================================================================================
+
+##### Notice the argument of the method call
+
+```ruby
+def times_two(arg1);
+  puts arg1 * 2;
+end
+
+def sum(arg1, arg2);
+  puts arg1 + arg2;
+end
+
+times_two 5 #=>10
+times_two(5) #=>10
+times_two (5) #=>10
+sum 1, 2 #=>3
+sum(1, 2) #=>3
+sum (1, 2) #=> syntax error
+```
+The problem is the space between the method name and the open parenthesis. Because of the space, the Ruby parser thinks that (1, 2) is an expression that represents a single argument, but (1, 2) is not a valid Ruby expression, hence the error.
+
+Note that the problem does not occur with single argument methods (as shown with our timesTwo method above), since the single value is a valid expression (e.g., (5) is a valid expression which simply evaluates to 5).
+
+===============================================================================
+
+##### Proc and []
+
+Is the line of code below valid Ruby code? If so, what does it do? Explain your answer.
+```ruby
+-> (a) {p a}["Hello world"]
+```
+**Yes**
+
+You can call a Proc by using either the call method on Proc, or by using the square bracket syntax, so this line of code also invokes the Proc and passes it the string “Hello World”.
+
+So putting that all together, this line of code (a) creates a Proc that takes a single parameter a which it prints out and (b) invokes that Proc and passes it the string “Hello world”. So, in short, this line of code prints “Hello World”.
+
+================================================================================
+
+##### `and` compare with `&&`
+
+`and` has lower precedence than `&&`
+
+```ruby
+#this line is equal to (val1 = true) and false
+val1 = true and false  # hint: output of this statement in IRB is NOT value of val1!
+val2 = true && false
+```
+
+```
