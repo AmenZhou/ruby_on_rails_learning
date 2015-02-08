@@ -382,15 +382,15 @@ The Agile Manifesto is based on 12 principles:[9]
 1. Customer satisfaction by rapid delivery of useful software
 2. Welcome changing requirements, even late in development
 3. Working software is delivered frequently (weeks rather than months)
-4.Close, daily cooperation between business people and developers
-5.Projects are built around motivated individuals, who should be trusted
-6.Face-to-face conversation is the best form of communication (co-location)
-7.Working software is the principal measure of progress
-8.Sustainable development, able to maintain a constant pace
-9.Continuous attention to technical excellence and good design
-10.Simplicity—the art of maximizing the amount of work not done—is essential
-11.Self-organizing teams
-12.Regular adaptation to changing circumstance
+4. Close, daily cooperation between business people and developers
+5. Projects are built around motivated individuals, who should be trusted
+6. Face-to-face conversation is the best form of communication (co-location)
+7. Working software is the principal measure of progress
+8. Sustainable development, able to maintain a constant pace
+9. Continuous attention to technical excellence and good design
+10. Simplicity—the art of maximizing the amount of work not done—is essential
+11. Self-organizing teams
+12. Regular adaptation to changing circumstance
 
 ===================================================================================================
 
