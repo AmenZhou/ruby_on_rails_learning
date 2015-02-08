@@ -317,3 +317,32 @@ Or perhaps an even better solution would be to use resource routing. This has th
 kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
 resource :beer, only: [:show], constraints: {id: Regexp.new(kinds.join('|'))}
 ```
+=======================================================================================
+
+##### n+1 problem
+
+What’s the issue with the controller code below? How would you fix it?
+
+```ruby
+class CommentsController < ApplicationController
+  def users_comments
+    posts = Post.all
+    comments = posts.map(&:comments).flatten
+    @user_comments = comments.select do |comment|
+      comment.author.username == params[:username]
+    end
+  end
+end
+```
+
+This is a classic example of the notorious “n+1” bug. The first line will retrieve all of the Post objects from the database, but then the very next line will make an additional request for each Post to retrieve the corresponding Comment objects. To make matters worse, this code is then making even more database requests in order to retrieve the Author of each Comment.
+
+This can all be avoided by changing the first line in the method to:
+
+```ruby
+posts = Post.includes(comments: [:author]).all
+```
+
+This tells ActiveRecord to retrieve the corresponding Comment and Author records from the database immediately after the initial request for all Posts, thereby reducing the number of database requests to just three.
+
+Please note that the above answer is only one of a few ways that it is possible to avoid incurring an “n+1” penalty, and each alternative will have its own caveats and corner cases. The above answer was selected to be presented here since it requires the smallest change to the existing code and makes no assumptions regarding the reverse association of Comment to Post.
