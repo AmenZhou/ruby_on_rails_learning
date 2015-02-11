@@ -435,3 +435,21 @@ methodA('abcd') #=> 'abdc'/'adcb'/'dacb' it should not ordered and each time the
 ```
 
 ==============================================================================================
+
+##### Difference between Ruby Enviroment and Rails Enviroment
+
+The point is Rails autoload features
+
+==================================================================================================
+
+##### Main Feature Difference between Javascript and Ruby
+
+================================================================================================
+
+##### Design patterns of Rails
+
+===============================================================================================
+
+##### If you don't know the feature of a new method, how to start to use it?
+
+================================================================================================
