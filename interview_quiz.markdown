@@ -453,3 +453,5 @@ The point is Rails autoload features
 ##### If you don't know the feature of a new method, how to start to use it?
 
 ================================================================================================
+
+##### How to use a proc in Javascript
