@@ -40,3 +40,9 @@ password = secret
 ```
 chmod 600 ~/.my.cnf
 ```
+
+##### /usr/bin/env delete problem
+
+```
+sudo apt-get install --reinstall coreutils
+```
