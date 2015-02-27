@@ -21,3 +21,9 @@ default: &default
   host: 127.0.0.1                                                                                                                                                                      
   socket: /tmp/mysql.sock
 ```
+
+##### Test Datebase Restruct(Very useful when table columns in test is different from development)
+
+```
+rake db:test:clone_structure
+```
