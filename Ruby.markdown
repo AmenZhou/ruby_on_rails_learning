@@ -1617,3 +1617,10 @@ v: 3, -5, 1, -2, 8, -2, 3, -2, 1
 15
 Explanation
 The left sequence is : -5, 1, -2 and the right sequence is: 8, -2, 3.
+
+
+==================================================================
+
+Ruby Best Styles
+
+https://github.com/styleguide/ruby
