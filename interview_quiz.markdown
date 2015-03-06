@@ -454,7 +454,15 @@ The point is Rails autoload features
 4. Embrace REST in controller
 5. Refactor a non-RESTful controller to a sperate controller
 6. Nested Resource
-
+7. Seperate controllers for each nesting. 
+   Move nesting controller to subdirectory
+8. Use Rails 3 Responders in controller - respond_with
+9. Know what exceptions to look out for
+10. Set the HTTP Timeout
+11. Put things to the Background job
+12. Obey the HTTP codes - When send API xml, use HTTP codes 
+13. Divide into confedrated applications － Divide isolate part function to a seperate application
+14. Prune irrelevant or unused gem
 ===============================================================================================
 
 ##### If you don't know the feature of a new method, how to start to use it?
