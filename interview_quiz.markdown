@@ -463,6 +463,8 @@ The point is Rails autoload features
 12. Obey the HTTP codes - When send API xml, use HTTP codes 
 13. Divide into confedrated applications － Divide isolate part function to a seperate application
 14. Prune irrelevant or unused gem
+
+
 ===============================================================================================
 
 ##### If you don't know the feature of a new method, how to start to use it?
