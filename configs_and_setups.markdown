@@ -165,3 +165,15 @@ nginx -t
 ```
 puma --config config/puma.rb -e production -d
 ```
+
+##### SSL config
+
+1. Put ssl .csr and .key file to project path 
+2. config nginx.conf to load that keys
+3. add ssl configuration on nginx.conf
+4. add force_ssl = true on production.rb
+5. redirect all the request from 80 to 443
+
+https://github.com/brtr/group/commit/f30bed6e083c4aa476e72453c0ee344f2de27bc7
+
+
