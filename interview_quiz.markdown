@@ -464,6 +464,7 @@ The point is Rails autoload features
 13. Divide into confedrated applications － Divide isolate part function to a seperate application
 14. Prune irrelevant or unused gem
 15. Consider Vendors Code Sacrosanct(not try to modify vendor code)
+16. Test rake task -- extract the task to a class method
 
 
 ===============================================================================================
