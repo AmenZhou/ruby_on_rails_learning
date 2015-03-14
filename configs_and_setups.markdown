@@ -177,3 +177,5 @@ puma --config config/puma.rb -e production -d
 https://github.com/brtr/group/commit/f30bed6e083c4aa476e72453c0ee344f2de27bc7
 
 
+6. CA key  https://knowledge.rapidssl.com/support/ssl-certificate-support/index?page=content&actp=CROSSLINK&id=SO26459
+   Go to this url and copy paste the bundle key, and bundle it with server.crt key.
