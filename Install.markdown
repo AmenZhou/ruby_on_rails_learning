@@ -168,4 +168,6 @@ cd chruby-0.3.9/
 sudo make install
 
 source /usr/local/share/chruby/chruby.sh
+
+ruby setup.rb
 ```
