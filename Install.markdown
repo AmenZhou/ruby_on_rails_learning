@@ -169,5 +169,7 @@ sudo make install
 
 source /usr/local/share/chruby/chruby.sh
 
+chruby ruby-2.2.0 #defaut ruby version is 2.2.0
+
 ruby setup.rb
 ```
