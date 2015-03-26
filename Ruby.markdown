@@ -1624,3 +1624,10 @@ The left sequence is : -5, 1, -2 and the right sequence is: 8, -2, 3.
 Ruby Best Styles
 
 https://github.com/styleguide/ruby
+
+=====================================================================
+
+##### remove blank space
+```
+stripe
+```
