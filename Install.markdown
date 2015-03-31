@@ -173,3 +173,11 @@ chruby ruby-2.2.0 #defaut ruby version is 2.2.0
 
 ruby setup.rb
 ```
+
+##### Google Pinyin
+
+```
+sudo apt-get install im-switch fcitx fcitx-config-gtk2 fcitx-googlepinyin fcitx-frontend-gtk2 fcitx-ui-classic fcitx-ui-light fcitx-rime
+im-switch -s fcitx
+fcitx
+```
