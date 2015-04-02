@@ -465,6 +465,12 @@ The point is Rails autoload features
 14. Prune irrelevant or unused gem
 15. Consider Vendors Code Sacrosanct(not try to modify vendor code)
 16. Test rake task -- extract the task to a class method
+17. Don't do it in Ruby what you can do it in SQL
+```
+SQL example:
+https://play.google.com/books/reader?printsec=frontcover&output=reader&id=hEjPAwAAAEAJ&pg=GBS.PA304
+```
+18. Don't modify an up method on a commited database migration
 
 
 ===============================================================================================
