@@ -471,6 +471,11 @@ SQL example:
 https://play.google.com/books/reader?printsec=frontcover&output=reader&id=hEjPAwAAAEAJ&pg=GBS.PA304
 ```
 18. Don't modify an up method on a commited database migration
+19. Never fail quietly
+```
+rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
+```
+20. 
 
 
 ===============================================================================================
