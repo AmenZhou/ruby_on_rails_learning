@@ -78,3 +78,29 @@ Assets Debug Mode
 config.assets.debug = true
 ```
 
+##### Assets
+
+Javascript and style sheets are the only files can be compile in assets folder
+
+```
+#To add more sources
+config.assets.precompile += %w(XXX)
+```
+
+Assets Host -- Set assets to another host
+```
+config.action_controller.asset_host
+```
+
+### Log
+
+```
+#log clear
+rake log:clear
+```
+
+Taged Logging
+```
+#add tags to log info
+config.log_tags
+```
