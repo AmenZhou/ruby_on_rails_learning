@@ -210,5 +210,6 @@ fcitx
    ```
    ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
    ```
+9. `cp /var/lib/solr/data/* /usr/share/solr/production/data -r'
 
-9. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
+10. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
