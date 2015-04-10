@@ -182,14 +182,14 @@ im-switch -s fcitx
 fcitx
 ```
 
-### Solr + Sunspot
+**Solr + Sunspot**
 
-1. sudo apt-get install openjdk-7-jdk
-2. sudo apt-get install solr-tomcat
+1. `sudo apt-get install openjdk-7-jdk`
+2. `sudo apt-get install solr-tomcat`
 3. open localhost:8080/solr, check if the solr server is running
 4. copy sunspot default schema.xml file -- your_app/solr/conf/schema.xml
    to /usr/share/solr/conf
-5. add new instances -- vim /usr/share/solr/solr.xml
+5. add new instances -- `vim /usr/share/solr/solr.xml`
    
    ```
     <cores adminPath="/admin/cores" defaultCoreName="production">
@@ -198,17 +198,17 @@ fcitx
     </cores>
    ```
 
-6. change data folder location -- sudo vim /usr/share/solr/conf/solrconfig.xml
+6. change data folder location -- `sudo vim /usr/share/solr/conf/solrconfig.xml`
 
    ```
    <dataDir>${solr.data.dir:}</dataDir>
    ```
 
-7. restart tomcat -- sudo service tomcat6 restart
+7. restart tomcat -- `sudo service tomcat6 restart`
 8. config sunspot in your app
 
    ```
    ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
    ```
 
-9. run reindex to check everything is ok -- bundle exec rake sunspot:reindex RAILS_ENV=production
+9. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
