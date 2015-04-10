@@ -174,10 +174,41 @@ chruby ruby-2.2.0 #defaut ruby version is 2.2.0
 ruby setup.rb
 ```
 
-##### Google Pinyin
+### Google Pinyin
 
 ```
 sudo apt-get install im-switch fcitx fcitx-config-gtk2 fcitx-googlepinyin fcitx-frontend-gtk2 fcitx-ui-classic fcitx-ui-light fcitx-rime
 im-switch -s fcitx
 fcitx
 ```
+
+### Solr + Sunspot
+
+1. sudo apt-get install openjdk-7-jdk
+2. sudo apt-get install solr-tomcat
+3. open localhost:8080/solr, check if the solr server is running
+4. copy sunspot default schema.xml file -- your_app/solr/conf/schema.xml
+   to /usr/share/solr/conf
+5. add new instances -- vim /usr/share/solr/solr.xml
+   
+   ```
+    <cores adminPath="/admin/cores" defaultCoreName="production">
+      <core name="production" instanceDir="." dataDir="production/data"/>
+      <core name="staging" instanceDir="." dataDir="staging/data"/>
+    </cores>
+   ```
+
+6. change data folder location -- sudo vim /usr/share/solr/conf/solrconfig.xml
+
+   ```
+   <dataDir>${solr.data.dir:}</dataDir>
+   ```
+
+7. restart tomcat -- sudo service tomcat6 restart
+8. config sunspot in your app
+
+   ```
+   ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
+   ```
+
+9. run reindex to check everything is ok -- bundle exec rake sunspot:reindex RAILS_ENV=production
