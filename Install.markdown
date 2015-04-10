@@ -213,3 +213,13 @@ fcitx
 9. `cp /var/lib/solr/data/* /usr/share/solr/production/data -r`
 
 10. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
+
+11. `sudo vim /var/lib/tomcat6/conf/tomcat-users.xml`
+   ```
+   <role rolename="solr_admin"/>
+   <user username="your_username"
+      password="your_password"
+      roles="solr_admin"
+      /> 
+  ```
+12. 
