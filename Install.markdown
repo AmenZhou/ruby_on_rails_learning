@@ -203,18 +203,31 @@ fcitx
    ```
    <dataDir>${solr.data.dir:}</dataDir>
    ```
-
+  
+   copy solr default data folder to the new instance folder
+   
+   ```
+   sudo mkdir /usr/share/solr/production
+   sudo cp /var/lib/solr/data /usr/share/solr/production -r
+   ```
+   
+   ```
+   sudo chmod 777 /usr/share/solr/production
+   ```
+   
 7. restart tomcat -- `sudo service tomcat6 restart`
 8. config sunspot in your app
 
    ```
    ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
    ```
+   
 9. `cp /var/lib/solr/data/* /usr/share/solr/production/data -r`
 
 10. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
 
 11. `sudo vim /var/lib/tomcat6/conf/tomcat-users.xml`
+
    ```
    <role rolename="solr_admin"/>
    <user username="your_username"
@@ -222,4 +235,28 @@ fcitx
       roles="solr_admin"
       /> 
   ```
-12. 
+  
+12. `sudo vim /usr/share/solr/web/WEB-INT.xml`
+
+   ```
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>Solr Lockdown</web-resource-name>
+        <url-pattern>/</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>solr_admin</role-name>
+        <role-name>admin</role-name>
+      </auth-constraint>
+    </security-constraint>
+    <login-config>
+      <auth-method>BASIC</auth-method>
+      <realm-name>Solr</realm-name>
+    </login-config> 
+  ```
+  
+13. Edit user password anthentication to WEBSOLR_URL
+
+   ```
+   ENV['WEBSOLR_URL'] = "http://solr_username:solr_password@localhost:8080/solr/production"
+   ```
