@@ -92,7 +92,7 @@ Assets Host -- Set assets to another host
 config.action_controller.asset_host
 ```
 
-### Log
+##### Log
 
 ```
 #log clear
@@ -104,3 +104,15 @@ Taged Logging
 #add tags to log info
 config.log_tags
 ```
+##### routes
+
+1. Routing Globbing
+
+   ```
+   #routes.rb
+   get "items/q/*specs", controller: :items, action: :query
+   #items_controller.rb
+   Item.where(Hash[*params[:specs].split("/")])
+   ```
+   
+   
