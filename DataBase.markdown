@@ -32,6 +32,21 @@
 
 `psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432`
 
+##### AWS RDS
+
+**add ssl**
+
+1. download pem http://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
+
+2. put this file to config/
+
+3. database.yml
+
+  ```
+  sslmode: 'verify-full'
+  sslrootcert: 'config/amazon-rds-ca-cert.pem'
+  ```
+
 ### mysql
 
 ###### database.yml
