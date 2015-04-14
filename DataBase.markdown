@@ -1,10 +1,34 @@
 ### psql
 
-###### restore psql dump file
-psql -U username -d database_name -f backup.sql  
+**restore psql dump file**
 
-###### backup psql 
-pg_dump -U username -c -N postgis -N topology  database_name > backup.sql 
+`psql -U username -d database_name -f backup.sql`
+
+`pg_restore -C -U username -d database -h host -p port -f file.dump`
+
+**backup psql**
+
+`pg_dump -U username -c -N postgis -N topology  database_name > backup.sql`
+
+**change login user password**
+
+`\password postgres`
+
+**create new user**
+
+`CREATE USER dbuser WITH PASSWORD 'password';`
+
+**create database**
+
+`CREATE DATABASE exampledb OWNER dbuser;`
+
+**privilege**
+
+`GRANT ALL PRIVILEGES ON DATABASE exampledb to dbuser;`
+
+**connect**
+
+`psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432`
 
 ### mysql
 
