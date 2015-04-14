@@ -6,6 +6,8 @@
 
 `pg_restore -C -U username -d database -h host -p port -f file.dump`
 
+ http://www.postgresql.org/docs/9.1/static/app-pgrestore.html
+
 **backup psql**
 
 `pg_dump -U username -c -N postgis -N topology  database_name > backup.sql`
