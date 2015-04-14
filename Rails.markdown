@@ -229,13 +229,13 @@ https://google-developers.appspot.com/chart/interactive/docs/gallery/piechart
 ======================================================================
 
 Splat Agument
-
+```
   def self.by_user_ids(*ids)
     where(:user_id => ids.flatten.compact.uniq).order('created_at DESC')
   end
   
   Twet.by_user_ids(id, *follows.map(&:following_id))
-  
+```
 ref: http://endofline.wordpress.com/2011/01/21/the-strange-ruby-splat/
 
 =========================================================================
