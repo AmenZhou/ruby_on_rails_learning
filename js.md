@@ -16,7 +16,7 @@ $.global_variable
 ```javascript
 "abc".includes("a") //=> true
 
-"abc".match("/\d+") //=> false
+"abc".match("/\d+/") //=> false
 ```
 
 ##### get class name
