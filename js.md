@@ -1,26 +1,26 @@
 ##### identify checkbox status
 
 ```javascript
-$("checkbox").is(':checked') #=> true / false
+$("checkbox").is(':checked') //=> true / false
 
-this.checked #=> true / false
+this.checked //=> true / false
 ```
 ##### Global Variable
 
-```
+```javascript
 $.global_variable
 ```
 
 ##### js string match
 
-```
-"abc".includes("a") #=> true
+```javascript
+"abc".includes("a") //=> true
 
-"abc".match("/\d+") #=> false
+"abc".match("/\d+") //=> false
 ```
 
 ##### get class name
 
-```
-$("#id").attr("class") #=> class name
+``` javascript
+$("#id").attr("class") //=> class name
 ```
