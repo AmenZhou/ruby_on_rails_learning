@@ -1631,3 +1631,29 @@ https://github.com/styleguide/ruby
 ```
 stripe
 ```
+
+##### Array Element Match
+
+```ruby
+[1, 2, 3].include?(1) #=> true
+
+['a', 'abc', 'bcd'].grep(/a/) #=> ['a', 'abc']
+```
+
+```ruby
+class A
+  def a
+    puts "a"
+  end
+  
+  def self.b
+    puts "b"
+  end
+end
+
+A.methods.include?(:a) #=> false
+A.methods.include?(:b) #=> true
+
+A.methods.new.include?(:a) #=> true
+A.methods.new.include?(:b) #=> false
+```
