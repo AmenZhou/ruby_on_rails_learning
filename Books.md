@@ -114,5 +114,14 @@ config.log_tags
    #items_controller.rb
    Item.where(Hash[*params[:specs].split("/")])
    ```
+2. response_with
+   ```ruby
+   class controller
+     repsond_to :xml
    
-   
+     def index
+       @auctions = Auction.all
+       respond_with(@auctions)
+     end
+  end
+  ```
