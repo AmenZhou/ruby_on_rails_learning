@@ -26,6 +26,8 @@ $("#id").attr("class") //=> class name
 ```
 ##### PJAX
 
+https://github.com/rails/pjax_rails
+
 ```ruby
 gem 'pjax_rails'
 ```
@@ -33,6 +35,16 @@ gem 'pjax_rails'
 ```javascript
 //application.js
 //= require pjax
+
+$(function() {
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
+});
+```
+
+```html
+<!-- view -->
+<div data-pjax-container>
+</div>
 ```
 
 
