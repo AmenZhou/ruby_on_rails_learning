@@ -24,3 +24,15 @@ $.global_variable
 ``` javascript
 $("#id").attr("class") //=> class name
 ```
+##### PJAX
+
+```ruby
+gem 'pjax_rails'
+```
+
+```javascript
+//application.js
+//= require pjax
+```
+
+
