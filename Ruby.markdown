@@ -1657,3 +1657,9 @@ A.methods.include?(:b) #=> true
 A.methods.new.include?(:a) #=> true
 A.methods.new.include?(:b) #=> false
 ```
+##### Time Format
+
+```
+time.strftime('%m-%d-%Y %I:%M %P') #=> 01-20-2015 01:20 pm
+time.strftime('%b/%d/%Y %I:%M %P') #=> Jan/20/2015 01:20 pm
+```
