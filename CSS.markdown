@@ -97,3 +97,8 @@ Example: http://eonasdan.github.io/bootstrap-datetimepicker/
 
 http://jqueryvalidation.org/documentation/
 
+##### Transparent
+
+```css
+opacity: 0 //100% transparency
+```
