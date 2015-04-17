@@ -56,5 +56,44 @@ Doc: https://select2.github.io/options.html#ajax
 
 http://harvesthq.github.io/chosen/
 
+##### JQuery Animation Example
+```javascript
+  $('.product-quick-add-btn').on('click', function(e) {
+      $(".menu-cart-empty").removeClass("menu-cart-empty-show");
+      $(".badge").text("5");
+      e.preventDefault();
+      var cart = $('.fa-shopping-cart');
+      var $imgtodrag = $(this).parents(".product-item");
+      if ($imgtodrag) {
+          var imgclone = $imgtodrag.clone()
+              .offset({
+                  top: $imgtodrag.offset().top,
+                  left: $imgtodrag.offset().left
+              })
+              .css({
+                  'opacity': '0.5',
+                  'position': 'absolute',
+                  'height': '150px',
+                  'width': '150px',
+                  'z-index': '3000'
+              })
+              .appendTo($('body'))
+              .animate({
+                  'top': cart.offset().top + 10,
+                  'left': cart.offset().left,
+                  'width': 75,
+                  'height': 75
+              }, 1000, 'linear');
 
-
+          imgclone.animate({
+              'width': 0,
+              'height': 0
+          }, function() {
+              $(this).detach()
+          }).find("i, .product-quick-details, .product-quick-add-btn, .product-label").remove();
+      }
+      setTimeout(function() {
+          $(".menu-cart-preview").addClass("menu-cart-preview-show");
+      }, 1500);
+  });
+```
