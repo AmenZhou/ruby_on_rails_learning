@@ -186,3 +186,37 @@ Go to this url and copy paste the bundle key, and bundle it with server.crt key.
 ```
 ctags --extra=+f --exclude=.git --exclude=log --exclude=coverage --exclude=public/assets -R *  /home/techbay/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/*
 ```
+
+##### Sunspot Search
+
+```ruby
+  # model file set column to text type 
+  text :title
+  # controller
+  Sunspot.search(Model) do
+    fulltext("abc") do
+      fields(:title)
+    end
+  end
+```
+
+Set Solr to configure text part match search
+e.g. 'text' => 'context'
+```
+  #solr config file -- StemFilter
+  <fieldType name="text" class="solr.TextField" omitNorms="false">
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StandardFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StandardFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true" tokenizerFactory="solr.StandardTokenizerFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+```
