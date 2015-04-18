@@ -97,3 +97,25 @@ http://harvesthq.github.io/chosen/
       }, 1500);
   });
 ```
+##### Js Function Reload After Ajax Call
+
+```javascript
+ function initialise(){
+   $(".brand-search").keyup(function(){
+     $.ajax({
+       url: "/items/brands_search",
+       method: "get",
+       data: { brand: $(this).val()  },
+       dataType: "script"
+     });
+   });
+ }
+
+ $(function(){
+   initialise();
+   $("body").bind("ajaxComplete", function(e, xhr, settings){
+     //console.log("reload js")
+     initialise();
+   });
+ });
+```
