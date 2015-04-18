@@ -188,16 +188,19 @@ ctags --extra=+f --exclude=.git --exclude=log --exclude=coverage --exclude=publi
 ```
 
 ##### Sunspot Search
-
+Full text search
 ```ruby
   # model file set column to text type 
   text :title
   # controller
-  Sunspot.search(Model) do
+  @products = Sunspot.search(Product) do
     fulltext("abc") do
       fields(:title)
     end
   end
+  
+  # view use
+  @products = @products.result
 ```
 
 Set Solr to configure text part match search
@@ -219,4 +222,21 @@ e.g. 'text' => 'context'
       <filter class="solr.PorterStemFilterFactory"/>
     </analyzer>
   </fieldType>
+```
+
+Facet
+```ruby
+
+  # controller
+  @products = Sunspot.search(Product) do
+    fulltext("abc") do
+      fields(:name)
+    end
+    facet(:category)
+  end
+  
+  # view get all categories
+  @categories = @products.facet(:category).rows.map do |row|
+    row.value
+  end
 ```
