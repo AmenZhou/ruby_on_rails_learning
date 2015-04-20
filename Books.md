@@ -125,10 +125,12 @@ config.log_tags
      end
   end
   ```
+  
+  
 ##### ActiveRecord
 
 1. attribute_read and write
-   ```
+   ```ruby
    class Specification < ActiveRecord::Base
      def tolerance
        self[:tolerance] || 'n/a'
@@ -138,4 +140,9 @@ config.log_tags
        self[:tolerance] = txt + 'in bed'
      end
    end
+   ```
+   
+2. Serialize
+   ```
+   serialize :performance, Hash
    ```
