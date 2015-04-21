@@ -491,6 +491,46 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 
 ========================================================================================
 
-1. explain has_many and belongs_to relationship in Rails
+##### explain has_many and belongs_to relationship in Rails
 
-2. api -- to_json, how to customize the attributes of a class inside the json (you only want part of the attributes of that class)
+1. `has_and_belongs_to_many :students, join_table: :students_teachers`
+
+2. 
+   ```
+   has_many :students,  through: :students_teachers
+   has_many :students_teachers
+   ```
+===============================================================================
+##### api -- to_json, how to customize the attributes of a class inside the json (you only want part of the attributes of that class)
+
+1. to_json inheritance from `ActiveModel::Serializers::JSON`
+
+2. to_json example
+   ```
+   konata = User.find(1)
+   ActiveRecord::Base.include_root_in_json = true
+   konata.to_json
+   # => { "user": {"id": 1, "name": "Konata Izumi", "age": 16,
+                  "created_at": "2006/08/01", "awesome": true} }
+   ```
+   
+3. customize column `konata.to_json(:only => [ :id, :name ])`
+
+4. as_json
+   ```
+   user = User.find(1)
+   user.as_json
+   # => { "id" => 1, "name" => "Konata Izumi", "age" => 16,
+   #     "created_at" => "2006/08/01", "awesome" => true}
+   ```
+   
+5. from_json
+   ```
+   json = { person: { name: 'bob', age: 22, awesome:true } }.to_json
+   person = Person.new
+   person.from_json(json, true) # => #<Person:0x007fec5e7a0088 @age=22, @awesome=true, @name="bob">
+   person.name                  # => "bob"
+   person.age                   # => 22
+   person.awesome               # => true
+   ```
+
