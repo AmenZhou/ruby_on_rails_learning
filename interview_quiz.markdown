@@ -475,7 +475,6 @@ https://play.google.com/books/reader?printsec=frontcover&output=reader&id=hEjPAw
 ```
 rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 ```
-20. 
 
 
 ===============================================================================================
@@ -489,3 +488,9 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 ================================================================================================
 
 ##### Difference between Mysql and Posgres
+
+========================================================================================
+
+1. explain has_many and belongs_to relationship in Rails
+
+2. api -- to_json, how to customize the attributes of a class inside the json (you only want part of the attributes of that class)
