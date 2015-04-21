@@ -496,7 +496,7 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 1. `has_and_belongs_to_many :students, join_table: :students_teachers`
 
 2. 
-   ```
+   ```ruby
    has_many :students,  through: :students_teachers
    has_many :students_teachers
    ```
@@ -506,7 +506,7 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 1. to_json inheritance from `ActiveModel::Serializers::JSON`
 
 2. to_json example
-   ```
+   ```ruby
    konata = User.find(1)
    ActiveRecord::Base.include_root_in_json = true
    konata.to_json
@@ -517,7 +517,7 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
 3. customize column `konata.to_json(:only => [ :id, :name ])`
 
 4. as_json
-   ```
+   ```ruby
    user = User.find(1)
    user.as_json
    # => { "id" => 1, "name" => "Konata Izumi", "age" => 16,
@@ -525,7 +525,7 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
    ```
    
 5. from_json
-   ```
+   ```ruby
    json = { person: { name: 'bob', age: 22, awesome:true } }.to_json
    person = Person.new
    person.from_json(json, true) # => #<Person:0x007fec5e7a0088 @age=22, @awesome=true, @name="bob">
