@@ -21,3 +21,10 @@ _gaq.push(['_trackEvent', 'Videos', 'Play', 'Gone With the Wind']);
 
 </script>
 ```
+##### Google Ecommerce URL Params
+
+https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
+
+https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide
+
+https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
