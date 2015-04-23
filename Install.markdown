@@ -283,3 +283,18 @@ fcitx
 ```
 sudo aptitude install exuberant-ctags  
 ```
+##### rbenv
+
+1. `git clone https://github.com/sstephenson/rbenv.git ~/.rbenv`
+
+2. `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc`
+
+3. `echo 'eval "$(rbenv init -)"' >> ~/.bashrc`
+
+4. `source ~/.bashrc`
+
+4. `type rbenv`
+
+5. `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
+
+6. `rbenv install 2.2.0`
