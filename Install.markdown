@@ -212,7 +212,7 @@ fcitx
    ```
    
    ```
-   sudo chmod 777 /usr/share/solr/production
+   sudo chmod 777 /usr/share/solr/production -R
    ```
    
 7. restart tomcat -- `sudo service tomcat6 restart`
@@ -221,8 +221,6 @@ fcitx
    ```
    ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
    ```
-   
-9. `cp /var/lib/solr/data/* /usr/share/solr/production/data -r`
 
 10. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
 
