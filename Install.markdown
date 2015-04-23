@@ -222,9 +222,9 @@ fcitx
    ENV['WEBSOLR_URL'] = "http://localhost:8080/solr/production"
    ```
 
-10. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
+9. run reindex to check everything is ok -- `bundle exec rake sunspot:reindex RAILS_ENV=production`
 
-11. `sudo vim /var/lib/tomcat6/conf/tomcat-users.xml`
+10. `sudo vim /var/lib/tomcat6/conf/tomcat-users.xml`
 
    ```
    <role rolename="solr_admin"/>
@@ -234,7 +234,7 @@ fcitx
       /> 
   ```
   
-12. `sudo vim /usr/share/solr/web/WEB-INT.xml`
+11. `sudo vim /usr/share/solr/web/WEB-INT.xml`
 
    ```
     <security-constraint>
@@ -253,8 +253,18 @@ fcitx
     </login-config> 
   ```
   
-13. Edit user password anthentication to WEBSOLR_URL
+12. Edit user password anthentication to WEBSOLR_URL
 
    ```
    ENV['WEBSOLR_URL'] = "http://solr_username:solr_password@localhost:8080/solr/production"
+   ```
+   
+13. change tomcat port
+   ```
+    sudo vim /var/lib/tomcat6/conf/server.xml 
+    #change port 8080 => 8983
+    <Connector port="8983" protocol="HTTP/1.1" 
+       connectionTimeout="20000" 
+       URIEncoding="UTF-8"
+       redirectPort="8443" />
    ```
