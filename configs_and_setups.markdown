@@ -253,3 +253,11 @@ deb-src http://ubuntu.cs.utah.edu/ubuntu/ trusty main
 #update source
 sudo apt-get update
 ```
+
+##### SSH
+
+```
+sudo vim /etc/ssh/sshd_config
+
+PasswordAuthentication no
+```
