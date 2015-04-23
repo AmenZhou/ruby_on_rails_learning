@@ -240,3 +240,16 @@ Facet
     row.value
   end
 ```
+
+##### Add and Update Source
+
+```
+sudo vim /etc/opt/sources.list
+
+#add source url
+deb http://ubuntu.cs.utah.edu/ubuntu/ trusty main 
+deb-src http://ubuntu.cs.utah.edu/ubuntu/ trusty main 
+
+#update source
+sudo apt-get update
+```
