@@ -277,3 +277,9 @@ fcitx
      <maxTime>1000</maxTime>
    </autoCommit>
    ```
+
+##### ctag
+
+```
+sudo aptitude install exuberant-ctags  
+```
