@@ -268,3 +268,12 @@ fcitx
        URIEncoding="UTF-8"
        redirectPort="8443" />
    ```
+14. auto commit -- `sudo vim /usr/share/solr/conf/solrconfig.xml`
+
+   ```
+   #uncomment this block
+   <autoCommit>
+     <maxDocs>10000</maxDocs>
+     <maxTime>1000</maxTime>
+   </autoCommit>
+   ```
