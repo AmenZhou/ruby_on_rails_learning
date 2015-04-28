@@ -280,7 +280,24 @@ fcitx
      <maxTime>1000</maxTime>
    </autoCommit>
    ```
+15. set tomcat memory
+    ```
+    sudo vim /usr/share/tomcat6/bin/setenv.sh
+    
+    export JAVA_OPTS="-Xms256m -Xmx512m"
+    ```
 
+16. additional config -- timeout
+    ```
+    sudo vim /usr/share/solr/solr.xml
+    
+    <shardHandlerFactory name="shardHandlerFactory"
+      class="HttpShardHandlerFactory">
+      <int name="socketTimeout">${socketTimeout:0}</int>
+      <int name="connTimeout">${connTimeout:0}</int>
+    </shardHandlerFactory>
+    ```
+    
 ====================
 
 ### rbenv
