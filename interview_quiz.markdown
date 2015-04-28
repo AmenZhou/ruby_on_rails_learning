@@ -419,6 +419,7 @@ Answer: transactions are sets of changes, that must all be made together. It may
 ##### Features of Rails 4.2 beta
 
 **Rails 4 new features overview**
+
 1. Postgres -- hstore and array 
    ```ruby
    class CreateArticles < ActiveRecord::Migration
@@ -438,6 +439,7 @@ Answer: transactions are sets of changes, that must all be made together. It may
    ```
    
 2. ActiveRecords
+   ```
    all
    load
    none
@@ -445,6 +447,7 @@ Answer: transactions are sets of changes, that must all be made together. It may
    find_by_name
    find_or_create_by
    find_or_inititalize_by
+   ```
 
 3. ActiveModel::Model
 
@@ -457,7 +460,7 @@ Answer: transactions are sets of changes, that must all be made together. It may
    strong parameters
    ```
 6. Model
-   ```
+   ```ruby
    #old scope
    scope :sorted, order(:name)
    
@@ -486,10 +489,21 @@ Answer: transactions are sets of changes, that must all be made together. It may
 9. others
    production.rb
    ```ruby
-  #eager_load
+   #eager_load
    config.eager_load = true
    ```
-   
+**Rails 4.2 New Features
+
+1. Asynchronous Mails
+
+2. Active Job
+
+3. Adequate Record
+
+4. Web Console
+
+5. Foreign Key Support
+
 ===========================================================================================
 
 ##### Cucumber
