@@ -418,6 +418,78 @@ Answer: transactions are sets of changes, that must all be made together. It may
 
 ##### Features of Rails 4.2 beta
 
+**Rails 4 new features overview**
+1. Postgres -- hstore and array 
+   ```ruby
+   class CreateArticles < ActiveRecord::Migration
+    def change
+      execute "create extension hstore"
+      create_table :articles do |t|
+        t.string :name
+        t.text :content
+        t.date :published_on
+        t.string :tags, array: true
+        t.hstore :properties
+  
+        t.timestamps
+      end
+    end
+   end
+   ```
+   
+2. ActiveRecords
+   all
+   load
+   none
+   find_by
+   find_by_name
+   find_or_create_by
+   find_or_inititalize_by
+
+3. ActiveModel::Model
+
+4. Gems
+
+5. New things in controller
+   ```ruby
+   before_filter => before_action
+   
+   strong parameters
+   ```
+6. Model
+   ```
+   #old scope
+   scope :sorted, order(:name)
+   
+   #new scope
+   scope :sorted, -> { order(:name) }
+   ```
+7. Views
+   ```ruby
+   collection_select
+   collection_check_boxes
+   collection_radio_buttons
+   date_select
+   ```
+   pure ruby file in views -- edit.html.ruby
+   
+8. routes.rb
+   concern
+   get post and puts
+   ```ruby
+   #constrains
+   get 'foo', to: 'articles#index', constraints: {protocol: "https", subdomain: "test"}
+   
+   >> app.foo_url
+   => "https://test.example.com/foo"
+   ```
+9. others
+   production.rb
+   ```ruby
+  #eager_load
+   config.eager_load = true
+   ```
+   
 ===========================================================================================
 
 ##### Cucumber
