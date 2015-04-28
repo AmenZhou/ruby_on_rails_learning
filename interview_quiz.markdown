@@ -487,12 +487,14 @@ Answer: transactions are sets of changes, that must all be made together. It may
    => "https://test.example.com/foo"
    ```
 9. others
+   
    production.rb
    ```ruby
    #eager_load
    config.eager_load = true
    ```
-**Rails 4.2 New Features
+   
+**Rails 4.2 New Features**
 
 1. Asynchronous Mails
 
