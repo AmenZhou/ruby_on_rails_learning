@@ -315,3 +315,7 @@ fcitx
 5. `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
 
 6. `rbenv install 2.2.0`
+
+7. `sudo apt-get install zlib1g-dev`
+
+8. `sudo apt-get install libffi-dev` 
