@@ -319,3 +319,9 @@ fcitx
 7. `sudo apt-get install zlib1g-dev`
 
 8. `sudo apt-get install libffi-dev` 
+
+=====================================================================
+
+### Install Mysql Client
+
+`sudo apt-get install libmysqlclient-dev`
