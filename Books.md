@@ -146,3 +146,15 @@ config.log_tags
    ```
    serialize :performance, Hash
    ```
+   
+3. Readonly attributes
+   ```
+   attr_readonly :social_security_number
+   ```
+
+4. Delete and Destroy
+   ```
+   delete -- pure SQL 
+   
+   destroy -- load instance and then delete
+   ```
