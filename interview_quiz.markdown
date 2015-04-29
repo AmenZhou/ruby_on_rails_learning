@@ -621,4 +621,28 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
    person.age                   # => 22
    person.awesome               # => true
    ```
+===========================================
 
+### ActiveRecords includes
+
+```ruby
+  class Group
+    has_many :members
+  end
+  
+  class Members
+    has_many :addresses
+    belongs_to :group
+  end
+  
+  class Address
+    belongs_to :members
+  end
+  
+  Find out Group id 1 with all the members and addresses belongs to it
+  
+  ###############################
+  Group.includes(:members, members: :addresses).find(1)
+  
+  How many sql query will be generated according to the previous ruby code
+```
