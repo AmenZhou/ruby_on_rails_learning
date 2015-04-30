@@ -325,3 +325,12 @@ fcitx
 ### Install Mysql Client
 
 `sudo apt-get install libmysqlclient-dev`
+
+==============================================================
+
+### Install Pg Client
+
+```
+sudo apt-get install libpq-dev
+sudo apt-get install postgresql-client
+```
