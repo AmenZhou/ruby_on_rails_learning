@@ -646,3 +646,16 @@ rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
   
   How many sql query will be generated according to the previous ruby code
 ```
+
+=============================================
+
+### BuzzFizz
+
+1. Iterate from 0 to 100(N)
+2. If N is a multiple of 3, print Fizz
+3. If N is a multiple of 5, print Buzz
+4. If N is a multiple of 3&5, print FizzBuzz
+5. Your code must be testable
+
+
+
