@@ -323,7 +323,7 @@ fcitx
 
 ### Install Mysql Client
 
-`sudo apt-get install libmysqlclient-dev`
+`sudo apt-get install libmysqlclient-dev mysql`
 
 ==============================================================
 
