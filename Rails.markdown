@@ -708,4 +708,11 @@ def oprice
   ActionController::Base.helpers.number_to_currency(read_attribute :oprice)
 end
 ```
+============================================
 
+### application.yml
+
+config/application.rb
+```
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+```
