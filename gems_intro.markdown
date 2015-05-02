@@ -18,3 +18,16 @@ https://gist.github.com/balauru/5706272
 
 
 `gem 'byebug', github: 'deivid-rodriguez/byebug', branch: 'master'`
+
+
+==========================================
+
+### Minimagik Error
+
+Error Message
+```
+ImageFailed to manipulate with MiniMagick, maybe it is not an image? Original Error: executable not found: "identify"
+```
+
+Resolve
+`sudo apt-get install imagemagick`
