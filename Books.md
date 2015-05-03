@@ -158,3 +158,19 @@ config.log_tags
    
    destroy -- load instance and then delete
    ```
+##### ActiveAssociation
+
+1. << and create
+  ```
+    product.sizes << small_size #return association proxy
+    product.sizes.create #return product object
+  ```
+2. any?, many? and empty?
+
+3. delete and delete_all are only served to clean association, foreign key. Diffrerent from destroy
+
+4. reload
+  ```
+   user(true).name #reload user and return a different object id
+  ```
+5. has_many -- after_add, before_add, before_remove callbacks
