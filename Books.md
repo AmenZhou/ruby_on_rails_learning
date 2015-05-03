@@ -158,6 +158,7 @@ config.log_tags
    
    destroy -- load instance and then delete
    ```
+
 ##### ActiveAssociation
 
 1. << and create
