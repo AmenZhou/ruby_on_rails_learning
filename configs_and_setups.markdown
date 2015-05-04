@@ -244,7 +244,7 @@ Facet
 ##### Add and Update Source
 
 ```
-sudo vim /etc/opt/sources.list
+sudo vim /etc/apt/sources.list
 
 #add source url
 deb http://ubuntu.cs.utah.edu/ubuntu/ trusty main 
