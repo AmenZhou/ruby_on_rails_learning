@@ -261,3 +261,11 @@ sudo vim /etc/ssh/sshd_config
 
 PasswordAuthentication no
 ```
+=============================================
+
+### Capistrano Git Authentication
+
+
+```
+set :repo_url, 'https://ain:3490jL?a@git.repository-domain.com:4442/git/repo.git'
+```
