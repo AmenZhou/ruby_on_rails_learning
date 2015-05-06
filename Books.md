@@ -175,3 +175,13 @@ config.log_tags
    user(true).name #reload user and return a different object id
   ```
 5. has_many -- after_add, before_add, before_remove callbacks
+
+##### Validate
+
+1. validates_confirmation_of
+
+2. validates_acceptance_of
+
+3. validates_inclusion_of
+
+4. validates_exclustion_of 
