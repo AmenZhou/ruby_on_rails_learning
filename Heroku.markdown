@@ -25,3 +25,8 @@ heroku keys:add ~/.ssh/id_rsa.pub
 
 ====================================================================================
 
+### Heroku remote add
+
+```
+ heroku git:remote -a appname
+```
