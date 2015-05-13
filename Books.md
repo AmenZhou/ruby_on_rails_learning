@@ -185,3 +185,13 @@ config.log_tags
 3. validates_inclusion_of
 
 4. validates_exclustion_of 
+
+##### Helpers
+
+1. form helpers
+   
+   1. error_message_on
+
+   2. error_message_for
+   
+   
