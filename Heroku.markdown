@@ -14,14 +14,13 @@ Procfile in Heroku: https://devcenter.heroku.com/articles/procfile
 
 Install Heroku in Ubuntu
 
-1  install toolbelt
+1. install toolbelt
+  
   wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-2  git add remote 
- git remote add heroku git@XXXX.git
+2. add key
 
-3  add key
-heroku keys:add ~/.ssh/id_rsa.pub
+  heroku keys:add ~/.ssh/id_rsa.pub
 
 ====================================================================================
 
