@@ -269,3 +269,11 @@ PasswordAuthentication no
 ```
 set :repo_url, 'https://ain:3490jL?a@git.repository-domain.com:4442/git/repo.git'
 ```
+
+=================================
+
+### Git ssh key add
+
+```
+ssh-add ~/.ssh/id_rsa
+```
