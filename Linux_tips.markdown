@@ -36,3 +36,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 ```
+.vimrc.after
+```
+colorscheme buttercream
+set shiftwidth=2
+set softtabstop=2
+```
