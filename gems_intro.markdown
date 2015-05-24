@@ -78,3 +78,23 @@ Gemfile
 gem "fog", "~> 1.20"
 gem "fog-aws"
 ```
+
+======================================
+
+### Memcached
+
+Store Session
+
+```ruby
+gem 'dalli'
+
+config.cache_store = :mem_cache_store
+```
+====================================
+
+### Active Record Session Store
+
+Store sessions on database
+```ruby
+gem 'activerecord-session_store'
+```
