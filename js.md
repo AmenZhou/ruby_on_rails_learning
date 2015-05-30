@@ -125,3 +125,11 @@ http://harvesthq.github.io/chosen/
 ### Mobile Framework
 
 http://ionicframework.com/
+
+========================================
+
+### Jquery load
+
+```javascript
+  $("#the_html_ele_show_the_result").load "/registration/new" + $.param({name: "John Sutton", gender: "M" ...})
+```
