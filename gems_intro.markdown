@@ -98,3 +98,11 @@ Store sessions on database
 ```ruby
 gem 'activerecord-session_store'
 ```
+
+=======================================
+
+### lib8 gem install on mac
+
+```
+gem install libv8 -v '3.11.8.17' -- --with-system-v8  
+```
