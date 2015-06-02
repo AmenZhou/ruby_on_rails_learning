@@ -106,3 +106,9 @@ gem 'activerecord-session_store'
 ```
 gem install libv8 -v '3.11.8.17' -- --with-system-v8  
 ```
+
+========================================
+
+### HTML Editor -- Tinymce
+
+https://github.com/spohlenz/tinymce-rails
