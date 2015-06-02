@@ -13,3 +13,17 @@ http://stackoverflow.com/questions/7154664/ruby-sqlite3busyexception-database-is
 ```
 
 `User.instance_variable_set(:@user_name, "Tom Adison")`
+
+### Share Behaves
+
+```ruby
+shared_examples "a shared example" do
+  it "xxx" do
+  end
+end
+
+describe "xxx" do
+  it_behaves_like "a shared example"
+end
+```
+
