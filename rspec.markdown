@@ -27,3 +27,10 @@ describe "xxx" do
 end
 ```
 
+=================================
+
+### Nicer Rspec Running Output
+
+```
+rspec -fd spec/test_rspec.rb
+```
