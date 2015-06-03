@@ -48,3 +48,9 @@ it renders the view's in the controller spec. If you don't put render_views, the
 ```ruby
 controller.expects(:record_registration_attempt).with(params[:registration], 'completed')
 ```
+
+========================================
+
+### fast test
+
+`rspec spec/ --fail-fast`
