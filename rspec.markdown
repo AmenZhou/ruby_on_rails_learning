@@ -54,3 +54,10 @@ controller.expects(:record_registration_attempt).with(params[:registration], 'co
 ### fast test
 
 `rspec spec/ --fail-fast`
+
+=======================================
+
+### bypass_rescue
+
+ignore rescue and make error appear
+
