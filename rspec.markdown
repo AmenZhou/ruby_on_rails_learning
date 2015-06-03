@@ -34,3 +34,17 @@ end
 ```
 rspec -fd spec/test_rspec.rb
 ```
+
+=====================================
+
+### render_views
+
+it renders the view's in the controller spec. If you don't put render_views, the views won't render, that means the controller is called but after it returns the views are not rendered. Controller tests will run faster, as they won't have to render the view, but you might miss bugs in the view.
+
+=======================================
+
+### expects
+
+```ruby
+controller.expects(:record_registration_attempt).with(params[:registration], 'completed')
+```
