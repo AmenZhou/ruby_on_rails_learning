@@ -57,4 +57,4 @@ set softtabstop=2
 
 ### Vim
 
-![vim shortcut](~/Downloads/zpzPO.gif)
+![vim shortcut](file://Users/hzhou/Downloads/zpzPO.gif)
