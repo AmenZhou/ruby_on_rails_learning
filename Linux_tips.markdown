@@ -55,6 +55,6 @@ set softtabstop=2
 
 ==============================
 
-### Vim
+### Vim Shortcut
 
-![vim shortcut](file://Users/hzhou/Downloads/zpzPO.gif)
+https://drive.google.com/drive/folders/0B_5oQQo5-fvQY0ZzUEc3dVBZUjA
