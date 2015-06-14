@@ -200,23 +200,25 @@ config.log_tags
 
 ### Metaprogramming Ruby
 
-##### Scope Gate
+##### block
 
-1. Class defininations
-2. Module definiations
-3. Methods
+1. Scope Gate
+    
+    1. Class defininations
+    2. Module definiations
+    3. Methods
 
-##### Flat Scope & Shared Scope
+2. Flat Scope & Shared Scope
 
-##### instance_eval & instance_exec & Clean Room
+3. instance_eval & instance_exec & Clean Room
 
-##### Turn a method to an object(Method or UnboundMethod)
+4. Turn a method to an object(Method or UnboundMethod)
 
-##### Turn a block to an object(Proc)
+5. Turn a block to an object(Proc)
 
-##### Block & Proc & Lambdas & Plain old methods
+6. Block & Proc & Lambdas & Plain old methods
 
-##### DSL
+7. DSL
 
 ##### Class Definition
 
