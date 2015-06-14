@@ -195,3 +195,71 @@ config.log_tags
    2. error_message_for
    
    
+
+=========================================================
+
+### Metaprogramming Ruby
+
+##### Scope Gate
+
+1. Class defininations
+2. Module definiations
+3. Methods
+
+##### Flat Scope & Shared Scope
+
+##### instance_eval & instance_exec & Clean Room
+
+##### Turn a method to an object(Method or UnboundMethod)
+
+##### Turn a block to an object(Proc)
+
+##### Block & Proc & Lambdas & Plain old methods
+
+##### DSL
+
+##### Class Definition
+
+1. class_eval
+2. class instance variable
+   instance variable is only belongs to the current self
+
+   ```ruby
+   class MyClass
+     @time = 2 #class instance variable
+     
+     def time_read
+       @time #object of class instance variable
+     end
+     
+     def time_write
+       @time = 3 #object of class instance variable
+     end
+     
+     def self.time_read
+       @time #class instance variable
+     end
+   end
+   ```
+
+3. define an anonymous class and assign a name to it
+   ```ruby
+   c = Class.new(superclass of this class)
+
+   #assign an constant name to this class
+   MyClass = c
+   
+   MyClass.new #=> []
+   ```
+
+4. duck typing
+   ```
+   if it walks like a duck, quacks like a duck, then it must be a duck
+   ```
+
+
+
+
+
+
+
