@@ -58,3 +58,14 @@ set softtabstop=2
 ### Vim Shortcut
 
 https://drive.google.com/drive/folders/0B_5oQQo5-fvQY0ZzUEc3dVBZUjA
+
+====================================
+
+### brew install macvim
+
+```
+brew install macvim --override-system-vim
+brew linkapps
+```
+
+change vim path -- /usr/local/bin comes first in your $PATH
