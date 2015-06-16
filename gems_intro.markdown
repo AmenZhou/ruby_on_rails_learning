@@ -112,3 +112,15 @@ gem install libv8 -v '3.11.8.17' -- --with-system-v8
 ### HTML Editor -- Tinymce
 
 https://github.com/spohlenz/tinymce-rails
+
+==========================================
+
+### Use Local Gem
+
+https://coderwall.com/p/tqdrhq/work-against-local-gems-without-modifying-your-gemfile
+
+`bundle config local.GEM_NAME /path/to/local/repo`
+
+`bundle config`
+
+`bundle config --delete local.GEM_NAME`
