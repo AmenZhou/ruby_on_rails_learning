@@ -69,3 +69,11 @@ brew linkapps
 ```
 
 change vim path -- /usr/local/bin comes first in your $PATH
+
+=====================================
+
+### vim show editor history
+
+in vim mode
+
+`:Gblame`
