@@ -258,10 +258,10 @@ config.log_tags
    ```
    if it walks like a duck, quacks like a duck, then it must be a duck
    ```
-
-
-
-
+5. singleten class hierarchy
+   ![singleten class hirarchy](https://cloud.githubusercontent.com/assets/6025823/8210556/9e15e97c-14e0-11e5-82af-ed864c61285f.png)
+   
+   ![singleten class hirarchy](https://cloud.githubusercontent.com/assets/6025823/8210554/9be98fe6-14e0-11e5-8265-753489645573.png)
 
 
 
