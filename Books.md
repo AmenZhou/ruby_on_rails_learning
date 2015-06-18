@@ -268,5 +268,38 @@ config.log_tags
    ![around alias](https://cloud.githubusercontent.com/assets/6025823/8237973/e678d9d2-15c0-11e5-88dc-1b6a00a8c9ec.png)
 
    1. alias a method
-   2. redefine the old method
-   3. call new method inside the old method
+   2. redefine the new method
+   3. call the old method inside the new method
+   4. put the old method under the private keyword
+   
+7. Redefined Method
+   
+  It's better than around alias
+  ```ruby
+  module StringRefinement
+    refine String do
+      def length
+        super > 5 ? "long" : "short"
+      end
+    end
+  end
+  
+  "abc".length #=> short
+  ```
+  
+8. Module#prepend
+
+  This one is most recommended.
+  ```ruby
+  class ExplicitString
+    def length
+      super > 5 ? "long" : "short"
+    end
+  end
+  
+  String.class_eval do
+    prepend ExplicitString
+  end
+  
+  "abc".length #=> short
+  ```
