@@ -263,5 +263,10 @@ config.log_tags
    
    ![singleten class hirarchy](https://cloud.githubusercontent.com/assets/6025823/8210554/9be98fe6-14e0-11e5-8265-753489645573.png)
 
+6. Around Alias
 
+   ![around alias](https://cloud.githubusercontent.com/assets/6025823/8237973/e678d9d2-15c0-11e5-88dc-1b6a00a8c9ec.png)
 
+   1. alias a method
+   2. redefine the old method
+   3. call new method inside the old method
