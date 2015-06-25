@@ -2901,8 +2901,9 @@ class ItemsController < ApplicationController
   end
 end
 ```
+==================================================
 
-Serialization
+### Serialization
 Remove Root Node
 ```ruby
 class ReviewArraySerializer < ActiveModel::ArraySerializer
@@ -2946,3 +2947,42 @@ worker: bundle exec rake worker
 urgentworker: bundle exec rake urgent_worker
 scheduler: bundle exec rake scheduler
 ```
+
+###### Level 6
+
+1. Side-loaded Object
+
+  ```ruby
+  class ItemSerializer < ActiveModel::Serializer
+    attributes :id, :name
+    
+    has_many :reviews
+    embed :ids, include: true
+  end
+  ```
+
+2. On the attributes method, add object.price to data[:price] if a current_user is present.
+
+  ```ruby
+  class ItemSerializer < ActiveModel::Serializer
+    attributes :id, :name
+  
+    def attributes
+      data = super
+      # add conditional here...
+      if current_user.present?
+        data[:price] = object.price
+      end
+      
+      data
+    end
+  end
+  ```
+
+3. Seriaizer Scope
+
+  ```ruby
+  class ApplicationController < ActionController::Base
+    serialization_scope :current_session
+  end
+  ```
