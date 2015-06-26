@@ -2991,8 +2991,9 @@ scheduler: bundle exec rake scheduler
 ### Ruby Bites
 
 1. Pass a lambda to a method as a block
+
   ```ruby
-  library = Library.new(GAMES)
-  print_games = lambda { |game| puts "#{game.name} (#{game.system}) - #{game.year}" }
-  library.each(&print_games)
+    library = Library.new(GAMES)
+    print_games = lambda { |game| puts "#{game.name} (#{game.system}) - #{game.year}" }
+    library.each(&print_games)
   ```
