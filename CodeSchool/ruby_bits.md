@@ -52,6 +52,19 @@ class Game
   attr_accessor :name, :year, :system
 end
 ```
+========================================
+
+```ruby
+class Library
+  attr_accessor :games
+
+  [:each, :map, :select].each do |name|
+    define_method name do |&block|
+      games.send(name, &block)
+    end
+  end
+end
+```
 
 ### method method
 
