@@ -52,3 +52,12 @@ class Game
   attr_accessor :name, :year, :system
 end
 ```
+
+### method method
+
+```ruby
+library.emulate("Contra") #=>
+
+my_method = library.method :emulate
+my_method.call("Contra")
+```
