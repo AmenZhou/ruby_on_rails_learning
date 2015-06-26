@@ -1481,7 +1481,7 @@ end
 ```
 
 4 STUBS & MOCKING
-
+
 ```ruby
 class TweetTest < ActiveSupport::TestCase
   def setup
@@ -2985,4 +2985,14 @@ scheduler: bundle exec rake scheduler
   class ApplicationController < ActionController::Base
     serialization_scope :current_session
   end
+  ```
+=======================================================
+
+### Ruby Bites
+
+1. Pass a lambda to a method as a block
+  ```ruby
+  library = Library.new(GAMES)
+  print_games = lambda { |game| puts "#{game.name} (#{game.system}) - #{game.year}" }
+  library.each(&print_games)
   ```
