@@ -2993,7 +2993,45 @@ scheduler: bundle exec rake scheduler
 1. Pass a lambda to a method as a block
 
   ```ruby
-    library = Library.new(GAMES)
-    print_games = lambda { |game| puts "#{game.name} (#{game.system}) - #{game.year}" }
-    library.each(&print_games)
+  library = Library.new(GAMES)
+  print_games = lambda { |game| puts "#{game.name} (#{game.system}) - #{game.year}" }
+  library.each(&print_games)
+  ```
+
+2. Capture the block as a proc
+  ```ruby
+  class Library
+    attr_accessor :games
+  
+    def initialize(games)
+      @games = games
+    end
+  
+    def each(&block)
+      games.each do |game|
+        block.call game
+      end
+    end
+  end
+  ```
+  
+3. Optional Block
+  ```ruby
+  class Library
+    attr_accessor :games
+  
+    def initialize(games)
+      @games = games
+    end
+  
+    def list
+      games.each do |game|
+        if block_given?
+          puts yield game 
+        else
+          puts game.name
+        end
+      end
+    end
+  end
   ```
