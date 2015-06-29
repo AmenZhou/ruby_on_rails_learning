@@ -74,3 +74,12 @@ library.emulate("Contra") #=>
 my_method = library.method :emulate
 my_method.call("Contra")
 ```
+
+### class_eval
+
+```ruby
+Game.class_eval do
+  def self.find_by_owner(name)
+  end
+end
+```
