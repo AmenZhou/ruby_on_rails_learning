@@ -83,3 +83,15 @@ Game.class_eval do
   end
 end
 ```
+
+```ruby
+class LibraryManager
+  def self.make_available(klass, user)
+    klass.class_eval do
+      define_method "lend_to_#{user}" do
+        #do some thing inside the method
+      end
+    end
+  end
+end
+```
