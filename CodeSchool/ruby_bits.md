@@ -104,3 +104,20 @@ contra_game.instance_eval do
   self.owner = "Alice"
 end
 ```
+
+```ruby
+class Game
+  def initialize &block
+  #pass the block to instance_eval and the context inside is an instance of Game 
+    instance_eval(&block) if block_given?
+  end
+
+  def owner(name=nil)
+    if name
+      @owner = name
+    else
+      @owner
+    end
+  end
+end
+```
