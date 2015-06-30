@@ -145,3 +145,15 @@ class Library
   end
 end
 ```
+
+Simple Delegate
+
+```ruby
+require 'delegate'
+
+class Library < SimpleDelegator
+  def initialize(console)
+    super console
+  end
+end
+```
