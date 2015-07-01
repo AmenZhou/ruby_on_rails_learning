@@ -96,3 +96,8 @@ class HumansController < ApplicationController
   end
 end
 ```
+
+**specify the content type**
+
+`curl -IH "Accept: application/json" http://cs-zombies-dev.com:3000/humans`
+
