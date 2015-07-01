@@ -9,3 +9,11 @@ with_options only: :index do |list_only|
   list_only.resources :broadcasts
 end
 ```
+
+constraints and namespace
+```ruby
+namespace :api, path: "/", constraints: { subdomain: "api" } do 
+  resources :zombies
+  resources :humans
+end
+```
