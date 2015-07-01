@@ -69,3 +69,16 @@ end
 option `-I` to show the header of http reponse
 
 `curl -I http://cs-zombies-dev.com:3000/humans`
+
+### response type
+
+```ruby
+class ListingHumansTest < ActionDispatch::IntegrationTest
+  test 'returns humans in JSON' do
+    get "/humans", { }, { 'Accept' => Mime::JSON }
+    
+    assert_equal 200, response.status
+    assert_equal Mime::JSON, response.content_type
+  end
+end
+```
