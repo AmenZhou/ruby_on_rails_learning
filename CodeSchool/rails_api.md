@@ -32,3 +32,34 @@ class ListingHumansTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+
+
+**show**
+```ruby
+class ListingHumansTest < ActionDispatch::IntegrationTest
+  setup { host! 'api.example.com' }
+
+  test 'returns human by id' do
+      
+    human = Human.create!(name: 'Ash')
+    get "/humans/#{human.id}"
+    assert_equal 200, response.status
+    
+    human_response = json(response.body)
+    assert_equal human.name, human_response[:name]
+  end
+end
+```
+
+```ruby
+module API
+  class HumansController < ApplicationController
+    def show
+      # code here
+      human = Human.find(params[:id])
+      
+      render json: human, status: :ok
+    end
+  end
+end
+```
