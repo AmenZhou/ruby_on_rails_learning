@@ -303,3 +303,24 @@ class Game
   end
 end
 ```
+
+### Advanced DSL
+
+Refactor add_game method in GameDSL.rb
+allow it accepts 
+
+```ruby
+add_game "The Legend of Zelda", "NES", 1986
+```
+
+```ruby
+def add_game(name, system = nil, year = nil, &block)
+  game = Game.new(name)
+  game.instance_eval do
+    year(year) if year
+    system(system) if system
+    block if block_given?
+  end
+  LIBRARY.add_game(game)
+end
+```
