@@ -63,3 +63,7 @@ module API
   end
 end
 ```
+
+**curl**
+option `-I` to show the header of http reponse
+`curl -I http://cs-zombies-dev.com:3000/humans`
