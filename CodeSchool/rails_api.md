@@ -17,3 +17,18 @@ namespace :api, path: "/", constraints: { subdomain: "api" } do
   resources :humans
 end
 ```
+
+### test
+
+```ruby
+class ListingHumansTest < ActionDispatch::IntegrationTest
+  # setup code here
+  setup { host! "api.example.com" }
+  test 'returns a list of humans' do
+    # test code here
+    get "/humans"
+    assert_equal 200, response.status
+    refute_empty response.body
+  end
+end
+```
