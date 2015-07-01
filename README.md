@@ -1,2 +1,2 @@
-<h1>Ruby on Rails Learning Records</h1>
-<p>By Haimeng Zhou</p>
+<h1>Ruby on Rails Learning Notes</h1>
+<p>By Haimeng Zhou@2015</p>
