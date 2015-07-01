@@ -101,3 +101,15 @@ end
 
 `curl -IH "Accept: application/json" http://cs-zombies-dev.com:3000/humans`
 
+### POST
+
+```ruby
+class CreatingHumansTest < ActionDispatch::IntegrationTest
+  test 'creates human' do
+    # code here
+    post "/humans", { human: { name: 'John', brain_type: 'small' } }.to_json, { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s }
+    
+    assert_equal 201, response.status
+  end
+end
+```
