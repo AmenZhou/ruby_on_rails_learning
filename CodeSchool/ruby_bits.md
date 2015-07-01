@@ -220,3 +220,60 @@ class Library
   end
 end
 ```
+
+### DSL
+
+Example
+```ruby
+add_game "Civilization" do
+  system "PC"
+  year 1991
+end
+```
+
+GameDSL.rb
+```ruby
+LIBRARY = Library.new
+
+def add_game(name, &block)
+  game = Game.new(name)
+  # Capture the block and call it here
+  game.instance_eval(&block)
+  LIBRARY.add_game(game)
+end
+```
+
+Library.rb
+```ruby
+class Library
+  def initialize
+    @games = []
+  end
+ 
+  def add_game(game)
+    @games << game
+  end
+end
+```
+
+Game.rb
+```ruby
+class Game
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    @year = nil
+    @system = nil
+  end
+
+  # Add methods to store year and system
+  def year(year)
+    self.year = year
+  end
+  
+  def system(system)
+    self.system = system
+  end
+end
+```
