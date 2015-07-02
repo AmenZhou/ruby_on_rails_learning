@@ -203,3 +203,37 @@ render nothing: true, status: 204, location: human
     end
   end
 ```
+
+**PATCH**
+```ruby
+class HumansController < ApplicationController
+  def update
+    human = Human.find(params[:id])
+
+    if human.update(human_params)
+      render json: human, status: 200
+    else
+      render json: human.errors, status: 422
+    end
+  end
+
+  private
+
+  def human_params
+    params.require(:human).permit(:name, :brain_type)
+  end
+end
+```
+```ruby
+class UpdatingHumansTest < ActionDispatch::IntegrationTest
+  setup { @human = Human.create!(name: 'Robert', brain_type: 'small') }
+
+  test 'unsuccessful update on bad name' do
+    patch "/humans/#{@human.id}",
+      { human: { name: nil } }.to_json,
+      { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s }
+      
+    assert_equal 422, response.status
+  end
+end
+```
