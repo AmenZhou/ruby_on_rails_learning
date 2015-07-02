@@ -150,9 +150,13 @@ end
 ```
 
 **get ride of FORGERY PROTECTION
-
 ```ruby
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 end
+```
+
+**curl command for post**
+```
+curl -i -X post -d "human[name]=Ash" http://cs-zombies-dev.com:3000/humans
 ```
