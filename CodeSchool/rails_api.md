@@ -251,3 +251,15 @@ class DeletingZombiesTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+
+```ruby
+class ZombiesController < ApplicationController
+  def destroy
+    zombie = Zombie.find(params[:id])
+
+    # your code here
+    zombie.destroy
+    head 204
+  end
+end
+```
