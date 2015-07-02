@@ -101,7 +101,7 @@ end
 
 `curl -IH "Accept: application/json" http://cs-zombies-dev.com:3000/humans`
 
-### POST
+### POST(CREATE)
 
 ```ruby
 class CreatingHumansTest < ActionDispatch::IntegrationTest
@@ -126,6 +126,25 @@ class CreatingHumansTest < ActionDispatch::IntegrationTest
     
     human = json(response.body)
     assert_equal human_url(human[:id]), response.location
+  end
+end
+```
+```ruby
+class HumansController < ApplicationController
+  def create
+    # your code here
+    human = Human.new(human_params)
+    
+    if human.save
+    #send the location url of the new created human instance
+      render json: human, status: 201, location: human
+    end
+  end
+
+  private
+
+  def human_params
+    params.require(:human).permit(:name, :brain_type)
   end
 end
 ```
