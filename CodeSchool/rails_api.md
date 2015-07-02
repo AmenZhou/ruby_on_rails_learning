@@ -191,3 +191,15 @@ render nothing: true, status: 204, location: human
     assert_equal 422, response.status
   end
 ```
+```ruby
+  def create
+    human = Human.new(human_params)
+
+    if human.save
+      head 204, location: human
+    else
+      # code here
+      render json: human.errors, status: 422
+    end
+  end
+```
