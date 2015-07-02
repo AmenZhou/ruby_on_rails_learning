@@ -237,3 +237,17 @@ class UpdatingHumansTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+
+**Delete**
+```ruby
+class DeletingZombiesTest < ActionDispatch::IntegrationTest
+  setup { @zombie = Zombie.create!(name: 'Undead Jack', brain_type: 'large') }
+
+  test 'deletes existing zombie' do
+    # your code here
+    delete "/zombies/#{@zombie.id}"
+    
+    assert_equal 204, response.status
+  end
+end
+```
