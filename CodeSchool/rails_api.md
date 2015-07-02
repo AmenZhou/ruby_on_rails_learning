@@ -165,3 +165,15 @@ curl -i -X post -d "human[name]=Ash" http://cs-zombies-dev.com:3000/humans
 ```ruby
 render nothing: true, status: 204, location: human
 ```
+
+**head-only response**
+```ruby
+  def create
+    human = Human.new(human_params)
+
+    if human.save
+      # code here
+      head 204, location: human
+    end
+  end
+```
