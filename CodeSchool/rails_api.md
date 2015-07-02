@@ -160,3 +160,8 @@ end
 ```
 curl -i -X post -d "human[name]=Ash" http://cs-zombies-dev.com:3000/humans
 ```
+
+**return an empty content, with a location url
+```ruby
+render nothing: true, status: 204, location: human
+```
