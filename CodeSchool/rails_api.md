@@ -177,3 +177,17 @@ render nothing: true, status: 204, location: human
     end
   end
 ```
+
+**422 response status**
+```ruby
+  test 'does not create human with name nil' do
+    post '/humans',
+      { human:
+        { name: nil, brain_type: 'large' }
+      }.to_json,
+      { 'Accept' => Mime::JSON, 'Content-Type' => Mime::JSON.to_s }
+
+    assert_equal Mime::JSON, response.content_type
+    assert_equal 422, response.status
+  end
+```
