@@ -148,3 +148,11 @@ class HumansController < ApplicationController
   end
 end
 ```
+
+**get ride of FORGERY PROTECTION
+
+```ruby
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :null_session
+end
+```
