@@ -77,3 +77,9 @@ change vim path -- /usr/local/bin comes first in your $PATH
 in vim mode
 
 `:Gblame`
+
+### Brew start and restart
+
+https://robots.thoughtbot.com/starting-and-stopping-background-services-with-homebrew
+
+`brew services start/restart [service name]`
