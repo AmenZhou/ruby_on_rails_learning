@@ -279,3 +279,17 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+Jbuilder
+```ruby
+json.array(@humans) do |human|
+  # your code here
+  json.extract! human, :id, :name, :brain_type
+  json.message I18n.t('human_message', name: human.name)
+end
+```
+
+```yml
+en:
+  # your code here
+  human_message: "My name is %{name} and I am still alive!"
+```
