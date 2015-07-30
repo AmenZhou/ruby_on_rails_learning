@@ -293,3 +293,7 @@ en:
   # your code here
   human_message: "My name is %{name} and I am still alive!"
 ```
+
+Header Remote Addr attribute
+
+`get '/v2/zombies', {}, { 'REMOTE_ADDR' => @ip }`
