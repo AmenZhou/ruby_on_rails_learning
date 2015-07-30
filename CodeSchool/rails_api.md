@@ -294,6 +294,15 @@ en:
   human_message: "My name is %{name} and I am still alive!"
 ```
 
-Header Remote Addr attribute
+**Header Remote Addr attribute**
 
 `get '/v2/zombies', {}, { 'REMOTE_ADDR' => @ip }`
+
+
+**Set client ip address**
+
+```ruby
+class ApplicationController < ActionController::Base
+  before_action -> { @user_ip = request.headers["REMOTE_ADDR"] }
+end
+```
