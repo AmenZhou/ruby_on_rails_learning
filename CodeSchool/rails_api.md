@@ -319,3 +319,23 @@ class ListingZombiesTest < ActionDispatch::IntegrationTest
   end
 end
 ```
+
+```ruby
+class ApiVersion
+
+  def initialize(version, default_version=false) # Task 1
+    @version, @default_version = version, default_version
+  end
+
+  def matches?(request)
+    @default_version || check_headers(request.headers)
+  end
+
+  private
+    def check_headers(headers)
+      # Task 2
+      accept = headers['Accept']
+      accept && accept.include?("application/vnd.zombies.#{@version}+json")
+    end
+end
+```
