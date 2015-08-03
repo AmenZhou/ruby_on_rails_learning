@@ -306,3 +306,16 @@ class ApplicationController < ActionController::Base
   before_action -> { @user_ip = request.headers["REMOTE_ADDR"] }
 end
 ```
+
+### Accept Header Version
+
+```ruby
+class ListingZombiesTest < ActionDispatch::IntegrationTest
+  test 'show zombie from API version 1' do
+    get '/zombies/1', {}, { 'Accept' => 'application/vnd.zombies.v1+json' }
+    assert_equal 200, response.status
+    assert_equal Mime::JSON, response.content_type
+    assert_equal "This is version one", json(response.body)[:message]
+  end
+end
+```
