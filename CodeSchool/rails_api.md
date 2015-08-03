@@ -354,3 +354,12 @@ SurvivingRails::Application.routes.draw do
   end
 end
 ```
+
+```ruby
+class RoutesTest < ActionDispatch::IntegrationTest
+  test 'defaults to v2' do
+    assert_generates '/zombies', # Task 1
+    { controller: 'v2/zombies', action: 'index' } # Task 2
+  end
+end
+```
