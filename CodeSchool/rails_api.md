@@ -403,3 +403,8 @@ class ApplicationController < ActionController::Base
     end
 end
 ```
+
+**Curl get json body back and authorization
+```
+curl -H "Accept: application/json" -H "Authorization: Token token=a45fb396579a25458d23208560742610" http://cs-zombies-dev.com:3000/zombies
+```
