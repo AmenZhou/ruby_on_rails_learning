@@ -21,3 +21,15 @@ zombie = Zombie.new(name: 'Ash')
 zombie.tweets.new(message: "Arrrgggggggghhhhh")
 zombie.should have_at_least(1).tweets
 ```
+
+```ruby
+  zombie = Zombie.new
+  begin
+    zombie.make_decision!
+    rescue Zombie::NotSmartEnoughError => e
+    e.should be_an_instance_of(Zombie::NotSmartEnoughError)
+  end
+  expect{ zombie.make_decision! }.to raise_error(
+    Zombie::NotSmartEnoughError
+  )
+```
