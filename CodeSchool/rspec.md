@@ -36,3 +36,24 @@ zombie.should have_at_least(1).tweets
     Zombie::NotSmartEnoughError
   )
 ```
+
+```ruby
+# After refactor
+  context "when zombie has high iq" do
+    subject { Zombie.new(iq: 3) }
+    
+    it { should be_genius }
+    its(:brains_eaten_count) { should == 1 }
+  end
+  
+# Before
+  it "should be_genius with high iq" do
+    zombie = Zombie.new(iq: 3)
+    zombie.should be_genius
+  end
+
+  it 'should have a brains_eaten_count of 1 with high iq' do
+    zombie = Zombie.new(iq: 3)
+    zombie.brains_eaten_count.should == 1
+  end
+```
