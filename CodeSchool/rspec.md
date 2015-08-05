@@ -24,11 +24,14 @@ zombie.should have_at_least(1).tweets
 
 ```ruby
   zombie = Zombie.new
+#before
   begin
     zombie.make_decision!
-    rescue Zombie::NotSmartEnoughError => e
+  rescue Zombie::NotSmartEnoughError => e
     e.should be_an_instance_of(Zombie::NotSmartEnoughError)
   end
+  
+#after
   expect{ zombie.make_decision! }.to raise_error(
     Zombie::NotSmartEnoughError
   )
