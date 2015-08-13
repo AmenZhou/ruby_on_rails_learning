@@ -4,8 +4,8 @@
 $(document).ready(function() {
   $('form').on('submit', function(event) {
     event.preventDefault();
-    $.ajax('/book', {
-      type: 'POST',
+    $.ajax($('form').attr('action'), {
+      type: $('form').attr('method'),
       data: $('form').serialize(),
       dataType: 'json',
       success: function(response) {
