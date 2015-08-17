@@ -21,6 +21,7 @@ $(document).ready(function() {
 });
 ```
 
+**$.map()**
 ```js
 $('button').on('click', function() {
   $.ajax('/cities/deals', {
@@ -37,6 +38,7 @@ $('button').on('click', function() {
 });
 ```
 
+**detach()**
 ```js
 $('.update-available-flights').on('click', function() {
   $.getJSON('/flights/late', function(result) {
