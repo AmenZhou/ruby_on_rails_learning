@@ -20,3 +20,20 @@ $(document).ready(function() {
   });
 });
 ```
+
+```ruby
+$('button').on('click', function() {
+  $.ajax('/cities/deals', {
+    contentType: 'application/json',
+    dataType: 'json',
+    success: function(result) {
+      $.each(result, function(index, dealItem) {
+        var dealElement = $('.deal-' + index);
+        dealElement.find('.name').html(dealItem.name);
+        dealElement.find('.price').html(dealItem.price);
+      });
+    }
+  });
+});
+```
+
