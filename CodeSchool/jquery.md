@@ -70,3 +70,21 @@ $(document).ready(function(){
   });
 });
 ```
+
+### Plugin
+
+```js
+$.fn.photofy = function() {
+  this.each(function() {
+    var tour = $(this);
+    tour.on('click.photofy', '.see-photos', function(e){
+      e.preventDefault();
+      tour.addClass('is-showing-photofy');
+    });
+  });
+}
+
+$(document).ready(function() {
+  $('.tour').photofy();
+});
+```
