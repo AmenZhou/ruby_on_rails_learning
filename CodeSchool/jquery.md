@@ -244,3 +244,11 @@ message = switch newLevel
 
 if newLevel? then checkLevel newLevel else resetLevel
 ```
+
+**splat arguments**
+
+```coffee
+displayTopPicks = (bestCoffee, suggested...) ->
+  alert('Top #1 ' + bestCoffee)
+  alert('Suggested: ' + suggested.join(", "))
+```
