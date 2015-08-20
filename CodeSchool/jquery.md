@@ -428,7 +428,7 @@ App.PRODUCTS = [
 ]
 ```
 
-**Nested
+**Nested**
 ```js
 var App = Ember.Application.create({
   LOG_TRANSITIONS: true
