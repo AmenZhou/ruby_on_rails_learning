@@ -371,3 +371,59 @@ index.html
 <img {{bind-attr src='logo'}} />
 {{time}}
 ```
+
+**fetch model object and do loop**
+```html
+<script type='text/x-handlebars' data-template-name='products'>
+  {{#each}}
+    {{title}}
+    <img {{bind-attr src='image'}} />
+  {{/each}}
+</script>
+```
+
+```js
+var App = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
+App.Router.map(function() {
+  this.route('credits', { path: '/thanks' });
+  this.route('about');
+  this.resource('products');
+});
+App.IndexController = Ember.Controller.extend({
+  productsCount: 6,
+  logo: 'images/logo-small.png',
+  time: function() {
+    return (new Date()).toDateString();
+  }.property()
+});
+App.AboutController = Ember.Controller.extend({
+  contactName: 'Anostagia',
+  avatar: 'images/avatar.png',
+  open: function() {
+    return ((new Date()).getDay() === 0) ? "Closed" : "Open";
+  }.property()
+});
+App.ProductsRoute = Ember.Route.extend({
+  model: function(){
+    return App.PRODUCTS;
+  }
+})
+App.PRODUCTS = [
+  {
+    title: "Flint",
+    price: "800",
+    description: "2016 new",
+    isOnSale: true,
+    image: 'images/products/flint.png'
+  },
+  {
+    title: "Kindling",
+    price: "100",
+    description: "New style",
+    isOnSale: false,
+    image: 'images/products/kindling.png'
+  }
+]
+```
