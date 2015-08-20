@@ -408,3 +408,23 @@ end
 ```
 curl -H "Accept: application/json" -H "Authorization: Token token=a45fb396579a25458d23208560742610" http://cs-zombies-dev.com:3000/zombies
 ```
+
+###Authentication
+```ruby
+class ApplicationController < ActionController::Base
+
+  before_action :authenticate
+
+  protected
+    def authenticate
+      authenticate_basic_auth
+    end
+
+    def authenticate_basic_auth
+      # code here
+      authenticate_with_http_basic do |username, password|
+        User.authenticate(username, password)
+      end
+    end
+end
+```
