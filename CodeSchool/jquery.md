@@ -334,3 +334,14 @@ App.Router.map(function(){
   this.route('about')
 })
 ```
+
+**link**
+```html
+ <div class='container'>
+    {{#link-to 'index' class='navbar-brand'}}<img src='images/logo.png' alt='logo' height='34' width='224' />{{/link-to}}
+    <ul class='nav navbar-nav navbar-right'>
+      {{#link-to 'index' tagName='li'}}Home{{/link-to}}
+      {{#link-to 'about' tagName='li'}}About{{/link-to}}
+    </ul>
+  </div>
+```
