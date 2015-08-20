@@ -345,3 +345,29 @@ App.Router.map(function(){
     </ul>
   </div>
 ```
+
+**Property**
+
+app.js
+```js
+var App = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
+App.Router.map(function() {
+  this.route('credits', { path: '/thanks' });
+  this.route('about');
+});
+App.IndexController = Ember.Controller.extend({
+  productsCount: 6,
+  logo: 'images/logo-small.png',
+  time: function(){
+    return (new Date()).toDateString();
+  }.property()
+})
+```
+index.html
+```html
+{{productsCount}}
+<img {{bind-attr src='logo'}} />
+{{time}}
+```
