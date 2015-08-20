@@ -281,3 +281,45 @@ $.ajax
   error: (results) ->
     alert("failure #{results}")
 ```
+
+###EmberJs
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <base href='http://courseware.codeschool.com/ember/' />
+  <link href='bootstrap.css' rel='stylesheet' />
+  <link href='application.css' rel='stylesheet' />
+  <script src='jquery.js'></script>
+  <script src='handlebars.js'></script>
+  <script src='ember.js'></script>
+  <script src='ember-data.js'></script>
+  <script src='app.js'></script>
+</head>
+<body>
+  <script type='text/x-handlebars' data-template-name='application'>
+    <div class='navbar navbar-default'>
+      <div class='container'>
+        <a href='#' class='navbar-brand'><img src='images/logo.png' alt='logo' height='34' width='224' /></a>
+        <ul class='nav navbar-nav navbar-right'>
+          <li href='#' class='active'>Home</li>
+          <li href='#/about'>About</li>
+        </ul>
+      </div>
+    </div>
+      <div class='container'>
+        {{outlet}}
+      </div>
+    <footer class='container'>
+      <hr />
+      <p class='pull-left'>&copy; 2013 The Flint &amp; Flame</p>
+      <p class='pull-right'><a href='#/credits'>Credits</a></p>
+    </footer>
+  </script>
+  <script type='text/x-handlebars' data-template-name='index'>
+      <h1>Welcome to The Flint &amp; Flame!</h1>
+  </script>
+</body>
+</html>
+```
