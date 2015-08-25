@@ -20,3 +20,14 @@ zE deletes all folds.
 [z move to start of open fold.
 ]z move to end of open fold.
 ```
+
+### Tabs in vim
+
+**New Table**
+
+`tabe filename`
+
+
+**Shift Tabs**
+
+`gt`
