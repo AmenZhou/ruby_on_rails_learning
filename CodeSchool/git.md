@@ -48,4 +48,20 @@
   
   `git pull --rebase` => `git fetch` + `git rebase`
   
+9. Set git pull rebase as default
+
+  `git config --global pull.rebase true`
   
+10. Configuring Reused Recorded Resolution 
+    it will record all the fixes to merge conflicts
+    reuses them automatically if the same conficts occur
+
+   `git config --global rerere.enabled true`
+
+11. Git status -s -- have beautiful output
+    
+   `git status -s`
+
+   `git config --global alias.s "status -s"`
+
+12. 
