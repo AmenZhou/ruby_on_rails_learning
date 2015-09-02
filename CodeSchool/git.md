@@ -64,4 +64,6 @@
 
    `git config --global alias.s "status -s"`
 
-12. 
+12. Nice git log output
+
+   `git config --global alias.lg "log --oneline --decorate --all --graph"` 
