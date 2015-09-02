@@ -38,4 +38,14 @@
   Windows
   `git config --global core.autocrlf true`
 
-7. 
+7. Before git version 2.0, set default push repo, this will allow users can only push current branch
+
+  `git confing --global push.default simple`
+
+8. Git pull (rebase) 
+
+  `git pull` => `git fetch` + `git merge`
+  
+  `git pull --rebase` => `git fetch` + `git rebase`
+  
+  
