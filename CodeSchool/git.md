@@ -14,10 +14,28 @@
 
   `git config --global user.name`
   
-4. List all configurations
+4. List all global configurations
 
   `git config --global --list`
   
   OR
   
   `cat ~/.gitconfig`
+
+5. List all local configurations
+
+  `git config --local --list`
+  
+  OR
+  
+  `cat .git/config`
+  
+6. Line Ending on Windows OS
+
+  Mac/Linux
+  `git config --global core.autocrlf input`
+  
+  Windows
+  `git config --global core.autocrlf true`
+
+7. 
