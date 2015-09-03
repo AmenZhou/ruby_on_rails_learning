@@ -140,4 +140,7 @@
 
 =
 
+**git log show difference of codes**
+
+` git config --global merge.tool opendiff`
 
