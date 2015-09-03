@@ -67,3 +67,7 @@
 12. Nice git log output
 
    `git config --global alias.lg "log --oneline --decorate --all --graph"` 
+
+### Amend -- add new files to the last commit
+
+`git commit --amend -m "overwrite last commit"`
