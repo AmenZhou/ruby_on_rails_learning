@@ -101,3 +101,43 @@
 3. push new tag
 
    `git push --tags`
+
+=
+
+**git log with data range**
+
+` git log --since=2000-01-01 --until=2012-12-21`
+
+=
+
+**git diff current commit and previous commit**
+
+` git diff HEAD^..HEAD`
+
+=
+
+**git blame**
+
+` git blame index.html --date short`
+
+=
+
+**Untrack a file**
+
+` git rm --cached development.log`
+
+=
+
+**Emacs**
+
+` git config --global core.editor emacs`
+
+=
+
+**Opendiff for solving merge conflicts**
+
+` git config --global merge.tool opendiff`
+
+=
+
+
