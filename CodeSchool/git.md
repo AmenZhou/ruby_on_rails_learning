@@ -68,14 +68,36 @@
 
    `git config --global alias.lg "log --oneline --decorate --all --graph"` 
 
+=
+
 **Amend -- add new files to the last commit**
 
 `git commit --amend -m "overwrite last commit"`
+
+=
 
 **Show all remote branches and status**
 
 `git remote show origin`
 
+=
+
 **To clean up deleted remote branches**
 
 `git remote prune origin`
+
+=
+
+**Git Tag**
+
+1. list all tags
+
+   `git tag`
+
+2. add tag
+
+   `git tag -a v0.0.3 -m "add tag version 0.0.3"`
+   
+3. push new tag
+
+   `git push --tags`
