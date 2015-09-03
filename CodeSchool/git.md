@@ -68,10 +68,14 @@
 
    `git config --global alias.lg "log --oneline --decorate --all --graph"` 
 
-### Amend -- add new files to the last commit
+** Amend -- add new files to the last commit **
 
 `git commit --amend -m "overwrite last commit"`
 
-### Show all remote branches and status
+** Show all remote branches and status **
 
 `git remote show origin`
+
+** To clean up deleted remote branches **
+
+`git remote prune origin`
