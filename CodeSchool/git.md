@@ -71,3 +71,7 @@
 ### Amend -- add new files to the last commit
 
 `git commit --amend -m "overwrite last commit"`
+
+### Show all remote branches and status
+
+`git remote show origin`
