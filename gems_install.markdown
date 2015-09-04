@@ -124,3 +124,9 @@ https://coderwall.com/p/tqdrhq/work-against-local-gems-without-modifying-your-ge
 `bundle config`
 
 `bundle config --delete local.GEM_NAME`
+
+=
+
+### Rmagick gem install at Mac
+
+`C_INCLUDE_PATH=/usr/local/Cellar/imagemagick/6.9.1-1/include/ImageMagick-6/wand/MagickWand.h gem install rmagick`
