@@ -142,3 +142,12 @@ http://ionicframework.com/
 source = new EventSource('/messages/events')
 source.addEventListener 'messages.create', (e) ->
 ```
+
+=
+
+**JQuery Profile**
+
+```js
+console.profile("Task Name")
+console.profileEnd()
+```
