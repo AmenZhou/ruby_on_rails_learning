@@ -135,8 +135,8 @@ https://coderwall.com/p/tqdrhq/work-against-local-gems-without-modifying-your-ge
 
 ### Mac install nikogori
 
-#if you've installed a bunch of different versions of Xcode, 
-#and unfortunately get such error message when you try to install nokogiri
+if you've installed a bunch of different versions of Xcode, 
+and unfortunately get such error message when you try to install nokogiri
 
 ```
 checking if the C compiler accepts ... *** extconf.rb failed ***
@@ -145,9 +145,10 @@ necessary libraries and/or headers.  Check the mkmf.log file for more
 details.  You may need configuration options.
 ```
 
-#Please run this command in your bash, select yes/accept if any windows pop up.
+Please run this command in your bash, select yes/accept if any windows pop up.
 
 `xcode-select --install`
+
 
 ---
 
