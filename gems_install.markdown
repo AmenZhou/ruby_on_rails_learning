@@ -148,3 +148,12 @@ details.  You may need configuration options.
 #Please run this command in your bash, select yes/accept if any windows pop up.
 
 `xcode-select --install`
+
+---
+
+### Mac install eventmachine 
+
+
+Get any errors when compling the source files, please run
+
+`brew link openssl --force`
