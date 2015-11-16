@@ -130,3 +130,21 @@ https://coderwall.com/p/tqdrhq/work-against-local-gems-without-modifying-your-ge
 ### Rmagick gem install at Mac
 
 `C_INCLUDE_PATH=/usr/local/Cellar/imagemagick/6.9.1-1/include/ImageMagick-6/wand/MagickWand.h gem install rmagick`
+
+---
+
+### Mac install nikogori
+
+#if you've installed a bunch of different versions of Xcode, 
+#and unfortunately get such error message when you try to install nokogiri
+
+```
+checking if the C compiler accepts ... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+```
+
+#Please run this command in your bash, select yes/accept if any windows pop up.
+
+`xcode-select --install`
