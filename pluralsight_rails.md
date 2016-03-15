@@ -18,6 +18,9 @@
 
 3. Upgrate ruby version
 
+4. Instead of selecting all columns of a table, select column ONLY YOU NEED
+
+5. `AR.pluck(&:column_name)` is better than `AR.all.map(&:column_name)` 
 
 
 
