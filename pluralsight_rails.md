@@ -12,6 +12,8 @@
 
 5. Rails Panel -  A ghrome plugin 
 
+6. `Benchmark.realtime { ModelName.all.each {} }` it will give you the total time run execute the method in the block
+ 
 ### Techniques
 
 1. Eager loading
