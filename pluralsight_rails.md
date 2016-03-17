@@ -15,6 +15,8 @@
 6. `Benchmark.realtime { ModelName.all.each {} }` it will give you the total time run execute the method in the block
 
 7. `ps -o pid,rss,command`  to display the memeory consuming status of the processes
+
+8. Lol_dba is a gem which can help checking index of all tables 
  
 ### Techniques
 
