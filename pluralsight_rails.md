@@ -10,6 +10,8 @@
 
 4. FlameGraph - Graphic to monitor the performance of loading a page
 
+5. Rails Panel -  A ghrome plugin 
+
 ### Techniques
 
 1. Eager loading
@@ -22,5 +24,5 @@
 
 5. `AR.pluck(&:column_name)` is better than `AR.all.map(&:column_name)` 
 
-
+6. 
 
