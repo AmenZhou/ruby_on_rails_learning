@@ -28,5 +28,5 @@
 
 5. `AR.pluck(&:column_name)` is better than `AR.all.map(&:column_name)` 
 
-6. 
+6. `ModelName.find_each` has better memory performance than `ModdelName.each`
 
