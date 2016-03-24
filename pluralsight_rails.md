@@ -32,3 +32,17 @@
 
 6. `ModelName.find_each` has better memory performance than `ModdelName.each`
 
+7. Http Header
+  * Last-Modified/If-Modified-Since
+  * Etag/If-None-Match
+  * Cache-Control:max-age
+
+8. Rack::ETag
+
+9. stale? and fresh_when
+
+10. Update associated objects which is trgged by updated_at, add `has_many/has_one/belongs_to` touch:true 
+
+11. Include session data in Etag
+
+12. Declarative Etag 
