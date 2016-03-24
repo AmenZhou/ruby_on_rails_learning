@@ -46,3 +46,7 @@
 11. Include session data in Etag
 
 12. Declarative Etag 
+
+13. Reset Etags on deploy for HTML or CSS changes
+
+14. expires_in 
