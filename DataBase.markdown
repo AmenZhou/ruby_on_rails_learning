@@ -75,3 +75,20 @@ rake db:test:clone_structure
 PGPASSWORD=password pg_restore --verbose --clean --no-acl --no-owner -h staging.xxxx.us-east-1.rds.amazonaws.com -U username -d gopeso gopeso_20150508.dump                                                                                                                                            
 PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h gopeso.xxxx.us-east-1.rds.amazonaws.com -U username gopeso > gopeso_20150508.dump  
 ```
+====
+
+### My SQL
+
+You can dump the database into a file using: 
+ 
+```
+  mysqldump -h hostname -u user --password=password databasename > filename 
+
+```
+ 
+You can restore the info to the database again using: 
+
+```
+  mysql -h hostname -u user --password=password databasename < filename
+```
+
