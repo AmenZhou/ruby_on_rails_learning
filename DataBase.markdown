@@ -72,8 +72,8 @@ rake db:test:clone_structure
 ##### PG Restore and Backup
 
 ```
-PGPASSWORD=password pg_restore --verbose --clean --no-acl --no-owner -h staging.xxxx.us-east-1.rds.amazonaws.com -U username -d gopeso gopeso_20150508.dump                                                                                                                                            
-PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h gopeso.xxxx.us-east-1.rds.amazonaws.com -U username gopeso > gopeso_20150508.dump  
+PGPASSWORD=password pg_restore --verbose --clean --no-acl --no-owner -h hostname -U username -d gopeso gopeso_20150508.dump                                                                                                                                            
+PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h hostname -U username gopeso > gopeso_20150508.dump  
 ```
 ====
 
