@@ -83,7 +83,6 @@ You can dump the database into a file using:
  
 ```
   mysqldump -h hostname -u user --password=password databasename > filename 
-
 ```
  
 You can restore the info to the database again using: 
