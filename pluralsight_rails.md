@@ -54,8 +54,10 @@
 ###Turbolinks and Pjax
 
 1. A jquery plugin to solve the turbolinks document ready issue - **jquery-turbolinks**
-  Add this line of code into application.js file
-  `//= require jquery.turbolinks`
+   * Add this line of code into application.js file
+    ```
+     //= require jquery.turbolinks
+    ```
 
 2. Bind $(document) outside of $(document).ready
 
