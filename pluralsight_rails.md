@@ -50,3 +50,17 @@
 13. Reset Etags on deploy for HTML or CSS changes
 
 14. expires_in 
+
+###Turbolinks and Pjax
+
+1. A jquery plugin to solve the turbolinks document ready issue - **jquery-turbolinks**
+  Add this line of code into application.js file
+  `//= require jquery.turbolinks`
+
+2. Bind $(document) outside of $(document).ready
+
+3. `<script data-turbolinks-eval=false>`
+
+4. `data-no-turbolinks`
+
+===
