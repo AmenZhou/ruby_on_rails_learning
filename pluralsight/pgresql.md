@@ -1,6 +1,6 @@
 ###Some Features of Postgresql
 1. Partitioning
-    *Partitioning refers to splitting what is logically one large table into smaller physical pieces
+    * Partitioning refers to splitting what is logically one large table into smaller physical pieces
 2. Collation
 3. Search Function and Features
     * `to_tsvector`
