@@ -1,3 +1,7 @@
+###Install Git with source code
+
+https://www.digitalocean.com/community/tutorials/how-to-install-git-on-centos-7
+
 ### Install RVM Ruby Rails
 ```
 curl -sSL https://get.rvm.io | bash -s stable
