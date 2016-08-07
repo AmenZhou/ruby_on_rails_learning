@@ -1,16 +1,3 @@
-### Install PHP + Apache
-
-1. Install `apache2`, `php5`, `php5-mysql`
-
-2. The default apache html directory is -- /var/www/html
-
-3. The default configuration file of apache is located in -- 
-
-
-### Clone an existing wordpress website
-
-1. `wp-config.php`
-
 ====
 
 ###Install Git with source code
