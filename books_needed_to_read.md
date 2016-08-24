@@ -6,3 +6,11 @@
 ##### Videos
 
 - [ ] Ruby Tapas -- http://www.rubytapas.com/2012/11/07/episode-020-struct/
+
+
+##### Code Practice
+
+- [ ] Code War -- https://www.codewars.com/
+ 
+
+
