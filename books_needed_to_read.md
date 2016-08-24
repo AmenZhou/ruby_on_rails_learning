@@ -1,7 +1,12 @@
-##### General
+##### Books
+
+* General
 
 - [ ] Programming Beyond Practices -- http://shop.oreilly.com/product/0636920047391.do
 
+* JS
+
+- [ ] Functional JS -- https://github.com/getify/functional-light-js
 
 ##### Videos
 
