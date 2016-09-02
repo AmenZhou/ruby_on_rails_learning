@@ -18,7 +18,8 @@
 * Elixir
 
 - [ ] Programming Phoenix -- https://pragprog.com/book/phoenix/programming-phoenix
-      Promotion code -- ElixirConfUS2016_phoenix
+     
+        Promotion code -- ElixirConfUS2016_phoenix
 
 ##### Videos
 
