@@ -185,6 +185,9 @@ Go to this url and copy paste the bundle key, and bundle it with server.crt key.
 
 ```
 ctags --extra=+f --exclude=.git --exclude=log --exclude=coverage --exclude=public/assets -R *  /home/techbay/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/*
+
+This one is more useful
+ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 ```
 
 ##### Sunspot Search
