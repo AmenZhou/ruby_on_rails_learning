@@ -183,10 +183,10 @@ Go to this url and copy paste the bundle key, and bundle it with server.crt key.
 
 ##### CTags
 
-```
-ctags --extra=+f --exclude=.git --exclude=log --exclude=coverage --exclude=public/assets -R *  /home/techbay/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/*
+https://blog.sensible.io/2014/05/09/supercharge-your-vim-into-ide-with-ctags.html
 
-This one is more useful
+```
+##Generate ctags
 ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 ```
 
