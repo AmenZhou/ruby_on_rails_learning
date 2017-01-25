@@ -14,3 +14,9 @@
 
 1. see this link and follow the steps there
 2. `PATH=$PATH:/Users/username/Qt5.5.1/5.5/clang_64/bin gem install capybara-webkit -v '1.9.0'`
+
+### Install new fonts for shell and vim in Mac
+
+1. download font from https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf and install
+2. open a console and click 'mac + ,'
+3. select new font from the list
