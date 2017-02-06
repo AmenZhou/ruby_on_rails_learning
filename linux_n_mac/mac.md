@@ -12,7 +12,7 @@
 
 ### Install Webkit Gem into Mac OS Sierra
 
-1. see this link and follow the steps there
+1. see this link and follow the steps there -- https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit#macos-sierra-1012
 2. `PATH=$PATH:/Users/username/Qt5.5.1/5.5/clang_64/bin gem install capybara-webkit -v '1.9.0'`
 
 ### Install new fonts for shell and vim in Mac
