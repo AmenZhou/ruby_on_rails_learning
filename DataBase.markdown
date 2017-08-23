@@ -62,7 +62,7 @@ default: &default
   host: 127.0.0.1                                                                                                                                                                      
   socket: /tmp/mysql.sock
 ```
-
+----------------
 ##### Test Datebase Restruct(Very useful when table columns in test is different from development)
 
 ```
@@ -75,7 +75,7 @@ rake db:test:clone_structure
 PGPASSWORD=password pg_restore --verbose --clean --no-acl --no-owner -h hostname -U username -d gopeso gopeso_20150508.dump                                                                                                                                            
 PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h hostname -U username gopeso > gopeso_20150508.dump  
 ```
-====
+----------
 
 ### My SQL
 
@@ -91,7 +91,7 @@ You can restore the info to the database again using:
   mysql -h hostname -u user --password=password databasename < filename
 ```
 
-====
+--------
 
 ### Syntax error in Mysql 5.7 and above
 
