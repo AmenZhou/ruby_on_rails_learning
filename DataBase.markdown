@@ -91,3 +91,14 @@ You can restore the info to the database again using:
   mysql -h hostname -u user --password=password databasename < filename
 ```
 
+====
+
+### Syntax error in Mysql 5.7 and above
+
+add a my.cnf file into home directory
+
+```
+[mysqld]
+sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+secure-file-priv = ""
+```
