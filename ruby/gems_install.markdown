@@ -1,4 +1,4 @@
-###stripe
+### stripe
 
 example: http://www.sitepoint.com/payments-in-rails-with-stripe/
 
@@ -158,3 +158,11 @@ Please run this command in your bash, select yes/accept if any windows pop up.
 Get any errors when compling the source files, please run
 
 `brew link openssl --force`
+
+----
+
+### Avoid using bundle exec
+
+`gem install rubygems-bundler`
+
+`gem regenerate_binstubs`
