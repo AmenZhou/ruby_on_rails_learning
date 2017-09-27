@@ -20,3 +20,12 @@
 1. download font from https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf and install
 2. open a console and click 'mac + ,'
 3. select new font from the list
+
+### Auto Start
+Auto start a service
+
+`sudo launchctl load -w [service name]`
+
+Stop a service
+
+`sudo launchctl unload -w [service name]`
