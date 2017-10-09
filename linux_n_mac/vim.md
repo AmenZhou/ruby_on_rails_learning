@@ -1,4 +1,5 @@
-###Fold
+
+### Fold
 
 ```
  Vim folding commands
@@ -39,3 +40,10 @@ https://blog.sensible.io/2014/05/09/supercharge-your-vim-into-ide-with-ctags.htm
 ##Generate ctags
 ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 ```
+
+
+**MacVim not working after upgrade to High Sierra**
+
+1. Upgrade github keychain `printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase`
+2. Launch Xcode and let all Xcode components being upgraded
+3. Upgrade MacVim by `brew upgrade macvim`
