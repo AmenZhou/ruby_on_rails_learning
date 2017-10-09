@@ -47,3 +47,4 @@ ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 1. Upgrade github keychain `printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase`
 2. Launch Xcode and let all Xcode components being upgraded
 3. Upgrade MacVim by `brew upgrade macvim`
+4. If you see 'Ignoring ... because its extensions are not built' when you open the vim, then run this `gem pristine --all`
