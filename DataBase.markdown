@@ -1,4 +1,4 @@
-### psql
+# PSQL
 
 **restore psql dump file**
 
@@ -32,7 +32,7 @@
 
 `psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432`
 
-##### AWS RDS
+### AWS RDS
 
 **add ssl**
 
@@ -47,9 +47,9 @@
   sslrootcert: 'config/amazon-rds-ca-cert.pem'
   ```
 
-### mysql
+# MySql
 
-###### database.yml
+### database.yml
 
 ```yml
 default: &default                                                                                                                                                                      
@@ -63,13 +63,13 @@ default: &default
   socket: /tmp/mysql.sock
 ```
 ----------------
-##### Test Datebase Restruct(Very useful when table columns in test is different from development)
+### Test Datebase Restruct(Very useful when table columns in test is different from development)
 
 ```
 rake db:test:clone_structure
 ```
 
-##### PG Restore and Backup
+### PG Restore and Backup
 
 ```
 PGPASSWORD=password pg_restore --verbose --clean --no-acl --no-owner -h hostname -U username -d gopeso gopeso_20150508.dump                                                                                                                                            
@@ -77,7 +77,6 @@ PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h hostname -U username gope
 ```
 ----------
 
-### My SQL
 
 You can dump the database into a file using: 
  
