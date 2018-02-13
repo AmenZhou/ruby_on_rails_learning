@@ -14,5 +14,5 @@ createdb db_name
 
 ```
 psql db_name
+sudo -u user_name psql db_name
 ```
-
