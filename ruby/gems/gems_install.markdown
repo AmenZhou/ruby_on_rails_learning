@@ -166,3 +166,7 @@ Get any errors when compling the source files, please run
 `gem install rubygems-bundler`
 
 `gem regenerate_binstubs`
+
+### Nokogiri Error
+
+`gem install nokogiri -- --use-system-libraries=true --with-xml2-include="$(xcrun --show-sdk-path)"/usr/include/libxml2`
