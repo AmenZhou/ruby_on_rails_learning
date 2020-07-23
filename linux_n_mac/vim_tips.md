@@ -111,6 +111,11 @@ Jump to the 42nd column of the current line.
 
 g; Edit
 
+[Control][b] - Move back one full screen
+[Control][f] - Move forward one full screen
+[Control][d] - Move forward 1/2 screen
+[Control][u] - Move back (up) 1/2 screen
+
 ### Nerdtree Directory Manager
 
 `m` - Display a list of command
