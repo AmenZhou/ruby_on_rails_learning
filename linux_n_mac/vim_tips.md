@@ -1,4 +1,7 @@
 ### Move Around
+g_
+Last char of the current line
+
 https://vim.fandom.com/wiki/Moving_around
 
 e 
