@@ -29,3 +29,11 @@ Auto start a service
 Stop a service
 
 `sudo launchctl unload -w [service name]`
+
+### Mysql lost connection
+code  /usr/local/opt/mysql@5.6/my.cnf
+
+```
+wait_timeout = 28800
+interactive_timeout = 28800
+```
